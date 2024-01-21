@@ -50,6 +50,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButtonTap() {
+        print("No thing")
         Task { @MainActor in
             await viewModel?.fetchLogin(loginData: LoginModelEncodable(username: emailTextField.text ?? "", password: passwordTextField.text ?? ""))
         }
