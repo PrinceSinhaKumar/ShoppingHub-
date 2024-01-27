@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="Xkf-lN-eUy">
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="Xkf-lN-eUy">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="dQl-YW-Gaf">
@@ -122,7 +122,9 @@
                                             <constraint firstAttribute="height" constant="50" id="vpo-W9-2ZC"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Login" cornerStyle="capsule"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Login" cornerStyle="capsule">
+                                            <color key="baseBackgroundColor" systemColor="tintColor"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="loginButtonTap" destination="BYZ-38-t0r" eventType="touchUpInside" id="3GK-EZ-j6L"/>
                                         </connections>
@@ -184,6 +186,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

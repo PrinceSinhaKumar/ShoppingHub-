@@ -16,12 +16,14 @@ final class ActivityIndicator {
     
     var activityIndicator:UIActivityIndicatorView!
     
-    func startAnimating(with title: String? = ""){
-        guard let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }),
-              let vc = keyWindow.rootViewController else {
+    func startAnimating(){
+        
+        let scenes = UIApplication.shared.connectedScenes
+        let windowScene = scenes.first as? UIWindowScene
+        let window = windowScene?.windows.first
+        guard let rootVC = window?.rootViewController else {
             return
         }
-        
         activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.frame =  CGRect(x: 0,
                                           y: 0,
@@ -30,11 +32,12 @@ final class ActivityIndicator {
         activityIndicator.color = UIColor(named: AppColor.AppWhiteSecond.rawValue)
 
         activityIndicator.startAnimating()
-        activityIndicator.center = vc.view.center
-        vc.view.addSubview(activityIndicator)
+        activityIndicator.center = rootVC.view.center
+        rootVC.view.addSubview(activityIndicator)
     }
     
     func stopAnimating(){
         activityIndicator.stopAnimating()
     }
 }
+

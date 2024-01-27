@@ -18,7 +18,6 @@
 		7300E6F82B5BB2E400221593 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E6F72B5BB2E400221593 /* LoginViewController.swift */; };
 		7300E7002B5BB87F00221593 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E6FC2B5BB87E00221593 /* ApiError.swift */; };
 		7300E7012B5BB87F00221593 /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E6FD2B5BB87E00221593 /* ApiHelper.swift */; };
-		7300E7022B5BB87F00221593 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E6FE2B5BB87F00221593 /* ApiManager.swift */; };
 		7300E7032B5BB87F00221593 /* ApiEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E6FF2B5BB87F00221593 /* ApiEndpoint.swift */; };
 		7300E7072B5BBAB900221593 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E7062B5BBAB900221593 /* LoginModel.swift */; };
 		7300E70A2B5BBB3600221593 /* LoginModelEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E7092B5BBB3600221593 /* LoginModelEncodable.swift */; };
@@ -26,6 +25,9 @@
 		7300E70F2B5BC05D00221593 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E70E2B5BC05D00221593 /* LoginViewModel.swift */; };
 		7300E7112B5D007F00221593 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E7102B5D007F00221593 /* ActivityIndicator.swift */; };
 		7300E7132B5D011500221593 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E7122B5D011500221593 /* AppColor.swift */; };
+		7300E7152B5F2ED700221593 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E7142B5F2ED700221593 /* ApiManager.swift */; };
+		7300E7172B5F304E00221593 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E7162B5F304E00221593 /* AlertController.swift */; };
+		730C31F52B616BFD002756FE /* AppGradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730C31F42B616BFD002756FE /* AppGradientLayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +44,6 @@
 		7300E6F72B5BB2E400221593 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7300E6FC2B5BB87E00221593 /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		7300E6FD2B5BB87E00221593 /* ApiHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiHelper.swift; sourceTree = "<group>"; };
-		7300E6FE2B5BB87F00221593 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiManager.swift; path = "../../../../../Downloads/networking-api-main/NetworkingAPI/ApiManager.swift"; sourceTree = "<group>"; };
 		7300E6FF2B5BB87F00221593 /* ApiEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiEndpoint.swift; sourceTree = "<group>"; };
 		7300E7062B5BBAB900221593 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		7300E7092B5BBB3600221593 /* LoginModelEncodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModelEncodable.swift; sourceTree = "<group>"; };
@@ -50,6 +51,9 @@
 		7300E70E2B5BC05D00221593 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		7300E7102B5D007F00221593 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		7300E7122B5D011500221593 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
+		7300E7142B5F2ED700221593 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		7300E7162B5F304E00221593 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		730C31F42B616BFD002756FE /* AppGradientLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGradientLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,8 @@
 				7300E6F32B5BAE1E00221593 /* AppFontHelper.swift */,
 				7300E7102B5D007F00221593 /* ActivityIndicator.swift */,
 				7300E7122B5D011500221593 /* AppColor.swift */,
+				7300E7162B5F304E00221593 /* AlertController.swift */,
+				730C31F42B616BFD002756FE /* AppGradientLayer.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -155,7 +161,7 @@
 				7300E6FF2B5BB87F00221593 /* ApiEndpoint.swift */,
 				7300E6FC2B5BB87E00221593 /* ApiError.swift */,
 				7300E6FD2B5BB87E00221593 /* ApiHelper.swift */,
-				7300E6FE2B5BB87F00221593 /* ApiManager.swift */,
+				7300E7142B5F2ED700221593 /* ApiManager.swift */,
 			);
 			path = Networks;
 			sourceTree = "<group>";
@@ -267,18 +273,20 @@
 			files = (
 				7300E6F82B5BB2E400221593 /* LoginViewController.swift in Sources */,
 				7300E6D72B5BA69F00221593 /* AppDelegate.swift in Sources */,
-				7300E7022B5BB87F00221593 /* ApiManager.swift in Sources */,
 				7300E7072B5BBAB900221593 /* LoginModel.swift in Sources */,
 				7300E6D92B5BA69F00221593 /* SceneDelegate.swift in Sources */,
 				7300E7012B5BB87F00221593 /* ApiHelper.swift in Sources */,
 				7300E70F2B5BC05D00221593 /* LoginViewModel.swift in Sources */,
 				7300E7132B5D011500221593 /* AppColor.swift in Sources */,
 				7300E6F22B5BAB4200221593 /* UIViewExtension.swift in Sources */,
+				7300E7172B5F304E00221593 /* AlertController.swift in Sources */,
 				7300E7112B5D007F00221593 /* ActivityIndicator.swift in Sources */,
 				7300E70A2B5BBB3600221593 /* LoginModelEncodable.swift in Sources */,
+				730C31F52B616BFD002756FE /* AppGradientLayer.swift in Sources */,
 				7300E6E12B5BA69F00221593 /* ShoppingHub__.xcdatamodeld in Sources */,
 				7300E7032B5BB87F00221593 /* ApiEndpoint.swift in Sources */,
 				7300E7002B5BB87F00221593 /* ApiError.swift in Sources */,
+				7300E7152B5F2ED700221593 /* ApiManager.swift in Sources */,
 				7300E6F42B5BAE1E00221593 /* AppFontHelper.swift in Sources */,
 				7300E70D2B5BBC0100221593 /* LoginModelDecodable.swift in Sources */,
 			);
