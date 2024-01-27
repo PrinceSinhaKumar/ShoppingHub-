@@ -29,14 +29,11 @@ class LoginViewController: UIViewController {
     }
     
     fileprivate func applyGradient() {
+        guard let viewModel = viewModel else { return }
         let myGradientView = GradientBackgroundView(frame: view.bounds)
-        
         view.insertSubview(myGradientView, at: 0)
         // dynamically updating the color set
-        myGradientView.colorSet = [
-            UIColor(red: 48/255, green: 62/255, blue: 103/255, alpha: 1),
-            UIColor(red: 244/255, green: 88/255, blue: 53/255, alpha: 1)
-        ]
+        myGradientView.colorSet = viewModel.gradientColors
     }
     
     fileprivate func configureUI(){
@@ -63,7 +60,6 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButtonTap() {
-        print("No thing")
         Task { @MainActor in
             await viewModel?.fetchLogin(loginData: LoginModelEncodable(username: emailTextField.text ?? "", password: passwordTextField.text ?? ""))
         }
