@@ -21,11 +21,22 @@ class LoginViewController: UIViewController {
     }
 
     //MARK: - Method
-    
     fileprivate func initialise(){
+        applyGradient()
         viewModel = LoginViewModel(model: LoginModel())
         configureUI()
         configureObserver()
+    }
+    
+    fileprivate func applyGradient() {
+        let myGradientView = GradientBackgroundView(frame: view.bounds)
+        
+        view.insertSubview(myGradientView, at: 0)
+        // dynamically updating the color set
+        myGradientView.colorSet = [
+            UIColor(red: 48/255, green: 62/255, blue: 103/255, alpha: 1),
+            UIColor(red: 244/255, green: 88/255, blue: 53/255, alpha: 1)
+        ]
     }
     
     fileprivate func configureUI(){
@@ -41,8 +52,10 @@ class LoginViewController: UIViewController {
                 switch event {
                 case .loading: ActivityIndicator.shared.startAnimating()
                 case .stopLoading: ActivityIndicator.shared.stopAnimating()
-                case .dataLoaded: print(self.viewModel?.model.userData)
-                case .error(let error): print(error.localizedDescription)
+                case .dataLoaded:
+                    ShoppingAlert.shared.showAlert(self.viewModel?.model.userData?.reason ?? "")
+                case .error(let error):
+                    ShoppingAlert.shared.showAlert(error.localizedDescription)
                 }
             }
             
@@ -56,3 +69,4 @@ class LoginViewController: UIViewController {
         }
     }
 }
+
