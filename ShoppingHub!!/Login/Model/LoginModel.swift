@@ -11,21 +11,19 @@ enum Event {
     case loading
     case stopLoading
     case dataLoaded
-    case error(Error)
+    case error(String)
 }
 
-typealias Handler = (Decodable?, Error?) -> ()
+typealias Handler = (Decodable?, ErrorHandler?) -> ()
 
 class LoginModel {
   
     var userData: LoginModelDecodable?
     
-    func fetchLoginService(loginData: Encodable,completion: @escaping Handler) async{
-        do {
-            userData = try await ApiManager.shared.sendData(from: .getLoginContent, with: loginData)
-            completion(userData, nil)
-        } catch {
-           completion(nil, error)
+    func fetchLoginService(loginData: Encodable, completion: @escaping Handler){
+        ApiManager.shared.sendData(from: .getLoginContent, with: loginData) { [weak self] result, error in
+            self?.userData = result
+            completion(result, error)
         }
     }
     

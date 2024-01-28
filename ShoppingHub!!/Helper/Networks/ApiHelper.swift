@@ -4,5 +4,6 @@ import Foundation
 struct ApiHelper {
     
     /// API Base URL
-    static let baseURL = "https://restful-booker.herokuapp.com/"
+    static let authBaseURL = "https://restful-booker.herokuapp.com/"
+    static let foodBaseURL = "https://www.themealdb.com/api/json/v1/1/"
 }

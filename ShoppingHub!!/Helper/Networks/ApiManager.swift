@@ -1,5 +1,20 @@
 import Foundation
 
+enum ErrorHandler {    
+    case error(Error)
+    case customError(String)
+}
+extension ErrorHandler {
+    var errorMessage: String {
+        switch self {
+        case .error(let error):
+            return error.localizedDescription
+        case .customError(let customError):
+            return customError
+        }
+        
+    }
+}
 final class ApiManager {
     
     typealias NetworkResponse = (data: Data, response: URLResponse)
@@ -10,35 +25,61 @@ final class ApiManager {
     private let decoder = JSONDecoder()
     private let encoder = JSONEncoder()
       
-    func getData<D: Decodable>(from endpoint: ApiEndpoint) async throws -> D {
-        let request = try createRequest(from: endpoint)
-        let response: NetworkResponse = try await session.data(for: request)
-        return try decoder.decode(D.self, from: response.data)
+    func getData<D: Decodable>(from endpoint: ApiEndpoint, handler: @escaping (D?, ErrorHandler?) -> ()) {
+        guard let request = createRequest(from: endpoint) else { return }
+        let task = session.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                handler(nil, .error(error))
+                return
+            }
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                handler(nil, .customError("Invalid response"))
+                return
+            }
+            if let data = data {
+                do {
+                    let jsonDecoder = JSONDecoder()
+                    let result = try jsonDecoder.decode(D.self, from: data)
+                    handler(result, nil)
+                } catch {
+                    handler(nil , .error(error))
+                }
+            }
+        }
+        task.resume()
     }
     
-    func sendData<D: Decodable, E: Encodable>(from endpoint: ApiEndpoint, with body: E) async throws -> D {
-        let request = try createRequest(from: endpoint)
-        let data = try encoder.encode(body)
-        let response: NetworkResponse = try await session.upload(for: request, from: data)
-        return try decoder.decode(D.self, from: response.data)
+    func sendData<D: Decodable, E: Encodable>(from endpoint: ApiEndpoint, with body: E, handler: @escaping (D?, ErrorHandler?) -> ()) {
+        guard var request = createRequest(from: endpoint) else { return }
+        let data = try! encoder.encode(body)
+        request.httpBody = data
+        let task = session.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                handler(nil, .error(error))
+                return
+            }
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                handler(nil, .customError("Invalid response"))
+                return
+            }
+            if let data = data {
+                do {
+                    let jsonDecoder = JSONDecoder()
+                    let result = try jsonDecoder.decode(D.self, from: data)
+                    handler(result, nil)
+                } catch {
+                    handler(nil , .error(error))
+                }
+            }
+        }
+        task.resume()
     }
 }
 
 private extension ApiManager {
     
-    func createRequest(from endpoint: ApiEndpoint) throws -> URLRequest {
-        guard
-            let urlPath = URL(string: ApiHelper.baseURL.appending(endpoint.path)),
-            var urlComponents = URLComponents(string: urlPath.path)
-        else {
-            throw ApiError.invalidPath
-        }
-        
-        if let parameters = endpoint.parameters {
-            urlComponents.queryItems = parameters
-        }
-        
-        var request = URLRequest(url: urlPath)
+    func createRequest(from endpoint: ApiEndpoint) -> URLRequest? {
+        var request = URLRequest(url: URL(string: endpoint.path)!)
         request.httpMethod = endpoint.method.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         return request
