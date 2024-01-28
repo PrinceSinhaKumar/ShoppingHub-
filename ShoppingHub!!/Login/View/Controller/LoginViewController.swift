@@ -13,7 +13,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField, passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
-    var viewModel: LoginViewModel?
+    fileprivate var viewModel: LoginViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +22,8 @@ class LoginViewController: UIViewController {
 
     //MARK: - Method
     fileprivate func initialise(){
-        applyGradient()
         viewModel = LoginViewModel(model: LoginModel())
+        applyGradient()
         configureUI()
         configureObserver()
     }
@@ -50,9 +50,10 @@ class LoginViewController: UIViewController {
                 case .loading: ActivityIndicator.shared.startAnimating()
                 case .stopLoading: ActivityIndicator.shared.stopAnimating()
                 case .dataLoaded:
-                    ShoppingAlert.shared.showAlert(self.viewModel?.model.userData?.reason ?? "")
+                    let vc = FoodTabController()
+                    self.navigationController?.pushViewController(vc, animated: false)
                 case .error(let error):
-                    ShoppingAlert.shared.showAlert(error.localizedDescription)
+                    ShoppingAlert.shared.showAlert(error)
                 }
             }
             
@@ -60,9 +61,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButtonTap() {
-        Task { @MainActor in
-            await viewModel?.fetchLogin(loginData: LoginModelEncodable(username: emailTextField.text ?? "", password: passwordTextField.text ?? ""))
-        }
+       viewModel?.fetchLogin(loginData: LoginModelEncodable(username: emailTextField.text ?? "", password: passwordTextField.text ?? ""))
     }
 }
 

@@ -11,6 +11,7 @@ enum ApiEndpoint {
     
     /// Define all your endpoints here
     case getLoginContent
+    case getFoodList(String)
 }
 
 extension ApiEndpoint {
@@ -19,7 +20,9 @@ extension ApiEndpoint {
     var path: String {
         switch self {
         case .getLoginContent:
-            return "auth"
+            return "\(ApiHelper.authBaseURL)auth"
+        case .getFoodList(let keyWord):
+            return "\(ApiHelper.foodBaseURL)search.php?f=\(keyWord)"
         }
         
     }
@@ -29,6 +32,8 @@ extension ApiEndpoint {
         switch self {
         case .getLoginContent:
             return .POST
+        case .getFoodList(_):
+            return .GET
         }
     }
     
@@ -39,6 +44,8 @@ extension ApiEndpoint {
             var queryItems = [URLQueryItem]()
             queryItems.append(URLQueryItem(name: "continent", value: path))
             return queryItems
+        default:
+            return nil
         }
     }
 }

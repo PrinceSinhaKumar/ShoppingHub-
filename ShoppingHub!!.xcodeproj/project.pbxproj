@@ -28,6 +28,9 @@
 		7300E7152B5F2ED700221593 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E7142B5F2ED700221593 /* ApiManager.swift */; };
 		7300E7172B5F304E00221593 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E7162B5F304E00221593 /* AlertController.swift */; };
 		730C31F52B616BFD002756FE /* AppGradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730C31F42B616BFD002756FE /* AppGradientLayer.swift */; };
+		F4C20CEE2B6645CC00D0C85C /* FoodTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C20CED2B6645CC00D0C85C /* FoodTabController.swift */; };
+		F4C20CF22B66466300D0C85C /* FoodTabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C20CF12B66466300D0C85C /* FoodTabModel.swift */; };
+		F4C20CF42B664B6200D0C85C /* FoodListDecadableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C20CF32B664B6200D0C85C /* FoodListDecadableModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +57,9 @@
 		7300E7142B5F2ED700221593 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		7300E7162B5F304E00221593 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		730C31F42B616BFD002756FE /* AppGradientLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGradientLayer.swift; sourceTree = "<group>"; };
+		F4C20CED2B6645CC00D0C85C /* FoodTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTabController.swift; sourceTree = "<group>"; };
+		F4C20CF12B66466300D0C85C /* FoodTabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTabModel.swift; sourceTree = "<group>"; };
+		F4C20CF32B664B6200D0C85C /* FoodListDecadableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListDecadableModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,7 @@
 				7300E6ED2B5BA6B000221593 /* Application */,
 				7300E6F02B5BAAF100221593 /* Helper */,
 				7300E6EE2B5BA6C300221593 /* Login */,
+				F4C20CEB2B65A10800D0C85C /* FoodDashBoard */,
 				7300E6E22B5BA6A200221593 /* Assets.xcassets */,
 				7300E6E42B5BA6A200221593 /* LaunchScreen.storyboard */,
 				7300E6E72B5BA6A200221593 /* Info.plist */,
@@ -200,6 +207,48 @@
 			path = DecodableModel;
 			sourceTree = "<group>";
 		};
+		F4C20CEB2B65A10800D0C85C /* FoodDashBoard */ = {
+			isa = PBXGroup;
+			children = (
+				F4C20CF02B66462900D0C85C /* Model */,
+				F4C20CEC2B66459B00D0C85C /* View */,
+			);
+			path = FoodDashBoard;
+			sourceTree = "<group>";
+		};
+		F4C20CEC2B66459B00D0C85C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F4C20CEF2B66461900D0C85C /* Controller */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F4C20CEF2B66461900D0C85C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F4C20CED2B6645CC00D0C85C /* FoodTabController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F4C20CF02B66462900D0C85C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F4C20CF12B66466300D0C85C /* FoodTabModel.swift */,
+				F4C20CF52B664C3800D0C85C /* DecodableModel */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F4C20CF52B664C3800D0C85C /* DecodableModel */ = {
+			isa = PBXGroup;
+			children = (
+				F4C20CF32B664B6200D0C85C /* FoodListDecadableModel.swift */,
+			);
+			path = DecodableModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -271,7 +320,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4C20CF42B664B6200D0C85C /* FoodListDecadableModel.swift in Sources */,
 				7300E6F82B5BB2E400221593 /* LoginViewController.swift in Sources */,
+				F4C20CEE2B6645CC00D0C85C /* FoodTabController.swift in Sources */,
 				7300E6D72B5BA69F00221593 /* AppDelegate.swift in Sources */,
 				7300E7072B5BBAB900221593 /* LoginModel.swift in Sources */,
 				7300E6D92B5BA69F00221593 /* SceneDelegate.swift in Sources */,
@@ -283,6 +334,7 @@
 				7300E7112B5D007F00221593 /* ActivityIndicator.swift in Sources */,
 				7300E70A2B5BBB3600221593 /* LoginModelEncodable.swift in Sources */,
 				730C31F52B616BFD002756FE /* AppGradientLayer.swift in Sources */,
+				F4C20CF22B66466300D0C85C /* FoodTabModel.swift in Sources */,
 				7300E6E12B5BA69F00221593 /* ShoppingHub__.xcdatamodeld in Sources */,
 				7300E7032B5BB87F00221593 /* ApiEndpoint.swift in Sources */,
 				7300E7002B5BB87F00221593 /* ApiError.swift in Sources */,

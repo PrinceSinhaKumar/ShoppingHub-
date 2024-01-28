@@ -20,12 +20,12 @@ class LoginViewModel {
         self.model = model
     }
     
-    func fetchLogin(loginData: Encodable) async{
+    func fetchLogin(loginData: Encodable){
         eventHandler?(.loading)
-        await model.fetchLoginService(loginData: loginData) { [weak self] data, error in
+         model.fetchLoginService(loginData: loginData) { [weak self] data, error in
             self?.eventHandler?(.stopLoading)
             guard  error == nil else {
-                self?.eventHandler?(.error(error!))
+                self?.eventHandler!(.error(error?.errorMessage ?? ""))
                 return
             }
             if let data = data {
