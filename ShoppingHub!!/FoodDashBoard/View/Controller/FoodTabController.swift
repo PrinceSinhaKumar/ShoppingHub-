@@ -9,12 +9,14 @@ import UIKit
 
 class FoodTabController: UIViewController {
     
+    var viewModel: FoodTabViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchList()
+       viewModel = FoodTabViewModel(model: FoodTabModel())
+        viewModel?.fetchMealsList(handler: { _, error in
+            print(self.viewModel?.model?.mealList!)
+        })
     }
 
-    func fetchList(){
-         FoodTabModel().fetchFoodList("r")
-    }
 }

@@ -22,9 +22,16 @@ struct Meals: Decodable {
     let strMealThumb: String?
     let strTags: String?
     let strYoutube: String?
-    let strSource: String?
-    let strImageSource: String?
-    let strCreativeCommonsConfirmed: String?
-    let dateModified: String?
-
+    
+    init(meal: Meal) {
+        self.idMeal = meal.idMeal
+        self.strMeal = meal.strMeal
+        self.strDrinkAlternate = meal.strDrinkAlternate
+        self.strCategory = meal.strCategory
+        self.strArea = meal.strArea
+        self.strInstructions = meal.strInstructions
+        self.strMealThumb = meal.strMealThumb
+        self.strTags = meal.strTags
+        self.strYoutube = meal.strYoutube
+    }
 }
