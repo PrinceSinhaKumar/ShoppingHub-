@@ -31,6 +31,9 @@
 		F4C20CEE2B6645CC00D0C85C /* FoodTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C20CED2B6645CC00D0C85C /* FoodTabController.swift */; };
 		F4C20CF22B66466300D0C85C /* FoodTabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C20CF12B66466300D0C85C /* FoodTabModel.swift */; };
 		F4C20CF42B664B6200D0C85C /* FoodListDecadableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C20CF32B664B6200D0C85C /* FoodListDecadableModel.swift */; };
+		F4C20CF82B67768100D0C85C /* MealDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C20CF72B67768100D0C85C /* MealDataManager.swift */; };
+		F4C20CFA2B6780C800D0C85C /* MealDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C20CF92B6780C800D0C85C /* MealDataProvider.swift */; };
+		F4C20CFD2B678D3900D0C85C /* FoodTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C20CFC2B678D3900D0C85C /* FoodTabViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +63,9 @@
 		F4C20CED2B6645CC00D0C85C /* FoodTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTabController.swift; sourceTree = "<group>"; };
 		F4C20CF12B66466300D0C85C /* FoodTabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTabModel.swift; sourceTree = "<group>"; };
 		F4C20CF32B664B6200D0C85C /* FoodListDecadableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListDecadableModel.swift; sourceTree = "<group>"; };
+		F4C20CF72B67768100D0C85C /* MealDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDataManager.swift; sourceTree = "<group>"; };
+		F4C20CF92B6780C800D0C85C /* MealDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDataProvider.swift; sourceTree = "<group>"; };
+		F4C20CFC2B678D3900D0C85C /* FoodTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTabViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +140,7 @@
 		7300E6F02B5BAAF100221593 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				F4C20CF62B67765700D0C85C /* DB */,
 				7300E6F92B5BB74100221593 /* Networks */,
 				7300E6F12B5BAB4200221593 /* UIViewExtension.swift */,
 				7300E6F32B5BAE1E00221593 /* AppFontHelper.swift */,
@@ -211,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				F4C20CF02B66462900D0C85C /* Model */,
+				F4C20CFB2B678CEC00D0C85C /* ViewModel */,
 				F4C20CEC2B66459B00D0C85C /* View */,
 			);
 			path = FoodDashBoard;
@@ -236,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				F4C20CF12B66466300D0C85C /* FoodTabModel.swift */,
+				F4C20CF92B6780C800D0C85C /* MealDataProvider.swift */,
 				F4C20CF52B664C3800D0C85C /* DecodableModel */,
 			);
 			path = Model;
@@ -247,6 +256,22 @@
 				F4C20CF32B664B6200D0C85C /* FoodListDecadableModel.swift */,
 			);
 			path = DecodableModel;
+			sourceTree = "<group>";
+		};
+		F4C20CF62B67765700D0C85C /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				F4C20CF72B67768100D0C85C /* MealDataManager.swift */,
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
+		F4C20CFB2B678CEC00D0C85C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F4C20CFC2B678D3900D0C85C /* FoodTabViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,10 +349,12 @@
 				7300E6F82B5BB2E400221593 /* LoginViewController.swift in Sources */,
 				F4C20CEE2B6645CC00D0C85C /* FoodTabController.swift in Sources */,
 				7300E6D72B5BA69F00221593 /* AppDelegate.swift in Sources */,
+				F4C20CFD2B678D3900D0C85C /* FoodTabViewModel.swift in Sources */,
 				7300E7072B5BBAB900221593 /* LoginModel.swift in Sources */,
 				7300E6D92B5BA69F00221593 /* SceneDelegate.swift in Sources */,
 				7300E7012B5BB87F00221593 /* ApiHelper.swift in Sources */,
 				7300E70F2B5BC05D00221593 /* LoginViewModel.swift in Sources */,
+				F4C20CF82B67768100D0C85C /* MealDataManager.swift in Sources */,
 				7300E7132B5D011500221593 /* AppColor.swift in Sources */,
 				7300E6F22B5BAB4200221593 /* UIViewExtension.swift in Sources */,
 				7300E7172B5F304E00221593 /* AlertController.swift in Sources */,
@@ -337,6 +364,7 @@
 				F4C20CF22B66466300D0C85C /* FoodTabModel.swift in Sources */,
 				7300E6E12B5BA69F00221593 /* ShoppingHub__.xcdatamodeld in Sources */,
 				7300E7032B5BB87F00221593 /* ApiEndpoint.swift in Sources */,
+				F4C20CFA2B6780C800D0C85C /* MealDataProvider.swift in Sources */,
 				7300E7002B5BB87F00221593 /* ApiError.swift in Sources */,
 				7300E7152B5F2ED700221593 /* ApiManager.swift in Sources */,
 				7300E6F42B5BAE1E00221593 /* AppFontHelper.swift in Sources */,
