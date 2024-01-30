@@ -5,9 +5,15 @@
 //  Created by Priyanka Mathur on 21/01/24.
 //
 
-import Foundation
+import UIKit
 
 enum AppColor: String {
     case AppWhite255
     case AppWhiteSecond
+    case AppLightBlue
+    case AppBlackTitle
+
+    var color: UIColor? {
+        return UIColor(named: self.rawValue)
+    }
 }
