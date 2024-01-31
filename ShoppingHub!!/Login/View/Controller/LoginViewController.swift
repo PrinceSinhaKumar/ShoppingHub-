@@ -50,8 +50,7 @@ class LoginViewController: UIViewController {
                 case .loading: ActivityIndicator.shared.startAnimating()
                 case .stopLoading: ActivityIndicator.shared.stopAnimating()
                 case .dataLoaded:
-                    let vc = FoodTabController()
-                    self.navigationController?.pushViewController(vc, animated: false)
+                    self.reloadMealsList()
                 case .error(let error):
                     ShoppingAlert.shared.showAlert(error)
                 }
@@ -61,7 +60,21 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButtonTap() {
-       viewModel?.fetchLogin(loginData: LoginModelEncodable(username: emailTextField.text ?? "", password: passwordTextField.text ?? ""))
+       viewModel?.fetchLogin(loginData: LoginModelEncodable(username: "admin", password: "password123"))
+    }
+    
+    fileprivate func reloadMealsList(){
+        viewModel?.fetchMealsData(complition: { [weak self] in
+            self?.moveToFoodTab()
+        })
+    }
+    
+    fileprivate func moveToFoodTab(){
+        DispatchQueue.main.async { [weak self] in
+            let vc = UIStoryboard(name: "FoodStoryboard", bundle: nil).instantiateViewController(withIdentifier: "FoodTabController") as? FoodTabController
+            vc?.viewModel = FoodTabViewModel(model: FoodTabModel())
+            self?.navigationController?.pushViewController(vc!, animated: false)
+        }
     }
 }
 
