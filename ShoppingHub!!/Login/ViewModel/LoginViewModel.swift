@@ -33,4 +33,16 @@ class LoginViewModel {
             }
         }
     }
+    
+    func fetchMealsData(complition: @escaping () -> ()){
+        eventHandler?(.loading)
+        ReloadFoodModel().fetchFoodList {[weak self] _, error in
+            self?.eventHandler?(.stopLoading)
+            guard error == nil else {
+                self?.eventHandler?(.error(error?.errorMessage ?? ""))
+                return
+            }
+            complition()
+        }
+    }
 }

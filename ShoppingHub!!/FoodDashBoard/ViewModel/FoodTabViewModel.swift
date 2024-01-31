@@ -10,23 +10,17 @@ import Foundation
 class FoodTabViewModel {
     
     let model: FoodTabModel?
-    var topMenuList: [String]? = []
     
     init(model: FoodTabModel) {
         self.model = model
     }
     
-    func fetchMealsList(handler: @escaping Handler){
-        model?.fetchFoodList("c") { [weak self] mealList, error in
-            self?.getTopMenuList()
-            handler(mealList, error)
+    func getTopMenuList() -> [String]{
+        var topMenuList: [String] = []
+        if let meals = model?.fetchMealsFromDB() {
+            topMenuList.append(contentsOf: meals.map({$0.strArea ?? ""}))
+            topMenuList = topMenuList.unique().sorted{ $0.localizedCaseInsensitiveCompare($1) == .orderedAscending }
         }
-    }
-    
-    fileprivate func getTopMenuList(){
-        if let meals = model?.mealList {
-            topMenuList?.append(contentsOf: meals.map({$0.strArea ?? ""}))
-            topMenuList = topMenuList?.unique()
-        }
+        return topMenuList
     }
 }

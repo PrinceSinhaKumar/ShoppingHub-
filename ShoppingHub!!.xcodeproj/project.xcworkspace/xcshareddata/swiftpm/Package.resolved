@@ -1,21 +1,21 @@
 {
   "pins" : [
     {
-      "identity" : "fxpagecontrol",
+      "identity" : "pageboy",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/nicklockwood/FXPageControl.git",
+      "location" : "https://github.com/uias/Pageboy",
       "state" : {
-        "revision" : "a94633402ba98c52f86c2a70e61ff086dec9de78",
-        "version" : "1.6.0"
+        "revision" : "5522aa6ae88633f6c23cf504e9cd684e963822f1",
+        "version" : "4.0.2"
       }
     },
     {
-      "identity" : "xlpagertabstrip",
+      "identity" : "tabman",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/xmartlabs/XLPagerTabStrip.git",
+      "location" : "https://github.com/uias/Tabman.git",
       "state" : {
-        "revision" : "211ed62aa376722cf93c429802a8b6ff66a8bd52",
-        "version" : "9.1.0"
+        "revision" : "e32c0d821b03566ed966753f941113883f268da0",
+        "version" : "3.0.2"
       }
     }
   ],

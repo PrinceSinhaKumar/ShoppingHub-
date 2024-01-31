@@ -29,15 +29,14 @@
 		7300E7172B5F304E00221593 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E7162B5F304E00221593 /* AlertController.swift */; };
 		730C31F52B616BFD002756FE /* AppGradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730C31F42B616BFD002756FE /* AppGradientLayer.swift */; };
 		F45F3DB52B67A71F0095ECB1 /* FoodTopOptionbarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F3DB42B67A71F0095ECB1 /* FoodTopOptionbarViewModel.swift */; };
-		F45F3DB92B69304F0095ECB1 /* FoodTopBarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F3DB72B69304F0095ECB1 /* FoodTopBarCollectionViewCell.swift */; };
-		F45F3DBA2B69304F0095ECB1 /* FoodTopBarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F45F3DB82B69304F0095ECB1 /* FoodTopBarCollectionViewCell.xib */; };
+		F45F3DBD2B696BCC0095ECB1 /* Tabman in Frameworks */ = {isa = PBXBuildFile; productRef = F45F3DBC2B696BCC0095ECB1 /* Tabman */; };
+		F45F3DC02B698F130095ECB1 /* RealodFoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F3DBF2B698F130095ECB1 /* RealodFoodModel.swift */; };
 		F4C20CEE2B6645CC00D0C85C /* FoodTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C20CED2B6645CC00D0C85C /* FoodTabController.swift */; };
 		F4C20CF22B66466300D0C85C /* FoodTabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C20CF12B66466300D0C85C /* FoodTabModel.swift */; };
 		F4C20CF42B664B6200D0C85C /* FoodListDecadableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C20CF32B664B6200D0C85C /* FoodListDecadableModel.swift */; };
 		F4C20CF82B67768100D0C85C /* MealDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C20CF72B67768100D0C85C /* MealDataManager.swift */; };
 		F4C20CFA2B6780C800D0C85C /* MealDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C20CF92B6780C800D0C85C /* MealDataProvider.swift */; };
 		F4C20CFD2B678D3900D0C85C /* FoodTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C20CFC2B678D3900D0C85C /* FoodTabViewModel.swift */; };
-		F4C20D002B67A11F00D0C85C /* XLPagerTabStrip in Frameworks */ = {isa = PBXBuildFile; productRef = F4C20CFF2B67A11F00D0C85C /* XLPagerTabStrip */; };
 		F4C20D022B67A16200D0C85C /* FoodOptionTopBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C20D012B67A16200D0C85C /* FoodOptionTopBarController.swift */; };
 		F4C20D042B67A18800D0C85C /* FoodStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4C20D032B67A18800D0C85C /* FoodStoryboard.storyboard */; };
 /* End PBXBuildFile section */
@@ -67,8 +66,7 @@
 		7300E7162B5F304E00221593 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		730C31F42B616BFD002756FE /* AppGradientLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGradientLayer.swift; sourceTree = "<group>"; };
 		F45F3DB42B67A71F0095ECB1 /* FoodTopOptionbarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTopOptionbarViewModel.swift; sourceTree = "<group>"; };
-		F45F3DB72B69304F0095ECB1 /* FoodTopBarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTopBarCollectionViewCell.swift; sourceTree = "<group>"; };
-		F45F3DB82B69304F0095ECB1 /* FoodTopBarCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodTopBarCollectionViewCell.xib; sourceTree = "<group>"; };
+		F45F3DBF2B698F130095ECB1 /* RealodFoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealodFoodModel.swift; sourceTree = "<group>"; };
 		F4C20CED2B6645CC00D0C85C /* FoodTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTabController.swift; sourceTree = "<group>"; };
 		F4C20CF12B66466300D0C85C /* FoodTabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTabModel.swift; sourceTree = "<group>"; };
 		F4C20CF32B664B6200D0C85C /* FoodListDecadableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListDecadableModel.swift; sourceTree = "<group>"; };
@@ -84,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4C20D002B67A11F00D0C85C /* XLPagerTabStrip in Frameworks */,
+				F45F3DBD2B696BCC0095ECB1 /* Tabman in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +150,7 @@
 		7300E6F02B5BAAF100221593 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				F45F3DBE2B698EF60095ECB1 /* Reload */,
 				F4C20CF62B67765700D0C85C /* DB */,
 				7300E6F92B5BB74100221593 /* Networks */,
 				7300E6F12B5BAB4200221593 /* UIViewExtension.swift */,
@@ -230,10 +229,16 @@
 			isa = PBXGroup;
 			children = (
 				F4C20D012B67A16200D0C85C /* FoodOptionTopBarController.swift */,
-				F45F3DB72B69304F0095ECB1 /* FoodTopBarCollectionViewCell.swift */,
-				F45F3DB82B69304F0095ECB1 /* FoodTopBarCollectionViewCell.xib */,
 			);
 			path = TopOptionBarController;
+			sourceTree = "<group>";
+		};
+		F45F3DBE2B698EF60095ECB1 /* Reload */ = {
+			isa = PBXGroup;
+			children = (
+				F45F3DBF2B698F130095ECB1 /* RealodFoodModel.swift */,
+			);
+			path = Reload;
 			sourceTree = "<group>";
 		};
 		F4C20CEB2B65A10800D0C85C /* FoodDashBoard */ = {
@@ -316,7 +321,7 @@
 			);
 			name = "ShoppingHub!!";
 			packageProductDependencies = (
-				F4C20CFF2B67A11F00D0C85C /* XLPagerTabStrip */,
+				F45F3DBC2B696BCC0095ECB1 /* Tabman */,
 			);
 			productName = "ShoppingHub!!";
 			productReference = 7300E6D32B5BA69F00221593 /* ShoppingHub!!.app */;
@@ -347,7 +352,7 @@
 			);
 			mainGroup = 7300E6CA2B5BA69F00221593;
 			packageReferences = (
-				F4C20CFE2B67A11F00D0C85C /* XCRemoteSwiftPackageReference "XLPagerTabStrip" */,
+				F45F3DBB2B696BCC0095ECB1 /* XCRemoteSwiftPackageReference "Tabman" */,
 			);
 			productRefGroup = 7300E6D42B5BA69F00221593 /* Products */;
 			projectDirPath = "";
@@ -366,7 +371,6 @@
 				7300E6E62B5BA6A200221593 /* LaunchScreen.storyboard in Resources */,
 				F4C20D042B67A18800D0C85C /* FoodStoryboard.storyboard in Resources */,
 				7300E6E32B5BA6A200221593 /* Assets.xcassets in Resources */,
-				F45F3DBA2B69304F0095ECB1 /* FoodTopBarCollectionViewCell.xib in Resources */,
 				7300E6DE2B5BA69F00221593 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,7 +389,6 @@
 				7300E6D72B5BA69F00221593 /* AppDelegate.swift in Sources */,
 				F4C20CFD2B678D3900D0C85C /* FoodTabViewModel.swift in Sources */,
 				7300E7072B5BBAB900221593 /* LoginModel.swift in Sources */,
-				F45F3DB92B69304F0095ECB1 /* FoodTopBarCollectionViewCell.swift in Sources */,
 				7300E6D92B5BA69F00221593 /* SceneDelegate.swift in Sources */,
 				7300E7012B5BB87F00221593 /* ApiHelper.swift in Sources */,
 				7300E70F2B5BC05D00221593 /* LoginViewModel.swift in Sources */,
@@ -396,6 +399,7 @@
 				7300E7112B5D007F00221593 /* ActivityIndicator.swift in Sources */,
 				7300E70A2B5BBB3600221593 /* LoginModelEncodable.swift in Sources */,
 				730C31F52B616BFD002756FE /* AppGradientLayer.swift in Sources */,
+				F45F3DC02B698F130095ECB1 /* RealodFoodModel.swift in Sources */,
 				F4C20CF22B66466300D0C85C /* FoodTabModel.swift in Sources */,
 				F4C20D022B67A16200D0C85C /* FoodOptionTopBarController.swift in Sources */,
 				7300E6E12B5BA69F00221593 /* ShoppingHub__.xcdatamodeld in Sources */,
@@ -631,21 +635,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F4C20CFE2B67A11F00D0C85C /* XCRemoteSwiftPackageReference "XLPagerTabStrip" */ = {
+		F45F3DBB2B696BCC0095ECB1 /* XCRemoteSwiftPackageReference "Tabman" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/xmartlabs/XLPagerTabStrip.git";
+			repositoryURL = "https://github.com/uias/Tabman.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
+				minimumVersion = 3.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F4C20CFF2B67A11F00D0C85C /* XLPagerTabStrip */ = {
+		F45F3DBC2B696BCC0095ECB1 /* Tabman */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F4C20CFE2B67A11F00D0C85C /* XCRemoteSwiftPackageReference "XLPagerTabStrip" */;
-			productName = XLPagerTabStrip;
+			package = F45F3DBB2B696BCC0095ECB1 /* XCRemoteSwiftPackageReference "Tabman" */;
+			productName = Tabman;
 		};
 /* End XCSwiftPackageProductDependency section */
 
