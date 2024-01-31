@@ -16,11 +16,15 @@ class FoodTabViewModel {
     }
     
     func getTopMenuList() -> [String]{
-        var topMenuList: [String] = []
-        if let meals = model?.fetchMealsFromDB() {
+        var topMenuList: [String] = ["All"]
+        if let meals = getMeals() {
             topMenuList.append(contentsOf: meals.map({$0.strArea ?? ""}))
             topMenuList = topMenuList.unique().sorted{ $0.localizedCaseInsensitiveCompare($1) == .orderedAscending }
         }
         return topMenuList
+    }
+    
+    func getMeals() -> [Meals]? {
+        return model?.fetchMealsFromDB()
     }
 }

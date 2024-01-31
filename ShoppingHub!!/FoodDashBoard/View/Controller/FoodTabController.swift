@@ -10,7 +10,6 @@ import UIKit
 class FoodTabController: UIViewController {
     
     var viewModel: FoodTabViewModel?
-    var foodTopOptionBar: FoodOptionTopBarController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,9 +20,9 @@ class FoodTabController: UIViewController {
         guard let sID = segue.identifier else { return }
         if sID == "FoodSegue" {
             if let tabVC = segue.destination as? FoodOptionTopBarController {
-                foodTopOptionBar = tabVC
                 guard let menuList = viewModel?.getTopMenuList() else { return }
                 tabVC.viewModel.menuList = menuList
+                tabVC.viewModel.meals = viewModel?.getMeals()
             }
         }
     }
