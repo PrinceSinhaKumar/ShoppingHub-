@@ -34,7 +34,6 @@ final class MealDataManager {
             }
         }
     }
-    
     func saveMeals(mealData: FoodListDecodableModel?) {
         
         guard let meals = mealData?.meals else { return }

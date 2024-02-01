@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pHr-2Q-Bx2">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -131,6 +132,13 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="runningMain" translatesAutoresizingMaskIntoConstraints="NO" id="3tY-N6-oLR">
+                                <rect key="frame" x="76.666666666666686" y="362" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="ER9-me-K6X"/>
+                                    <constraint firstAttribute="width" constant="240" id="R6b-Ru-ryz"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -138,8 +146,12 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dQl-YW-Gaf" secondAttribute="trailing" constant="20" id="2DA-N2-ghC"/>
                             <constraint firstAttribute="trailing" secondItem="Xkf-lN-eUy" secondAttribute="trailing" id="C14-ZF-Bl2"/>
                             <constraint firstItem="Xkf-lN-eUy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Gnw-u1-Fuo"/>
+                            <constraint firstItem="3tY-N6-oLR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Kmd-3H-Th7"/>
+                            <constraint firstItem="3tY-N6-oLR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Lbw-zc-IsM"/>
+                            <constraint firstItem="3tY-N6-oLR" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="MJJ-nw-Ife"/>
                             <constraint firstItem="Xkf-lN-eUy" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Udy-8p-5fB"/>
                             <constraint firstAttribute="bottom" secondItem="Xkf-lN-eUy" secondAttribute="bottom" id="VFD-Em-fTt"/>
+                            <constraint firstItem="3tY-N6-oLR" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="b5v-LG-rLW"/>
                             <constraint firstAttribute="bottom" secondItem="dQl-YW-Gaf" secondAttribute="bottom" constant="30" id="gWY-pX-Tu3"/>
                             <constraint firstItem="dQl-YW-Gaf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ysq-ne-k7V"/>
                         </constraints>
@@ -153,7 +165,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="973.28244274809151" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="770" y="-1"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2F4-7D-4ZL">
@@ -178,6 +190,7 @@
         <image name="Image" width="1000" height="1500"/>
         <image name="envelope.fill" catalog="system" width="128" height="85"/>
         <image name="key" catalog="system" width="85" height="128"/>
+        <image name="runningMain" width="1280" height="1024"/>
         <namedColor name="AppWhite255">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

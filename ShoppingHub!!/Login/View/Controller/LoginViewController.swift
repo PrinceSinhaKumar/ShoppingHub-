@@ -40,6 +40,7 @@ class LoginViewController: UIViewController {
         emailTextField.font = AppFont.font(with: 15, family: OpenSans.regular)
         passwordTextField.font = AppFont.font(with: 15, family: OpenSans.regular)
         loginButton.titleLabel?.font = AppFont.font(with: 15, family: OpenSans.medium)
+        loginButton.tintColor = .appBlackTitle
     }
     
     fileprivate func configureObserver(){

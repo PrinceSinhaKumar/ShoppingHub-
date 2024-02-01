@@ -22,7 +22,7 @@ class TopOptionBar: TMBar.ButtonBar {
         // Customize bar properties including layout and other styling.
         self.layout.contentInset = UIEdgeInsets(top: 0.0, left: 16.0, bottom: 4.0, right: 16.0)
         self.layout.interButtonSpacing = 24.0
-        self.indicator.weight = .custom(value: 1)
+        self.indicator.weight = .custom(value: 4)
         self.indicator.cornerStyle = .eliptical
         self.fadesContentEdges = true
         self.spacing = 16.0

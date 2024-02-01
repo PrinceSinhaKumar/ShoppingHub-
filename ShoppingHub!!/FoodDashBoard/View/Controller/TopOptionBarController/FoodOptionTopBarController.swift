@@ -20,6 +20,7 @@ class FoodOptionTopBarController: TabmanViewController {
         // Create bar
         let topOptionBar = TopOptionBar(viewModel: viewModel, controller: getControllers())
         self.dataSource = topOptionBar
+        topOptionBar.delegate = self
         // Add to view
         addBar(topOptionBar, dataSource: topOptionBar, at: .top)
     }
@@ -27,7 +28,7 @@ class FoodOptionTopBarController: TabmanViewController {
     fileprivate func getControllers() -> [UIViewController] {
         var controllers: [UIViewController] = []
         viewModel.menuList?.forEach({ title in
-            let mealVC = MealListTableViewController()
+            let mealVC = UIStoryboard(name: "FoodStoryboard", bundle: nil).instantiateViewController(withIdentifier: "MealListTableViewController") as! MealListTableViewController
             mealVC.viewModel = MealListViewModel(list: viewModel.getMealsAccToArea(area: title))
             controllers.append(mealVC)
         })
