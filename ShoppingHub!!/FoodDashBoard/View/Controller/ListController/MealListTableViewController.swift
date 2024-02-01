@@ -9,10 +9,16 @@ import UIKit
 
 class MealListTableViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    
     var viewModel: MealListViewModel?
+    var mealListDataSource: MealListDataSource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // cell register
+        mealListDataSource = MealListDataSource(cellIdentifier: "MenuListTableViewCell", viewModel: viewModel!, tableview: tableView)
+        tableView.dataSource = mealListDataSource
     }
 
 }

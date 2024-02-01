@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        customizeNavigationBar()
         return true
     }
 
@@ -75,6 +76,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    func customizeNavigationBar() {
+           // Customize navigation bar title color
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.appBlackTitle]
+
+           // Customize navigation bar back button color
+           UINavigationBar.appearance().tintColor = UIColor.appBlackTitle
+
+           // Customize navigation bar background color (if needed)
+           UINavigationBar.appearance().barTintColor = UIColor.appBlackTitle
+       }
 
 }
 
