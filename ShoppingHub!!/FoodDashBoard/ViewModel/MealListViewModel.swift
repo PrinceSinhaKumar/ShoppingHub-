@@ -15,5 +15,11 @@ class MealListViewModel {
         self.list = list
     }
     
+    func numberOfRowsInSection() -> Int{
+        return list?.count ?? 0
+    }
     
+    func mealAtIndex(index: Int) -> Meals?{
+        return list?[index]
+    }
 }

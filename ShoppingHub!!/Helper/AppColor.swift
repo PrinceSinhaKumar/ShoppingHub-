@@ -12,6 +12,7 @@ enum AppColor: String {
     case AppWhiteSecond
     case AppLightBlue
     case AppBlackTitle
+    case AppOrange
 
     var color: UIColor? {
         return UIColor(named: self.rawValue)

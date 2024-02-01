@@ -27,10 +27,7 @@ extension UIView{
 
 class GradientBackgroundView: UIView {
     
-    var colorSet: [UIColor] = [
-        UIColor(red: 87/255, green: 62/255, blue: 65/255, alpha: 1),
-        UIColor(red: 244/255, green: 88/255, blue: 53/255, alpha: 1)
-    ] {
+    var colorSet: [UIColor] = [] {
         didSet {
             updateGradient()
         }
