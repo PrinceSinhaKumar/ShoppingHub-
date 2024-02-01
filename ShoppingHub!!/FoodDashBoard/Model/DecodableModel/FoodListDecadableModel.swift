@@ -8,20 +8,20 @@
 import Foundation
 
 struct FoodListDecodableModel: Decodable {
-    let meals: [Meals]?
+    var meals: [Meals]?
 }
 
 struct Meals: Decodable {
 
-    let idMeal: String?
-    let strMeal: String?
-    let strDrinkAlternate: String?
-    let strCategory: String?
-    let strArea: String?
-    let strInstructions: String?
-    let strMealThumb: String?
-    let strTags: String?
-    let strYoutube: String?
+    var idMeal: String? = ""
+    var strMeal: String? = ""
+    var strDrinkAlternate: String? = ""
+    var strCategory: String? = ""
+    var strArea: String? = ""
+    var strInstructions: String? = ""
+    var strMealThumb: String? = ""
+    var strTags: String? = ""
+    var strYoutube: String? = ""
     
     init(meal: Meal) {
         self.idMeal = meal.idMeal
