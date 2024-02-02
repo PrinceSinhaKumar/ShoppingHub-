@@ -10,17 +10,13 @@ import Swinject
 
 class FoodTabController: UIViewController {
     private var viewModel: FoodTabViewModelDelegate?
-    fileprivate var container: Container!
     override func viewDidLoad() {
         super.viewDidLoad()
         applyGradient()
     }
  
-    func configure(viewModel: FoodTabViewModelDelegate,
-                   container: Container) {
-        print(viewModel.getMeals())
+    func configure(viewModel: FoodTabViewModelDelegate) {
         self.viewModel = viewModel
-        self.container = container
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -31,10 +27,7 @@ class FoodTabController: UIViewController {
                 let dependencyRegistry: DependencyRegistry = AppDelegate.dependencyRegistry
 
                 let vModel = FoodTopOptionbarViewModel(menuList: menuList, meals: viewModel?.getMeals())
-                //container.resolve(FoodTopOptionbarViewModelDelegate.self, arguments: menuList, viewModel?.getMeals())!
                 tabVC.configure(viewModel: vModel, mealListTableViewControllerMaker: dependencyRegistry.makeMealListTableViewControllerMaker)
-//                tabVC.viewModel.menuList = menuList
-//                tabVC.viewModel.meals = viewModel?.getMeals()
             }
         }
     }
