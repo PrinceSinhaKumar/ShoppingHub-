@@ -12,23 +12,20 @@ import Kingfisher
 class MealListDataSource: NSObject, UITableViewDataSource {
     
     let viewModel: MealListViewModel
-    let cellIdentifier: String
+    fileprivate var makeMealCell: DependencyRegistry.MealCellMaker!
     
-    init(cellIdentifier: String, viewModel: MealListViewModel, tableview: UITableView) {
+    init(viewModel: MealListViewModel) {
         self.viewModel = viewModel
-        self.cellIdentifier = cellIdentifier
-        tableview.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
     }
-    
+    func configure(makeMealCell: @escaping DependencyRegistry.MealCellMaker) {
+        self.makeMealCell = makeMealCell
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRowsInSection()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath)
-        if let cell = cell as? MenuListTableViewCell , let model = viewModel.list?[indexPath.row] {
-            cell.viewModel = MenuListCellViewModel(meal: model)
-        }
+        let cell = makeMealCell(tableView, indexPath, viewModel.mealAtIndex(index: indexPath.row)!)
         return cell
     }
     

@@ -7,7 +7,11 @@
 
 import Foundation
 
-class FoodTabModel {
+protocol FoodTabModelDelegate {
+    func fetchMealsFromDB() -> [Meals]
+}
+
+class FoodTabModel: FoodTabModelDelegate {
     func fetchMealsFromDB() -> [Meals]{
         let list = MealDataProvider.shared.fetchMeals()
         return list.map({.init(meal: $0)})

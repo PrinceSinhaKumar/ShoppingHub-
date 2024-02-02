@@ -15,7 +15,14 @@ extension ErrorHandler {
         
     }
 }
-final class ApiManager {
+
+protocol ApiManagerDelegate {
+    func getData<D: Decodable>(from endpoint: ApiEndpoint, handler: @escaping (D?, ErrorHandler?) -> ())
+    func sendData<D: Decodable, E: Encodable>(from endpoint: ApiEndpoint, with body: E, handler: @escaping (D?, ErrorHandler?) -> ())
+    func createRequest(from endpoint: ApiEndpoint) -> URLRequest?
+}
+
+final class ApiManager: ApiManagerDelegate {
     
     typealias NetworkResponse = (data: Data, response: URLResponse)
     
@@ -76,7 +83,7 @@ final class ApiManager {
     }
 }
 
-private extension ApiManager {
+extension ApiManager {
     
     func createRequest(from endpoint: ApiEndpoint) -> URLRequest? {
         var request = URLRequest(url: URL(string: endpoint.path)!)

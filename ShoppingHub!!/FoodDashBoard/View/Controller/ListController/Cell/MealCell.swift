@@ -1,5 +1,5 @@
 //
-//  MenuListTableViewCell.swift
+//  MealCell.swift
 //  ShoppingHub!!
 //
 //  Created by Priyanka Mathur on 31/01/24.
@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class MenuListTableViewCell: UITableViewCell {
+class MealCell: UITableViewCell {
     
     @IBOutlet weak var mealName: UILabel!
     @IBOutlet weak var mealType: UILabel!
@@ -16,7 +16,7 @@ class MenuListTableViewCell: UITableViewCell {
     @IBOutlet weak var lblcookingTime: UILabel!
     @IBOutlet weak var mealIngredients: UILabel!
     
-    var viewModel: MenuListCellViewModel?{
+    var viewModel: MealCellViewModel?{
         didSet{
             configureCell()
         }

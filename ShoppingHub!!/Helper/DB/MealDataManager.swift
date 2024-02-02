@@ -8,12 +8,18 @@
 import Foundation
 import CoreData
 
-final class MealDataManager {
+protocol MealDataManagerDelegate {
+    var persistentContainer: NSPersistentContainer { get }
+    func saveContext ()
+    func saveMeals(mealData: FoodListDecodableModel?)
+}
+
+final class MealDataManager: MealDataManagerDelegate {
     
     static let shared = MealDataManager()
     private init() {}
     
-    lazy var persistentContainer: NSPersistentContainer = {
+    var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "ShoppingHub__") // Replace "Model" with your Core Data model file name
         container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {

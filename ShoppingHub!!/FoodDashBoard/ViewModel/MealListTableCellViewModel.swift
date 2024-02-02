@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MenuListCellViewModel {
+struct MealCellViewModel {
     let strMeal: String
     let strCategory: String
     let mealImageURL: URL?

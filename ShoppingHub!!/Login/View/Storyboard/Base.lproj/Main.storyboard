@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pHr-2Q-Bx2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GDa-xZ-vm0">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -34,7 +33,7 @@
                                                         <rect key="frame" x="15" y="0.0" width="323" height="60"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Efc-8Z-Ie3">
-                                                                <rect key="frame" x="0.0" y="0.0" width="278.66666666666669" height="60"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="280.66666666666669" height="60"/>
                                                                 <color key="textColor" name="AppWhite255"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -45,7 +44,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="envelope.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="h4A-36-OO7">
-                                                                <rect key="frame" x="298.66666666666669" y="2.3333333333333321" width="24.333333333333314" height="56"/>
+                                                                <rect key="frame" x="300.66666666666669" y="2.3333333333333321" width="22.333333333333314" height="56"/>
                                                                 <color key="tintColor" name="AppWhiteSecond"/>
                                                             </imageView>
                                                         </subviews>
@@ -165,30 +164,30 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="770" y="-1"/>
+            <point key="canvasLocation" x="1695.4198473282443" y="-1.4084507042253522"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="2F4-7D-4ZL">
+        <scene sceneID="l6g-eR-SLb">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pHr-2Q-Bx2" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GDa-xZ-vm0" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DGh-Df-TkW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="i6V-Lc-Bdl">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Hhc-0a-BWs"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="efb-9O-suf"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wL1-s1-uLt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O8T-HM-R3P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="46.564885496183201" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="768.70229007633588" y="-1.4084507042253522"/>
         </scene>
     </scenes>
     <resources>
         <image name="Image" width="1000" height="1500"/>
-        <image name="envelope.fill" catalog="system" width="128" height="85"/>
+        <image name="envelope.fill" catalog="system" width="128" height="93"/>
         <image name="key" catalog="system" width="85" height="128"/>
         <image name="runningMain" width="1280" height="1024"/>
         <namedColor name="AppWhite255">
@@ -201,7 +200,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -7,7 +7,12 @@
 
 import Foundation
 
-class ReloadFoodModel {
+protocol ReloadFoodModelDelegate {
+    var operationQueue: OperationQueue { get }
+    func fetchFoodList(handler: @escaping Handler)
+}
+
+class ReloadFoodModel: ReloadFoodModelDelegate {
     
     let operationQueue = OperationQueue()
     
@@ -41,7 +46,12 @@ class ReloadFoodModel {
     
 }
 
-class APICallOperation: Operation {
+protocol APICalllOperationDelegate {
+    var keyword: String { get }
+    func callApi(completion: @escaping Handler) -> Self
+}
+
+class APICallOperation: Operation, APICalllOperationDelegate{
     var keyword: String
     
     init(keyword: String) {
