@@ -7,11 +7,18 @@
 
 import Foundation
 
-class FoodTabViewModel {
+protocol FoodTabViewModelDelegate {
+    var model: FoodTabModelDelegate? {get}
+
+    func getTopMenuList() -> [String]
+    func getMeals() -> [Meals]?
+}
+
+class FoodTabViewModel: FoodTabViewModelDelegate {
     
-    let model: FoodTabModel?
+    let model: FoodTabModelDelegate?
     
-    init(model: FoodTabModel) {
+    init(model: FoodTabModelDelegate) {
         self.model = model
     }
     

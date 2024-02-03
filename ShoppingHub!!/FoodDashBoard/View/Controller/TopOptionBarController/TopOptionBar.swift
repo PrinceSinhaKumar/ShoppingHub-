@@ -11,10 +11,10 @@ import UIKit
 
 class TopOptionBar: TMBar.ButtonBar {
     //MARK: - Properties
-    let viewModel: FoodTopOptionbarViewModel
+    let viewModel: FoodTopOptionbarViewModelDelegate
     let controller: [UIViewController]
     
-    init(viewModel: FoodTopOptionbarViewModel, controller: [UIViewController]) {
+    init(viewModel: FoodTopOptionbarViewModelDelegate, controller: [UIViewController]) {
         self.viewModel = viewModel
         self.controller = controller
         super.init()

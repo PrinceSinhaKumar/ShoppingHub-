@@ -14,15 +14,18 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     
     fileprivate var viewModel: LoginViewModel?
-    
+    //fileprivate var foodTabControllerMaker: DependencyRegistry.FoodTabControllerMaker!
+    fileprivate var navigationCoordinator: NavigationCoordinator?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        initialise()
     }
 
     //MARK: - Method
-    fileprivate func initialise(){
-        viewModel = LoginViewModel(model: LoginModel())
+    func initialise(viewModel: LoginViewModel,
+                    navigationCoordinator: NavigationCoordinator?){
+        self.viewModel = viewModel
+        self.navigationCoordinator = navigationCoordinator
         applyGradient()
         configureUI()
         configureObserver()
@@ -40,7 +43,7 @@ class LoginViewController: UIViewController {
         emailTextField.font = AppFont.font(with: 15, family: OpenSans.regular)
         passwordTextField.font = AppFont.font(with: 15, family: OpenSans.regular)
         loginButton.titleLabel?.font = AppFont.font(with: 15, family: OpenSans.medium)
-        loginButton.tintColor = .appBlackTitle
+        loginButton.tintColor = AppColor.AppBlackTitle.color
     }
     
     fileprivate func configureObserver(){
@@ -71,11 +74,7 @@ class LoginViewController: UIViewController {
     }
     
     fileprivate func moveToFoodTab(){
-        DispatchQueue.main.async { [weak self] in
-            let vc = UIStoryboard(name: "FoodStoryboard", bundle: nil).instantiateViewController(withIdentifier: "FoodTabController") as? FoodTabController
-            vc?.viewModel = FoodTabViewModel(model: FoodTabModel())
-            self?.navigationController?.pushViewController(vc!, animated: false)
-        }
+        navigationCoordinator?.next(navState: .login, arguments: nil)
     }
 }
 

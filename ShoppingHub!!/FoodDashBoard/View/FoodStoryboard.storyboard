@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,17 +32,18 @@
                             <constraint firstItem="gBU-qS-0Vd" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="jNq-Kx-FEn"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="VvE-Ow-0nF"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-85" y="4"/>
+            <point key="canvasLocation" x="840.45801526717548" y="3.5211267605633805"/>
         </scene>
         <!--Food Option Top Bar Controller-->
         <scene sceneID="u1i-ag-R9M">
             <objects>
                 <viewController storyboardIdentifier="FoodOptionTopBarController" id="WDi-Rm-V8s" customClass="FoodOptionTopBarController" customModule="ShoppingHub__" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GD3-Uh-Ecs">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="759"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="715"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Ltj-4L-JTN"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -51,12 +51,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FzH-Qf-3Ng" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="610" y="-29"/>
+            <point key="canvasLocation" x="1536.6412213740457" y="-29.225352112676056"/>
         </scene>
         <!--Meal List Table View Controller-->
         <scene sceneID="4ve-TT-6Xs">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="c9h-5c-5t7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="MealListTableViewController" id="3Ek-8O-BMj" customClass="MealListTableViewController" customModule="ShoppingHub__" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RWF-l5-OXj">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
@@ -80,8 +79,9 @@
                         <outlet property="tableView" destination="vNg-5V-XSs" id="j8s-RL-cGA"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c9h-5c-5t7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1261" y="5"/>
+            <point key="canvasLocation" x="2187.0229007633588" y="4.9295774647887329"/>
         </scene>
     </scenes>
 </document>

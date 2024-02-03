@@ -11,13 +11,18 @@ class MealListTableViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var viewModel: MealListViewModel?
-    var mealListDataSource: MealListDataSource!
+    fileprivate var viewModel: MealListViewModel?
+    fileprivate var mealListDataSource: MealListDataSource!
+    
+    func configure(viewModel: MealListViewModel, mealListDataSource: MealListDataSource ) {
+        self.viewModel = viewModel
+        self.mealListDataSource = mealListDataSource
+        let dependencyRegistry: DependencyRegistry = appDelegate.dependencyRegistry
+        self.mealListDataSource.configure(makeMealCell: dependencyRegistry.makeMealCell)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // cell register
-        mealListDataSource = MealListDataSource(cellIdentifier: "MenuListTableViewCell", viewModel: viewModel!, tableview: tableView)
         tableView.dataSource = mealListDataSource
     }
 
