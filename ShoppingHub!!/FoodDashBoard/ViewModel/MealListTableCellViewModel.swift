@@ -12,7 +12,7 @@ struct MealCellViewModel {
     let strCategory: String
     let mealImageURL: URL?
 
-    init(meal: Meals) {
+    init(meal: MealList) {
         self.strMeal = meal.strMeal ?? ""
         self.strCategory = meal.strCategory ?? ""
         self.mealImageURL = URL(string: meal.strMealThumb ?? "")

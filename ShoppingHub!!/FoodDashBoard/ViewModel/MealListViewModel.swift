@@ -9,9 +9,9 @@ import Foundation
 
 class MealListViewModel {
     
-    let list: [Meals]?
+    let list: [MealList]?
     
-    init(list: [Meals]?) {
+    init(list: [MealList]?) {
         self.list = list
     }
     
@@ -19,7 +19,7 @@ class MealListViewModel {
         return list?.count ?? 0
     }
     
-    func mealAtIndex(index: Int) -> Meals?{
+    func mealAtIndex(index: Int) -> MealList?{
         return list?[index]
     }
 }

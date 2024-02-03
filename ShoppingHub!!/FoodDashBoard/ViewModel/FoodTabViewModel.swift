@@ -11,7 +11,7 @@ protocol FoodTabViewModelDelegate {
     var model: FoodTabModelDelegate? {get}
 
     func getTopMenuList() -> [String]
-    func getMeals() -> [Meals]?
+    func getMeals() -> [MealList]?
 }
 
 class FoodTabViewModel: FoodTabViewModelDelegate {
@@ -31,7 +31,7 @@ class FoodTabViewModel: FoodTabViewModelDelegate {
         return topMenuList
     }
     
-    func getMeals() -> [Meals]? {
+    func getMeals() -> [MealList]? {
         return model?.fetchMealsFromDB()
     }
 }

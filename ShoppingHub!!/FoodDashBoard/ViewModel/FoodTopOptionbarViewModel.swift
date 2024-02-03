@@ -9,18 +9,18 @@ import Foundation
 
 protocol FoodTopOptionbarViewModelDelegate {
     var menuList: [String]? { get }
-    var meals: [Meals]? { get }
+    var meals: [MealList]? { get }
     
     func numberTabs() -> Int
     func getTitle(index: Int) -> String
-    func getMealsAccToArea(area: String) -> [Meals]?
+    func getMealsAccToArea(area: String) -> [MealList]?
 }
 
 class FoodTopOptionbarViewModel: FoodTopOptionbarViewModelDelegate {
     let menuList: [String]?
-    let meals: [Meals]?
+    let meals: [MealList]?
     
-    init(menuList: [String]?, meals: [Meals]?) {
+    init(menuList: [String]?, meals: [MealList]?) {
         self.menuList = menuList
         self.meals = meals
     }
@@ -34,7 +34,7 @@ class FoodTopOptionbarViewModel: FoodTopOptionbarViewModelDelegate {
         return menuList?[index] ?? ""
     }
     
-    func getMealsAccToArea(area: String) -> [Meals]?{
+    func getMealsAccToArea(area: String) -> [MealList]?{
         guard area != "All" else {
             return meals
         }

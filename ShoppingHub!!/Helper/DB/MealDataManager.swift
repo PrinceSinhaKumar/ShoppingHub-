@@ -40,8 +40,8 @@ final class MealDataManager: MealDataManagerDelegate {
             }
         }
     }
+    
     func saveMeals(mealData: FoodListDecodableModel?) {
-        
         guard let meals = mealData?.meals else { return }
         
         let context = persistentContainer.viewContext
@@ -49,33 +49,61 @@ final class MealDataManager: MealDataManagerDelegate {
         for mealInfo in meals {
             let fetchRequest: NSFetchRequest<Meal> = Meal.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "idMeal == %@", mealInfo.idMeal!)
+            
             if let existingMeal = try? context.fetch(fetchRequest).first {
-                // If meal with the same idMeal exists, update it
-                existingMeal.strMeal = mealInfo.strMeal
-                existingMeal.strDrinkAlternate = mealInfo.strDrinkAlternate
-                existingMeal.strCategory = mealInfo.strCategory
-                existingMeal.strArea = mealInfo.strArea
-                existingMeal.strInstructions = mealInfo.strInstructions
-                existingMeal.strMealThumb = mealInfo.strMealThumb
-                existingMeal.strTags = mealInfo.strTags
-                existingMeal.strYoutube = mealInfo.strYoutube
-                existingMeal.modifiedDate = Date()
+                updateMeal(existingMeal, with: mealInfo, context: context)
             } else {
-                let meal = Meal(context: context)
-                meal.idMeal = mealInfo.idMeal
-                meal.strMeal = mealInfo.strMeal
-                meal.strDrinkAlternate = mealInfo.strDrinkAlternate
-                meal.strCategory = mealInfo.strCategory
-                meal.strArea = mealInfo.strArea
-                meal.strInstructions = mealInfo.strInstructions
-                meal.strMealThumb = mealInfo.strMealThumb
-                meal.strTags = mealInfo.strTags
-                meal.strYoutube = mealInfo.strYoutube
-                meal.modifiedDate = Date()
+                createNewMeal(with: mealInfo, context: context)
             }
         }
         
         saveContext()
-        
     }
+
+    private func updateMeal(_ meal: Meal, with mealInfo: Meals, context: NSManagedObjectContext) {
+        meal.strMeal = mealInfo.strMeal
+        meal.strDrinkAlternate = mealInfo.strDrinkAlternate
+        meal.strCategory = mealInfo.strCategory
+        meal.strArea = mealInfo.strArea
+        meal.strInstructions = mealInfo.strInstructions
+        meal.strMealThumb = mealInfo.strMealThumb
+        meal.strTags = mealInfo.strTags
+        meal.strYoutube = mealInfo.strYoutube
+        meal.modifiedDate = Date()
+        
+        updateIngredients(for: meal, with: mealInfo, context: context)
+    }
+
+    private func createNewMeal(with mealInfo: Meals, context: NSManagedObjectContext) {
+        let meal = Meal(context: context)
+        meal.idMeal = mealInfo.idMeal
+        meal.strMeal = mealInfo.strMeal
+        meal.strDrinkAlternate = mealInfo.strDrinkAlternate
+        meal.strCategory = mealInfo.strCategory
+        meal.strArea = mealInfo.strArea
+        meal.strInstructions = mealInfo.strInstructions
+        meal.strMealThumb = mealInfo.strMealThumb
+        meal.strTags = mealInfo.strTags
+        meal.strYoutube = mealInfo.strYoutube
+        meal.modifiedDate = Date()
+        
+        updateIngredients(for: meal, with: mealInfo, context: context)
+    }
+
+    private func updateIngredients(for meal: Meal, with mealInfo: Meals, context: NSManagedObjectContext) {
+        let ingredients = Mirror(reflecting: mealInfo).children.filter { $0.label?.starts(with: "strIngredient") ?? false }
+        let measures = Mirror(reflecting: mealInfo).children.filter { $0.label?.starts(with: "strMeasure") ?? false }
+        
+        for (ingredient, measure) in zip(ingredients, measures) {
+            if let ingredientValue = ingredient.value as? String,
+               let measureValue = measure.value as? String,
+               !ingredientValue.isEmpty {
+                let newIngredient = Ingredients(context: context)
+                newIngredient.ingredient = ingredientValue
+                newIngredient.ingQuantity = measureValue
+                meal.addToIngredient(newIngredient)
+            }
+        }
+    }
+
 }
