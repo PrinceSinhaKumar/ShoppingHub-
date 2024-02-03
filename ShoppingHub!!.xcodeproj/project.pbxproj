@@ -33,6 +33,7 @@
 		73F8CA022B6A558500F467DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73F8CA012B6A558500F467DF /* Assets.xcassets */; };
 		73F8CA052B6A81B300F467DF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 73F8CA042B6A81B300F467DF /* Kingfisher */; };
 		F41377EF2B6BC5FA002CE893 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41377EE2B6BC5FA002CE893 /* Constant.swift */; };
+		F422140B2B6E51D0001A0130 /* DependencyRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F422140A2B6E51D0001A0130 /* DependencyRegistry.swift */; };
 		F45F3DB52B67A71F0095ECB1 /* FoodTopOptionbarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F3DB42B67A71F0095ECB1 /* FoodTopOptionbarViewModel.swift */; };
 		F45F3DBD2B696BCC0095ECB1 /* Tabman in Frameworks */ = {isa = PBXBuildFile; productRef = F45F3DBC2B696BCC0095ECB1 /* Tabman */; };
 		F45F3DC02B698F130095ECB1 /* RealodFoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F3DBF2B698F130095ECB1 /* RealodFoodModel.swift */; };
@@ -41,7 +42,6 @@
 		F45F3DC72B6A34110095ECB1 /* MealListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F3DC62B6A34110095ECB1 /* MealListViewModel.swift */; };
 		F47648B72B6BF420001BABEC /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = F47648B62B6BF420001BABEC /* Swinject */; };
 		F47648C52B6C0F14001BABEC /* StoryboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47648C42B6C0F14001BABEC /* StoryboardExtension.swift */; };
-		F48D3A362B6D3DEF00CC9961 /* DependencyRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48D3A342B6D3DEF00CC9961 /* DependencyRegistry.swift */; };
 		F48D3A3B2B6E332100CC9961 /* RootNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48D3A392B6D765100CC9961 /* RootNavigationCoordinator.swift */; };
 		F4C20CEE2B6645CC00D0C85C /* FoodTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C20CED2B6645CC00D0C85C /* FoodTabController.swift */; };
 		F4C20CF22B66466300D0C85C /* FoodTabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C20CF12B66466300D0C85C /* FoodTabModel.swift */; };
@@ -94,13 +94,13 @@
 		73F8C9FE2B6A484F00F467DF /* MealCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealCell.xib; sourceTree = "<group>"; };
 		73F8CA012B6A558500F467DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F41377EE2B6BC5FA002CE893 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		F422140A2B6E51D0001A0130 /* DependencyRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyRegistry.swift; sourceTree = "<group>"; };
 		F45F3DB42B67A71F0095ECB1 /* FoodTopOptionbarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTopOptionbarViewModel.swift; sourceTree = "<group>"; };
 		F45F3DBF2B698F130095ECB1 /* RealodFoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealodFoodModel.swift; sourceTree = "<group>"; };
 		F45F3DC12B6A2DE50095ECB1 /* TopOptionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopOptionBar.swift; sourceTree = "<group>"; };
 		F45F3DC42B6A33DD0095ECB1 /* MealListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListTableViewController.swift; sourceTree = "<group>"; };
 		F45F3DC62B6A34110095ECB1 /* MealListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListViewModel.swift; sourceTree = "<group>"; };
 		F47648C42B6C0F14001BABEC /* StoryboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardExtension.swift; sourceTree = "<group>"; };
-		F48D3A342B6D3DEF00CC9961 /* DependencyRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyRegistry.swift; sourceTree = "<group>"; };
 		F48D3A392B6D765100CC9961 /* RootNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationCoordinator.swift; sourceTree = "<group>"; };
 		F4C20CED2B6645CC00D0C85C /* FoodTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTabController.swift; sourceTree = "<group>"; };
 		F4C20CF12B66466300D0C85C /* FoodTabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTabModel.swift; sourceTree = "<group>"; };
@@ -188,7 +188,6 @@
 			isa = PBXGroup;
 			children = (
 				F48D3A382B6D75FD00CC9961 /* NavigationCoordinator */,
-				F47648B22B6BF373001BABEC /* Dependencies */,
 				F45F3DBE2B698EF60095ECB1 /* Reload */,
 				F4C20CF62B67765700D0C85C /* DB */,
 				7300E6F92B5BB74100221593 /* Networks */,
@@ -198,6 +197,7 @@
 				7300E7122B5D011500221593 /* AppColor.swift */,
 				7300E7162B5F304E00221593 /* AlertController.swift */,
 				730C31F42B616BFD002756FE /* AppGradientLayer.swift */,
+				F422140A2B6E51D0001A0130 /* DependencyRegistry.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -291,14 +291,6 @@
 				F47648C62B6C134F001BABEC /* Cell */,
 			);
 			path = ListController;
-			sourceTree = "<group>";
-		};
-		F47648B22B6BF373001BABEC /* Dependencies */ = {
-			isa = PBXGroup;
-			children = (
-				F48D3A342B6D3DEF00CC9961 /* DependencyRegistry.swift */,
-			);
-			path = Dependencies;
 			sourceTree = "<group>";
 		};
 		F47648B52B6BF420001BABEC /* Frameworks */ = {
@@ -492,6 +484,7 @@
 				F4C20CF82B67768100D0C85C /* MealDataManager.swift in Sources */,
 				7300E7132B5D011500221593 /* AppColor.swift in Sources */,
 				7300E6F22B5BAB4200221593 /* UIViewExtension.swift in Sources */,
+				F422140B2B6E51D0001A0130 /* DependencyRegistry.swift in Sources */,
 				F47648C52B6C0F14001BABEC /* StoryboardExtension.swift in Sources */,
 				7300E7172B5F304E00221593 /* AlertController.swift in Sources */,
 				7300E7112B5D007F00221593 /* ActivityIndicator.swift in Sources */,
@@ -502,7 +495,6 @@
 				F4C20CF22B66466300D0C85C /* FoodTabModel.swift in Sources */,
 				F4C20D022B67A16200D0C85C /* FoodOptionTopBarController.swift in Sources */,
 				7300E6E12B5BA69F00221593 /* ShoppingHub__.xcdatamodeld in Sources */,
-				F48D3A362B6D3DEF00CC9961 /* DependencyRegistry.swift in Sources */,
 				7300E7032B5BB87F00221593 /* ApiEndpoint.swift in Sources */,
 				73F8C9FC2B6A410200F467DF /* MealListDataSource.swift in Sources */,
 				F4C20CFA2B6780C800D0C85C /* MealDataProvider.swift in Sources */,
