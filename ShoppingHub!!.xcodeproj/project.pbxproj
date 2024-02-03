@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7300E6D72B5BA69F00221593 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E6D62B5BA69F00221593 /* AppDelegate.swift */; };
-		7300E6D92B5BA69F00221593 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E6D82B5BA69F00221593 /* SceneDelegate.swift */; };
 		7300E6DE2B5BA69F00221593 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7300E6DC2B5BA69F00221593 /* Main.storyboard */; };
 		7300E6E12B5BA69F00221593 /* ShoppingHub__.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7300E6DF2B5BA69F00221593 /* ShoppingHub__.xcdatamodeld */; };
 		7300E6E62B5BA6A200221593 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7300E6E42B5BA6A200221593 /* LaunchScreen.storyboard */; };
@@ -41,10 +40,8 @@
 		F45F3DC52B6A33DD0095ECB1 /* MealListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F3DC42B6A33DD0095ECB1 /* MealListTableViewController.swift */; };
 		F45F3DC72B6A34110095ECB1 /* MealListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F3DC62B6A34110095ECB1 /* MealListViewModel.swift */; };
 		F47648B72B6BF420001BABEC /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = F47648B62B6BF420001BABEC /* Swinject */; };
-		F47648C12B6BF580001BABEC /* SwinjectStoryboard in Frameworks */ = {isa = PBXBuildFile; productRef = F47648C02B6BF580001BABEC /* SwinjectStoryboard */; };
 		F47648C52B6C0F14001BABEC /* StoryboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47648C42B6C0F14001BABEC /* StoryboardExtension.swift */; };
 		F48D3A362B6D3DEF00CC9961 /* DependencyRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48D3A342B6D3DEF00CC9961 /* DependencyRegistry.swift */; };
-		F48D3A372B6D3DEF00CC9961 /* SwinjectStoryboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48D3A352B6D3DEF00CC9961 /* SwinjectStoryboard+Extensions.swift */; };
 		F4C20CEE2B6645CC00D0C85C /* FoodTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C20CED2B6645CC00D0C85C /* FoodTabController.swift */; };
 		F4C20CF22B66466300D0C85C /* FoodTabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C20CF12B66466300D0C85C /* FoodTabModel.swift */; };
 		F4C20CF42B664B6200D0C85C /* FoodListDecadableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C20CF32B664B6200D0C85C /* FoodListDecadableModel.swift */; };
@@ -71,7 +68,6 @@
 /* Begin PBXFileReference section */
 		7300E6D32B5BA69F00221593 /* ShoppingHub!!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ShoppingHub!!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7300E6D62B5BA69F00221593 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7300E6D82B5BA69F00221593 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7300E6DD2B5BA69F00221593 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7300E6E02B5BA69F00221593 /* ShoppingHub__.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShoppingHub__.xcdatamodel; sourceTree = "<group>"; };
 		7300E6E52B5BA6A200221593 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -104,7 +100,6 @@
 		F45F3DC62B6A34110095ECB1 /* MealListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListViewModel.swift; sourceTree = "<group>"; };
 		F47648C42B6C0F14001BABEC /* StoryboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardExtension.swift; sourceTree = "<group>"; };
 		F48D3A342B6D3DEF00CC9961 /* DependencyRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyRegistry.swift; sourceTree = "<group>"; };
-		F48D3A352B6D3DEF00CC9961 /* SwinjectStoryboard+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwinjectStoryboard+Extensions.swift"; sourceTree = "<group>"; };
 		F4C20CED2B6645CC00D0C85C /* FoodTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTabController.swift; sourceTree = "<group>"; };
 		F4C20CF12B66466300D0C85C /* FoodTabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTabModel.swift; sourceTree = "<group>"; };
 		F4C20CF32B664B6200D0C85C /* FoodListDecadableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListDecadableModel.swift; sourceTree = "<group>"; };
@@ -123,7 +118,6 @@
 				73F8CA052B6A81B300F467DF /* Kingfisher in Frameworks */,
 				F45F3DBD2B696BCC0095ECB1 /* Tabman in Frameworks */,
 				F47648B72B6BF420001BABEC /* Swinject in Frameworks */,
-				F47648C12B6BF580001BABEC /* SwinjectStoryboard in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,7 +160,6 @@
 			isa = PBXGroup;
 			children = (
 				7300E6D62B5BA69F00221593 /* AppDelegate.swift */,
-				7300E6D82B5BA69F00221593 /* SceneDelegate.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -301,7 +294,6 @@
 			isa = PBXGroup;
 			children = (
 				F48D3A342B6D3DEF00CC9961 /* DependencyRegistry.swift */,
-				F48D3A352B6D3DEF00CC9961 /* SwinjectStoryboard+Extensions.swift */,
 			);
 			path = Dependencies;
 			sourceTree = "<group>";
@@ -409,7 +401,6 @@
 				F45F3DBC2B696BCC0095ECB1 /* Tabman */,
 				73F8CA042B6A81B300F467DF /* Kingfisher */,
 				F47648B62B6BF420001BABEC /* Swinject */,
-				F47648C02B6BF580001BABEC /* SwinjectStoryboard */,
 			);
 			productName = "ShoppingHub!!";
 			productReference = 7300E6D32B5BA69F00221593 /* ShoppingHub!!.app */;
@@ -443,7 +434,6 @@
 				F45F3DBB2B696BCC0095ECB1 /* XCRemoteSwiftPackageReference "Tabman" */,
 				73F8CA032B6A81B300F467DF /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				F47648B12B6BD032001BABEC /* XCRemoteSwiftPackageReference "Swinject" */,
-				F47648BF2B6BF580001BABEC /* XCRemoteSwiftPackageReference "SwinjectStoryboard" */,
 			);
 			productRefGroup = 7300E6D42B5BA69F00221593 /* Products */;
 			projectDirPath = "";
@@ -481,10 +471,8 @@
 				7300E6F82B5BB2E400221593 /* LoginViewController.swift in Sources */,
 				F4C20CEE2B6645CC00D0C85C /* FoodTabController.swift in Sources */,
 				7300E6D72B5BA69F00221593 /* AppDelegate.swift in Sources */,
-				F48D3A372B6D3DEF00CC9961 /* SwinjectStoryboard+Extensions.swift in Sources */,
 				F4C20CFD2B678D3900D0C85C /* FoodTabViewModel.swift in Sources */,
 				7300E7072B5BBAB900221593 /* LoginModel.swift in Sources */,
-				7300E6D92B5BA69F00221593 /* SceneDelegate.swift in Sources */,
 				7300E7012B5BB87F00221593 /* ApiHelper.swift in Sources */,
 				F45F3DC52B6A33DD0095ECB1 /* MealListTableViewController.swift in Sources */,
 				73F8C9FF2B6A484F00F467DF /* MealCell.swift in Sources */,
@@ -667,7 +655,7 @@
 				INFOPLIST_FILE = "ShoppingHub!!/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = FoodStoryboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -696,7 +684,7 @@
 				INFOPLIST_FILE = "ShoppingHub!!/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = FoodStoryboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -761,14 +749,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		F47648BF2B6BF580001BABEC /* XCRemoteSwiftPackageReference "SwinjectStoryboard" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Swinject/SwinjectStoryboard.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -786,11 +766,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F47648B12B6BD032001BABEC /* XCRemoteSwiftPackageReference "Swinject" */;
 			productName = Swinject;
-		};
-		F47648C02B6BF580001BABEC /* SwinjectStoryboard */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F47648BF2B6BF580001BABEC /* XCRemoteSwiftPackageReference "SwinjectStoryboard" */;
-			productName = SwinjectStoryboard;
 		};
 /* End XCSwiftPackageProductDependency section */
 

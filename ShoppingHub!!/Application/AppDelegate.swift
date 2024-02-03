@@ -7,29 +7,25 @@
 
 import UIKit
 import CoreData
+import Swinject
 
-@main
+@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
+    
     static var dependencyRegistry: DependencyRegistry!
-
+    let container = Container()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        AppDelegate.dependencyRegistry = DependencyRegistryImpl(container: container)
         customizeNavigationBar()
+        setRootViewController()
         return true
     }
-
-    // MARK: UISceneSession Lifecycle
-
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-    }
-
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-    }
-
+    
     // MARK: - Core Data stack
-
+    
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "ShoppingHub__")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -39,9 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         return container
     }()
-
+    
     // MARK: - Core Data Saving support
-
+    
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
@@ -53,21 +49,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
     func customizeNavigationBar() {
-           // Customize navigation bar title color
+        // Customize navigation bar title color
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: AppColor.AppBlackTitle.color!]
-           // Customize navigation bar back button color
-           UINavigationBar.appearance().tintColor = AppColor.AppBlackTitle.color
-           // Customize navigation bar background color (if needed)
-           UINavigationBar.appearance().barTintColor = AppColor.AppBlackTitle.color
-       }
-
-    fileprivate func makeRootController(){
-        if let token = UserDefaults.standard.value(forKey: uToken) {
-            
+        // Customize navigation bar back button color
+        UINavigationBar.appearance().tintColor = AppColor.AppBlackTitle.color
+        // Customize navigation bar background color (if needed)
+        UINavigationBar.appearance().barTintColor = AppColor.AppBlackTitle.color
+    }
+    
+    func setRootViewController() {
+        
+        // Check if user token is available
+        if let _ = UserDefaults.standard.value(forKey: uToken) {
+            let foodTabController = AppDelegate.dependencyRegistry.makeFoodTabController()
+            let navi = UINavigationController(rootViewController: foodTabController)
+            window?.rootViewController = navi
         } else {
-            
+            let loginViewController = AppDelegate.dependencyRegistry.makeLoginViewController()
+            let viewModel = AppDelegate.dependencyRegistry.container.resolve(LoginViewModel.self)!
+            loginViewController.initialise(viewModel: viewModel, foodTabControllerMaker: AppDelegate.dependencyRegistry.makeFoodTabController)
+            window?.rootViewController = loginViewController
         }
+        
+        window?.makeKeyAndVisible()
     }
 }
 

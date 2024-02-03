@@ -28,15 +28,6 @@
       }
     },
     {
-      "identity" : "swinjectstoryboard",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Swinject/SwinjectStoryboard.git",
-      "state" : {
-        "branch" : "master",
-        "revision" : "7a446cc8d8880a403519a4a43e1b64c086dd265c"
-      }
-    },
-    {
       "identity" : "tabman",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/uias/Tabman.git",
