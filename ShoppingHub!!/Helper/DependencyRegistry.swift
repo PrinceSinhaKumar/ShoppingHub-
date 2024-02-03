@@ -5,4 +5,147 @@
 //  Created by Prince Shrivastav on 03/02/24.
 //
 
-import Foundation
+import UIKit
+import Swinject
+import SwinjectStoryboard
+
+protocol DependencyRegistry {
+    var container: Container { get }
+    var navigationCoordinator: NavigationCoordinator! { get }
+    
+    typealias rootNavigationCoordinator = (UIViewController) -> NavigationCoordinator
+    func makeRootNavigationCoordinator(rootViewController: UIViewController) -> NavigationCoordinator
+    
+    typealias MealCellMaker = (UITableView, IndexPath, Meals) -> MealCell
+    func makeMealCell(for tableView: UITableView, at indexPath: IndexPath, meal: Meals) -> MealCell
+
+    typealias FoodTabControllerMaker = () -> FoodTabController
+    func makeFoodTabController() -> FoodTabController
+    
+    typealias MealListTableViewControllerMaker = ([Meals]) -> MealListTableViewController
+    func makeMealListTableViewControllerMaker (meals: [Meals]) -> MealListTableViewController
+    
+    typealias LoginViewControllerMaker = () -> LoginViewController
+    func makeLoginViewController() -> LoginViewController
+
+}
+
+class DependencyRegistryImpl: DependencyRegistry {
+
+    var container: Container
+    var navigationCoordinator: NavigationCoordinator!
+
+    init(container: Container) {
+        
+        Container.loggingFunction = nil
+        
+        self.container = container
+        
+        registerDependencies()
+        registerViewModels()
+        registerViewControllers()
+    }
+    
+    func registerDependencies() {
+        container.register(NavigationCoordinator.self) { (r, rootViewController: UIViewController) in
+            return RootNavigationCoordinatorImpl(with: rootViewController, registry: self)
+        }.inObjectScope(.container)
+        
+        container.register(ApiManagerDelegate.self ) { _ in ApiManager.shared }.inObjectScope(.container)
+        
+        container.register(MealDataManagerDelegate.self ) { _ in MealDataManager.shared }.inObjectScope(.container)
+        
+        container.register(ReloadFoodModelDelegate.self ) { _ in ReloadFoodModel() }.inObjectScope(.container)
+        
+        container.register(APICalllOperationDelegate.self) { r in
+            APICallOperation(keyword: r.resolve(String.self) ?? "")
+        }.inObjectScope(.container)
+        
+        container.register(LoginModelDelegate.self) { _ in LoginModel() }.inObjectScope(.container)
+        
+        container.register((FoodTabModelDelegate).self) { _ in FoodTabModel() }.inObjectScope(.container)
+        
+        container.register(String.self) { _ in String() }.inObjectScope(.container)
+                        
+    }
+    
+    func registerViewModels() {
+        container.register(LoginViewModel.self) { r in
+            
+            LoginViewModel(model: r.resolve(LoginModelDelegate.self)!)
+            
+        }.inObjectScope(.container)
+        
+        container.register(FoodTabViewModelDelegate.self) { r in
+            FoodTabViewModel(model: r.resolve(FoodTabModelDelegate.self)!)
+        }.inObjectScope(.container)
+
+        container.register(FoodTopOptionbarViewModelDelegate.self) { (r, menuList: [String], meals: [Meals] ) in FoodTopOptionbarViewModel(menuList: menuList, meals: meals) }.inObjectScope(.container)
+        
+        container.register(MealListViewModel.self) { (r, meals: [Meals]) in
+            MealListViewModel(list: meals)
+        }
+        container.register(MealCellViewModel.self) { (r, meal: Meals) in
+            MealCellViewModel(meal: meal)
+        }
+        
+        container.register(MealListDataSource.self) { (r, meal: [Meals]) in
+            let viewModel = r.resolve(MealListViewModel.self, argument: meal)!
+            return MealListDataSource(viewModel: viewModel)
+        }
+
+    }
+    
+    func registerViewControllers() {
+       
+        container.register(LoginViewController.self) { r in
+            let vc = Storyboard.Main.value?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            return vc
+        }
+        
+        container.register(FoodTabController.self) { r in
+            let viewModel = r.resolve(FoodTabViewModelDelegate.self)!
+            let vc = Storyboard.FoodStoryboard.value?.instantiateViewController(withIdentifier: "FoodTabController") as! FoodTabController
+            self.navigationCoordinator = self.makeRootNavigationCoordinator(rootViewController: vc)
+            vc.configure(viewModel: viewModel, navigationCoordinator: self.navigationCoordinator)
+            return vc
+        }
+        container.register(MealListTableViewController.self) { (r, meal: [Meals]) in
+            let viewModel = r.resolve(MealListViewModel.self, argument: meal)!
+            let dataSource = r.resolve(MealListDataSource.self, argument: meal)!
+            let vc = Storyboard.FoodStoryboard.value?.instantiateViewController(withIdentifier: "MealListTableViewController") as! MealListTableViewController
+            vc.configure(viewModel: viewModel, mealListDataSource: dataSource)
+            return vc
+        }
+
+    }
+
+    //MARK: - Maker Methods
+    func makeRootNavigationCoordinator(rootViewController: UIViewController) -> NavigationCoordinator {
+        navigationCoordinator = container.resolve(NavigationCoordinator.self, argument: rootViewController)!
+        return navigationCoordinator
+    }
+    
+    func makeLoginViewController() -> LoginViewController {
+        return container.resolve(LoginViewController.self)!
+    }
+    
+    func makeMealCell(for tableView: UITableView, at indexPath: IndexPath, meal: Meals) -> MealCell{
+        tableView.register(UINib(nibName: "MealCell", bundle: nil), forCellReuseIdentifier: "MealCell")
+        let viewModel = container.resolve(MealCellViewModel.self, argument: meal)!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MealCell", for: indexPath) as! MealCell
+        cell.viewModel = viewModel
+        return cell
+    }
+
+    func makeFoodTabController() -> FoodTabController {
+        return container.resolve(FoodTabController.self)!
+    }
+    
+    func makeMealListTableViewControllerMaker (meals: [Meals]) -> MealListTableViewController {
+        return container.resolve(MealListTableViewController.self, argument: meals)!
+    }
+
+}
+
+
