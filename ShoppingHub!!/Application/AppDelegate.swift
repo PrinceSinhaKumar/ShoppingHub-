@@ -14,11 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    static var dependencyRegistry: DependencyRegistry!
+    var dependencyRegistry: DependencyRegistry!
     let container = Container()
-    
+    var navigationCoordinator: NavigationCoordinator!
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        AppDelegate.dependencyRegistry = DependencyRegistryImpl(container: container)
+        dependencyRegistry = DependencyRegistryImpl(container: container)
         customizeNavigationBar()
         setRootViewController()
         return true
@@ -57,23 +58,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = AppColor.AppBlackTitle.color
         // Customize navigation bar background color (if needed)
         UINavigationBar.appearance().barTintColor = AppColor.AppBlackTitle.color
+        
     }
     
     func setRootViewController() {
         
         // Check if user token is available
         if let _ = UserDefaults.standard.value(forKey: uToken) {
-            let foodTabController = AppDelegate.dependencyRegistry.makeFoodTabController()
-            let navi = UINavigationController(rootViewController: foodTabController)
-            window?.rootViewController = navi
+            _ = dependencyRegistry.makeFoodTabController()
         } else {
-            let loginViewController = AppDelegate.dependencyRegistry.makeLoginViewController()
-            let viewModel = AppDelegate.dependencyRegistry.container.resolve(LoginViewModel.self)!
-            loginViewController.initialise(viewModel: viewModel, foodTabControllerMaker: AppDelegate.dependencyRegistry.makeFoodTabController)
-            window?.rootViewController = loginViewController
+            let loginViewController = dependencyRegistry.makeLoginViewController()
+            let viewModel = dependencyRegistry.container.resolve(LoginViewModel.self)!
+            let coordinator = dependencyRegistry.makeRootNavigationCoordinator(rootViewController: loginViewController)
+            loginViewController.initialise(viewModel: viewModel,
+                                           navigationCoordinator: coordinator)
         }
-        
-        window?.makeKeyAndVisible()
     }
+
 }
 

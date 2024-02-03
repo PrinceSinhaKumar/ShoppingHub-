@@ -17,7 +17,7 @@ class MealListTableViewController: UIViewController {
     func configure(viewModel: MealListViewModel, mealListDataSource: MealListDataSource ) {
         self.viewModel = viewModel
         self.mealListDataSource = mealListDataSource
-        let dependencyRegistry: DependencyRegistry = AppDelegate.dependencyRegistry
+        let dependencyRegistry: DependencyRegistry = appDelegate.dependencyRegistry
         self.mealListDataSource.configure(makeMealCell: dependencyRegistry.makeMealCell)
     }
     

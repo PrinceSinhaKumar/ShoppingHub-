@@ -43,7 +43,7 @@
             <objects>
                 <viewController storyboardIdentifier="FoodOptionTopBarController" id="WDi-Rm-V8s" customClass="FoodOptionTopBarController" customModule="ShoppingHub__" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GD3-Uh-Ecs">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="759"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="715"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Ltj-4L-JTN"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

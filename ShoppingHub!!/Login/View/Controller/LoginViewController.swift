@@ -14,7 +14,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     
     fileprivate var viewModel: LoginViewModel?
-    fileprivate var foodTabControllerMaker: DependencyRegistry.FoodTabControllerMaker!
+    //fileprivate var foodTabControllerMaker: DependencyRegistry.FoodTabControllerMaker!
+    fileprivate var navigationCoordinator: NavigationCoordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,9 +23,9 @@ class LoginViewController: UIViewController {
 
     //MARK: - Method
     func initialise(viewModel: LoginViewModel,
-                    foodTabControllerMaker: @escaping DependencyRegistry.FoodTabControllerMaker){
+                    navigationCoordinator: NavigationCoordinator?){
         self.viewModel = viewModel
-        self.foodTabControllerMaker = foodTabControllerMaker
+        self.navigationCoordinator = navigationCoordinator
         applyGradient()
         configureUI()
         configureObserver()
@@ -73,10 +74,7 @@ class LoginViewController: UIViewController {
     }
     
     fileprivate func moveToFoodTab(){
-        DispatchQueue.main.async { [weak self] in
-            let vc = self?.foodTabControllerMaker()
-            self?.navigationController?.pushViewController(vc!, animated: false)
-        }
+        navigationCoordinator?.next(navState: .login, arguments: nil)
     }
 }
 
