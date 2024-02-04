@@ -95,7 +95,6 @@
 		73F8CA012B6A558500F467DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F41377EE2B6BC5FA002CE893 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		F422140A2B6E51D0001A0130 /* DependencyRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyRegistry.swift; sourceTree = "<group>"; };
-		F42214112B6F8CA8001A0130 /* Tabman */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Tabman; path = ../../Downloads/Tabman; sourceTree = "<group>"; };
 		F45F3DB42B67A71F0095ECB1 /* FoodTopOptionbarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTopOptionbarViewModel.swift; sourceTree = "<group>"; };
 		F45F3DBF2B698F130095ECB1 /* RealodFoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealodFoodModel.swift; sourceTree = "<group>"; };
 		F45F3DC12B6A2DE50095ECB1 /* TopOptionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopOptionBar.swift; sourceTree = "<group>"; };
@@ -130,7 +129,6 @@
 		7300E6CA2B5BA69F00221593 = {
 			isa = PBXGroup;
 			children = (
-				F42214102B6F8CA8001A0130 /* Packages */,
 				7300E6D52B5BA69F00221593 /* ShoppingHub!! */,
 				7300E6D42B5BA69F00221593 /* Products */,
 				F47648B52B6BF420001BABEC /* Frameworks */,
@@ -266,14 +264,6 @@
 				7300E70C2B5BBC0100221593 /* LoginModelDecodable.swift */,
 			);
 			path = DecodableModel;
-			sourceTree = "<group>";
-		};
-		F42214102B6F8CA8001A0130 /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				F42214112B6F8CA8001A0130 /* Tabman */,
-			);
-			name = Packages;
 			sourceTree = "<group>";
 		};
 		F45F3DB62B692FEA0095ECB1 /* TopOptionBarController */ = {
