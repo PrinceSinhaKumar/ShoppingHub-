@@ -14,4 +14,8 @@ class MealDetailViewModel {
     init(model: MealDetailModel) {
         self.model = model
     }
+    
+   func getMeal() -> MealList{
+       self.model.meal
+    }
 }
