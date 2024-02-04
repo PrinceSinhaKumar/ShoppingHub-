@@ -38,5 +38,6 @@ class MealCell: UITableViewCell {
         if let imageURL = viewModel?.mealImageURL { mealImage.kf.setImage(with: imageURL) }
         mealName.text = viewModel?.strMeal
         mealType.text = viewModel?.strCategory
+        mealIngredients.text = viewModel?.ingridients
     }
 }

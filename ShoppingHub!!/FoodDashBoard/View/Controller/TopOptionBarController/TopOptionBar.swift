@@ -21,19 +21,20 @@ class TopOptionBar: TMBar.ButtonBar {
         self.layout.transitionStyle = .progressive // Customize
         // Customize bar properties including layout and other styling.
         self.layout.contentInset = UIEdgeInsets(top: 0.0, left: 16.0, bottom: 4.0, right: 16.0)
-        self.layout.interButtonSpacing = 24.0
-        self.indicator.weight = .custom(value: 4)
-        self.indicator.cornerStyle = .eliptical
+        self.layout.interButtonSpacing = 10
         self.fadesContentEdges = true
-        self.spacing = 16.0
+        self.spacing = 5
         
         // Set tint colors for the bar buttons and indicator.
         self.buttons.customize {
             $0.tintColor = .black.withAlphaComponent(0.5)
             $0.selectedTintColor = .black
             $0.adjustsFontForContentSizeCategory = true
+            $0.backgroundColor = AppColor.AppWhiteSecond.color
+            $0.layer.cornerRadius = 8
         }
-        self.indicator.backgroundColor = AppColor.AppLightBlue.color
+        self.indicator.backgroundColor = .clear
+        
     }
     
     required init() {

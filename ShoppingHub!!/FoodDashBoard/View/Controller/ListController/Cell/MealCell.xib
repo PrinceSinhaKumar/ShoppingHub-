@@ -18,8 +18,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="523" height="201"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vJt-dT-2aA">
-                        <rect key="frame" x="20" y="30" width="483" height="156"/>
+                    <view opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vJt-dT-2aA">
+                        <rect key="frame" x="20" y="20" width="483" height="161"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eFS-Uo-8Pt">
                                 <rect key="frame" x="101" y="10" width="4" height="20"/>
@@ -41,13 +41,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sweetest French Burger new Sweetest French Burger new  Sweetest French Burger new Sweetest French Burger new " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDw-jF-TYX">
-                                <rect key="frame" x="101" y="36" width="302" height="70"/>
+                                <rect key="frame" x="101" y="36" width="302" height="75"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WGp-Bk-ev3">
-                                <rect key="frame" x="403" y="2.6666666666666643" width="70" height="35"/>
+                                <rect key="frame" x="403" y="2.6666666666666679" width="70" height="35"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fb8-2v-oVF">
                                         <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
@@ -75,7 +75,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="r2R-HL-udb">
-                                <rect key="frame" x="101" y="111" width="81.333333333333314" height="35"/>
+                                <rect key="frame" x="101" y="116" width="81.333333333333314" height="35"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cooking" translatesAutoresizingMaskIntoConstraints="NO" id="U4J-G0-q5C">
                                         <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
@@ -94,7 +94,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="San-y7-mZf">
-                                <rect key="frame" x="415.66666666666669" y="117.66666666666666" width="57.333333333333314" height="22"/>
+                                <rect key="frame" x="415.66666666666669" y="122.66666666666666" width="57.333333333333314" height="22"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="soup-bowl" translatesAutoresizingMaskIntoConstraints="NO" id="zJi-O1-FOz">
                                         <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
@@ -134,27 +134,27 @@
                                 <real key="value" value="20"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                <color key="value" systemColor="opaqueSeparatorColor"/>
+                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                <real key="value" value="0.5"/>
+                                <real key="value" value="0.0"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                <real key="value" value="5"/>
+                                <real key="value" value="7"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                <color key="value" name="AppBlackTitle"/>
+                                <color key="value" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                <real key="value" value="1"/>
+                                <real key="value" value="0.29999999999999999"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                <size key="value" width="5" height="5"/>
+                                <size key="value" width="5" height="1"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image2" translatesAutoresizingMaskIntoConstraints="NO" id="8SC-CW-8XA">
-                        <rect key="frame" x="10" y="10" width="100" height="100"/>
+                        <rect key="frame" x="10" y="0.0" width="100" height="100"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="100" id="MHy-Zf-Ygu"/>
                             <constraint firstAttribute="width" constant="100" id="U41-eR-kcj"/>
@@ -169,13 +169,13 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="vJt-dT-2aA" secondAttribute="bottom" constant="15" id="16k-46-DJY"/>
-                    <constraint firstItem="vJt-dT-2aA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="6HZ-XW-bUO"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="vJt-dT-2aA" secondAttribute="bottom" constant="20" id="16k-46-DJY"/>
+                    <constraint firstItem="vJt-dT-2aA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="6HZ-XW-bUO"/>
                     <constraint firstItem="vJt-dT-2aA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Clb-7A-2ob"/>
                     <constraint firstItem="8SC-CW-8XA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Gb9-WR-nLg"/>
                     <constraint firstAttribute="trailing" secondItem="vJt-dT-2aA" secondAttribute="trailing" constant="20" id="LOO-hv-noG"/>
                     <constraint firstItem="eFS-Uo-8Pt" firstAttribute="trailing" secondItem="8SC-CW-8XA" secondAttribute="trailing" constant="15" id="ZKD-cH-FGo"/>
-                    <constraint firstItem="8SC-CW-8XA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="l9C-dF-Tzh"/>
+                    <constraint firstItem="8SC-CW-8XA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="l9C-dF-Tzh"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -196,15 +196,9 @@
         <image name="plus.circle" catalog="system" width="128" height="123"/>
         <image name="share" width="20" height="20"/>
         <image name="soup-bowl" width="512" height="512"/>
-        <namedColor name="AppBlackTitle">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="AppWhiteSecond">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

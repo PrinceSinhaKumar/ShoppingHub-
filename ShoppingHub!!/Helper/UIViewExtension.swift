@@ -42,6 +42,7 @@ import UIKit
         }
         set{
             layer.shadowRadius = newValue
+            layer.masksToBounds = false
         }
     }
     

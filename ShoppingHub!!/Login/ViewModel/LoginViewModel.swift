@@ -10,11 +10,13 @@ import UIKit
 class LoginViewModel {
     
     let model: LoginModelDelegate
+    let reloadFoodModel: ReloadFoodModelDelegate
     var eventHandler: ((_ events: Event) -> Void)?
     let gradientColors = [AppColor.AppOrange.color!, AppColor.AppOrange.color!]
     
-    init(model: LoginModelDelegate) {
+    init(model: LoginModelDelegate, reloadFoodModel: ReloadFoodModelDelegate) {
         self.model = model
+        self.reloadFoodModel = reloadFoodModel
     }
     
     func fetchLogin(loginData: Encodable){
@@ -31,7 +33,7 @@ class LoginViewModel {
     
     func fetchMealsData(complition: @escaping () -> ()){
         eventHandler?(.loading)
-        ReloadFoodModel().fetchFoodList {[weak self] _, error in
+        reloadFoodModel.fetchFoodList {[weak self] _, error in
             self?.eventHandler?(.stopLoading)
             guard error == nil else {
                 self?.eventHandler?(.error(error?.errorMessage ?? ""))

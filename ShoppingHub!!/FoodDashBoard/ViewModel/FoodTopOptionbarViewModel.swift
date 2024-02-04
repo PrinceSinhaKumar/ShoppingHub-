@@ -31,7 +31,7 @@ class FoodTopOptionbarViewModel: FoodTopOptionbarViewModelDelegate {
     }
     
     func getTitle(index: Int) -> String {
-        return menuList?[index] ?? ""
+        return  "\(menuList?[index] ?? "")       " 
     }
     
     func getMealsAccToArea(area: String) -> [MealList]?{

@@ -71,7 +71,7 @@ class DependencyRegistryImpl: DependencyRegistry {
     func registerViewModels() {
         container.register(LoginViewModel.self) { r in
             
-            LoginViewModel(model: r.resolve(LoginModelDelegate.self)!)
+            LoginViewModel(model: r.resolve(LoginModelDelegate.self)!, reloadFoodModel: r.resolve(ReloadFoodModelDelegate.self)!)
             
         }.inObjectScope(.container)
         

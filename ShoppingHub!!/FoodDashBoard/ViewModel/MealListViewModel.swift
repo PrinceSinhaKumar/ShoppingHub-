@@ -22,4 +22,5 @@ class MealListViewModel {
     func mealAtIndex(index: Int) -> MealList?{
         return list?[index]
     }
+    
 }
