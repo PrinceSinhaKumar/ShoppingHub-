@@ -21,6 +21,8 @@ class MealCell: UITableViewCell {
             configureCell()
         }
     }
+    var coordinator: NavigationCoordinator!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         mealName.font = AppFont.font(with: 15, family: OpenSans.bold)
@@ -29,9 +31,19 @@ class MealCell: UITableViewCell {
         mealIngredients.font = AppFont.font(with: 12, family: OpenSans.light)
     }
     
+    //MARK: Methods
+    func configure(viewModel: MealCellViewModel,
+                   coordinator: NavigationCoordinator) {
+        self.viewModel = viewModel
+        self.coordinator = coordinator
+    }
+    
     @IBAction func tapAddReceipe(_ sender: Any) {
     }
     @IBAction func tapShareMeal(_ sender: Any) {
+        if let url = viewModel?.getYoutubeURL() {
+            coordinator.openRecipe(url: url)
+        }
     }
     
     private func configureCell() {

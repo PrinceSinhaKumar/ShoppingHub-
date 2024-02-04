@@ -6,17 +6,21 @@
 //
 
 import UIKit
+import SafariServices
+import Foundation
 
 protocol NavigationCoordinator: AnyObject {
     func next(navState: NavigationState,arguments: Dictionary<String, Any>?)
     func movingBack(navState: NavigationState)
+    func openRecipe(url: URL)
 }
 
 enum NavigationState {
     case login,
          foodTab,
          foodTopOptionBar,
-         foodList
+         foodList,
+         mealDetail
 }
 
 class RootNavigationCoordinatorImpl: NavigationCoordinator {
@@ -45,6 +49,8 @@ class RootNavigationCoordinatorImpl: NavigationCoordinator {
         switch navState {
         case .login: //not possible to move back - do nothing
             showFoodTab(arguments: arguments)
+        case .mealDetail:
+            showMealDetail(arguments: arguments)
         default: //example - do nothing
             break
         }
@@ -64,5 +70,18 @@ class RootNavigationCoordinatorImpl: NavigationCoordinator {
         let navi = UINavigationController(rootViewController: controller)
         appDelegate.window?.rootViewController = navi
         appDelegate.window?.makeKeyAndVisible()
+    }
+    
+    fileprivate func showMealDetail(arguments: Dictionary<String, Any>?){
+        if let meals = arguments?[argumentsKey] as? MealList {
+            let vc = registry.makeMealDetailViewControllerMaker(meal: meals)
+            self.rootViewController.navigationController?.pushViewController(vc, animated: false)
+        }
+    }
+    
+    func openRecipe(url: URL) {
+        let safariViewController = SFSafariViewController(url: url)
+        safariViewController.modalPresentationStyle = .fullScreen
+        self.rootViewController.navigationController?.present(safariViewController, animated: false)
     }
 }

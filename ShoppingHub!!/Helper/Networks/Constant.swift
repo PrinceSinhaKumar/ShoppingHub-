@@ -9,3 +9,4 @@ import UIKit
 
 let uToken = "User-Token"
 let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
+let argumentsKey = "data"
