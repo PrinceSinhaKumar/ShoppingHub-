@@ -9,7 +9,7 @@ import Foundation
 
 class MealListViewModel {
     
-    let list: [MealList]?
+    var list: [MealList]?
     
     init(list: [MealList]?) {
         self.list = list
@@ -23,4 +23,13 @@ class MealListViewModel {
         return list?[index]
     }
     
+    func getIndex(notification: Notification) -> (Int?) {
+        if let dict = notification.object as? [String: Any?], let id = dict[observerID] as? String, let isFavourite = dict[observerIsFavt] as? Bool {
+            if let index = list?.firstIndex(where: {$0.idMeal == id}) {
+                list?[index].isFavourite = isFavourite
+                return (index)
+            }
+        }
+        return (nil)
+    }
 }

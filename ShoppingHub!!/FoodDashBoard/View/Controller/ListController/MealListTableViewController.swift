@@ -27,6 +27,16 @@ class MealListTableViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = mealListDataSource
         tableView.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadCell(notification:)), name: NSNotification.Name.init(reloadMealCell), object: nil)
+    }
+    
+    @objc fileprivate func reloadCell(notification: Notification) {
+        if let index = viewModel?.getIndex(notification: notification) {
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.reloadRows(at: [IndexPath.SubSequence(row: index, section: 0)], with: .automatic)
+            }
+        }
     }
 
 }

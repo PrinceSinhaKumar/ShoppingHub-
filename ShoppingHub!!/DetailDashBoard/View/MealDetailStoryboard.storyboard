@@ -91,11 +91,17 @@
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUJ-jL-8rR">
                                                         <rect key="frame" x="40" y="0.0" width="30" height="30"/>
-                                                        <color key="tintColor" name="AppBlackTitle"/>
+                                                        <color key="tintColor" name="AppOrange"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal">
+                                                            <imageReference key="image" image="heart" catalog="system" symbolScale="large"/>
+                                                        </state>
+                                                        <state key="selected">
                                                             <imageReference key="image" image="heart.fill" catalog="system" symbolScale="large"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="addToFavtButtonWithSender:" destination="E3K-mE-gZi" eventType="touchUpInside" id="Gmv-Pi-owa"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -245,10 +251,12 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="1xP-JA-lmM" id="upX-fp-H2R"/>
+                        <outlet property="favtButton" destination="WUJ-jL-8rR" id="t5R-6w-aNv"/>
                         <outlet property="mealCategory" destination="OOM-B6-DWn" id="NK1-ny-a1h"/>
                         <outlet property="mealIngredrients" destination="s4y-sU-NTY" id="sDb-gc-ETz"/>
                         <outlet property="mealInstructions" destination="1H1-lY-9lo" id="QSn-PM-5EA"/>
                         <outlet property="mealName" destination="E2P-9X-zep" id="ZLB-aZ-xgB"/>
+                        <outlet property="shareButton" destination="h5n-qM-eEg" id="IHd-74-uDy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YEd-sW-1kw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -257,12 +265,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="heart" catalog="system" width="128" height="107"/>
         <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="image3" width="360" height="360"/>
         <image name="share" width="20" height="20"/>
-        <namedColor name="AppBlackTitle">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="AppLightBlue">
             <color red="0.92941176470588238" green="0.95294117647058818" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

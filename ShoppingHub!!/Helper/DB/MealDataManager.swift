@@ -122,5 +122,7 @@ final class MealDataManager: MealDataManagerDelegate {
        private func updateFavouriteStatus(for meal: Meal, isFavourite: Bool) {
            meal.isFavourite = isFavourite
            meal.modifiedDate = Date()
+           let dict: [String: Any?] = [observerID: meal.idMeal, observerIsFavt: isFavourite]
+           NotificationCenter.default.post(name: Notification.Name(reloadMealCell), object: dict)
        }
 }

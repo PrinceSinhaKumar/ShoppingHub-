@@ -14,10 +14,11 @@ class MealDetailViewController: UIViewController {
     @IBOutlet weak var mealName: UILabel!
     @IBOutlet weak var mealInstructions: UILabel!
     @IBOutlet weak var mealIngredrients: UILabel!
+    @IBOutlet weak var favtButton, shareButton: UIButton!
 
     fileprivate var viewModel: MealDetailViewModel?
     fileprivate var ingredientDataSource: IngredientDataSource?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -40,7 +41,15 @@ class MealDetailViewController: UIViewController {
         mealInstructions.attributedText = viewModel?.totalSteps()
         mealCategory.text = " \(viewModel?.getMeal().strArea ?? "")"
         mealIngredrients.text = "Ingredients (\(viewModel?.getMeal().indredients?.count ?? 0))"
+        favtButton.isSelected = viewModel?.getMeal().isFavourite ?? false
         configureCollection()
+    }
+    
+    @IBAction func addToFavtButton(sender: UIButton) {
+        let status = !sender.isSelected
+        sender.isSelected = status
+        let id = viewModel?.getMeal().idMeal ?? ""
+        MealDataManager.shared.addFavouriteMeal(mealId: id, isFavourite: status)
     }
 }
 
