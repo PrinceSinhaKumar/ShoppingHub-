@@ -13,39 +13,40 @@ class MealDetailViewController: UIViewController {
     @IBOutlet weak var mealCategory: UILabel!
     @IBOutlet weak var mealName: UILabel!
     @IBOutlet weak var mealInstructions: UILabel!
-    
-    fileprivate var collectionViewDataSource: MealCollectionViewDataSource!
+    @IBOutlet weak var mealIngredrients: UILabel!
 
-    fileprivate var viewModel: MealDetailViewModel?{
-        didSet{
-            configureUI()
-        }
-    }
-    
+    fileprivate var viewModel: MealDetailViewModel?
+    fileprivate var ingredientDataSource: IngredientDataSource?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureCollection()
+        configureUI()
     }
     
-    func configure(viewModel: MealDetailViewModel) {
+    func configure(viewModel: MealDetailViewModel,
+                   ingredientDataSource: IngredientDataSource) {
         self.viewModel = viewModel
+        self.ingredientDataSource = ingredientDataSource
+        self.ingredientDataSource?.configure(viewModel: viewModel)
     }
     
     fileprivate func configureCollection() {
-        collectionViewDataSource = MealCollectionViewDataSource(viewModel: self.viewModel)
-        collectionView.dataSource = collectionViewDataSource
+        collectionView.dataSource = ingredientDataSource
         collectionView.delegate = self
     }
   
     fileprivate func configureUI(){
         mealName.text = viewModel?.getMeal().strMeal
-        mealInstructions.text = viewModel?.getMeal().strInstructions
+        mealInstructions.attributedText = viewModel?.totalSteps()
+        mealCategory.text = " \(viewModel?.getMeal().strArea ?? "")"
+        mealIngredrients.text = "Ingredients (\(viewModel?.getMeal().indredients?.count ?? 0))"
+        configureCollection()
     }
 }
 
 extension MealDetailViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 94, height: 128)
+        return CGSize(width: 94, height: 80)
     }
 }

@@ -74,7 +74,7 @@ class RootNavigationCoordinatorImpl: NavigationCoordinator {
     
     fileprivate func showMealDetail(arguments: Dictionary<String, Any>?){
         if let meals = arguments?[argumentsKey] as? MealList {
-            let vc = registry.makeMealDetailViewControllerMaker(meal: meals)
+            let vc = registry.mealViewControllerMaker(meal: meals)
             self.rootViewController.navigationController?.pushViewController(vc, animated: false)
         }
     }
