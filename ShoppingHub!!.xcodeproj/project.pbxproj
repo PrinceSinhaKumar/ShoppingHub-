@@ -97,6 +97,7 @@
 		7300E7162B5F304E00221593 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		730C31F42B616BFD002756FE /* AppGradientLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGradientLayer.swift; sourceTree = "<group>"; };
 		7324CFBC2B6AD13B00DA6D35 /* MealListTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListTableCellViewModel.swift; sourceTree = "<group>"; };
+		732E54252B70D73A00540CAD /* ShoppingHub__ v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ShoppingHub__ v2.xcdatamodel"; sourceTree = "<group>"; };
 		7334C8C62B6FB51600DA0ED4 /* MealDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailModel.swift; sourceTree = "<group>"; };
 		7334C8C92B6FB5CD00DA0ED4 /* MealDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailViewModel.swift; sourceTree = "<group>"; };
 		7334C8CB2B6FB63800DA0ED4 /* MealDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailViewController.swift; sourceTree = "<group>"; };
@@ -873,9 +874,10 @@
 		7300E6DF2B5BA69F00221593 /* ShoppingHub__.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				732E54252B70D73A00540CAD /* ShoppingHub__ v2.xcdatamodel */,
 				7300E6E02B5BA69F00221593 /* ShoppingHub__.xcdatamodel */,
 			);
-			currentVersion = 7300E6E02B5BA69F00221593 /* ShoppingHub__.xcdatamodel */;
+			currentVersion = 732E54252B70D73A00540CAD /* ShoppingHub__ v2.xcdatamodel */;
 			path = ShoppingHub__.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -64,11 +65,16 @@
                                             <action selector="tapShareMeal:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="A2I-c2-TXF"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srz-XB-h9I">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srz-XB-h9I">
                                         <rect key="frame" x="35" y="0.0" width="35" height="35"/>
                                         <color key="tintColor" systemColor="systemOrangeColor"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="plus.circle" catalog="system"/>
+                                        <inset key="imageEdgeInsets" minX="2" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="heart" catalog="system" symbolScale="large"/>
+                                        </state>
+                                        <state key="selected">
+                                            <imageReference key="image" image="heart.fill" catalog="system" symbolScale="large"/>
+                                        </state>
                                         <connections>
                                             <action selector="tapAddReceipe:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="d7B-U4-JbH"/>
                                         </connections>
@@ -181,6 +187,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="favouriteButton" destination="srz-XB-h9I" id="wXt-bG-g8k"/>
                 <outlet property="lblcookingTime" destination="rCR-pE-452" id="uzD-yQ-F6Y"/>
                 <outlet property="mealImage" destination="8SC-CW-8XA" id="Gqa-zb-CUN"/>
                 <outlet property="mealIngredients" destination="naw-9p-oBv" id="5dm-Hd-aeH"/>
@@ -192,15 +199,16 @@
     </objects>
     <resources>
         <image name="cooking" width="512" height="512"/>
+        <image name="heart" catalog="system" width="128" height="107"/>
+        <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="image2" width="1200" height="1200"/>
-        <image name="plus.circle" catalog="system" width="128" height="123"/>
         <image name="share" width="20" height="20"/>
         <image name="soup-bowl" width="512" height="512"/>
         <namedColor name="AppWhiteSecond">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
