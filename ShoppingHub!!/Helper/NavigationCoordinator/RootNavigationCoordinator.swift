@@ -13,6 +13,7 @@ protocol NavigationCoordinator: AnyObject {
     func next(navState: NavigationState,arguments: Dictionary<String, Any>?)
     func movingBack(navState: NavigationState)
     func openRecipe(url: URL)
+    func configureNavigationItems(for controller: UIViewController)
 }
 
 enum NavigationState {
@@ -34,6 +35,7 @@ class RootNavigationCoordinatorImpl: NavigationCoordinator {
         if rootViewController is FoodTabController || rootViewController is LoginViewController {
             makeRootController(controller: rootViewController)
         }
+        configureNavigationItems(for: rootViewController)
     }
     
     func movingBack(navState: NavigationState) {
@@ -83,5 +85,33 @@ class RootNavigationCoordinatorImpl: NavigationCoordinator {
         let safariViewController = SFSafariViewController(url: url)
         safariViewController.modalPresentationStyle = .fullScreen
         self.rootViewController.navigationController?.present(safariViewController, animated: false)
+    }
+}
+//MARK: Navigation items handling
+extension RootNavigationCoordinatorImpl {
+    func configureNavigationItems(for controller: UIViewController) {
+        switch controller {
+        case is FoodTabController:
+            // Add navigation items specific to FoodTabController
+            let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonTapped))
+            controller.navigationItem.rightBarButtonItem = searchButton
+        case is MealSearchViewController:
+            let closeButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeButtonTapped))
+            closeButton.title = "Search"
+            controller.navigationItem.leftBarButtonItem = closeButton
+        default:
+            // Handle other controllers if needed
+            break
+        }
+    }
+    
+    @objc func searchButtonTapped() {
+        let list = MealDataProvider.shared.fetchMeals()
+        let vc = registry.mealSearchControllerMaker(meal: list.map({MealList(meal: $0)}))
+        rootViewController.navigationController?.pushViewController(vc, animated: false)
+    }
+
+    @objc func closeButtonTapped() {
+        rootViewController.navigationController?.popViewController(animated: false)
     }
 }

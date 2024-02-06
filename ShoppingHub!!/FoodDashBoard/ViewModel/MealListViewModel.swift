@@ -7,7 +7,20 @@
 
 import Foundation
 
-class MealListViewModel {
+protocol ListViewModel {
+    var list: [MealList]? { get set }
+    func numberOfRowsInSection() -> Int
+    func mealAtIndex(index: Int) -> MealList?
+    func getIndex(notification: Notification) -> (Int?, Bool?)
+    func moveListItem(index: Int, insertAt: Int)
+}
+extension ListViewModel {
+    func getIndex(notification: Notification) -> (Int?, Bool?) { return (nil, nil)}
+    func moveListItem(index: Int, insertAt: Int) {}
+
+}
+
+class MealListViewModel: ListViewModel {
     
     var list: [MealList]?
     
@@ -23,13 +36,20 @@ class MealListViewModel {
         return list?[index]
     }
     
-    func getIndex(notification: Notification) -> (Int?) {
+    func getIndex(notification: Notification) -> (Int?, Bool?) {
         if let dict = notification.object as? [String: Any?], let id = dict[observerID] as? String, let isFavourite = dict[observerIsFavt] as? Bool {
             if let index = list?.firstIndex(where: {$0.idMeal == id}) {
                 list?[index].isFavourite = isFavourite
-                return (index)
+                return (index, isFavourite)
             }
         }
-        return (nil)
+        return (nil, nil)
+    }
+    
+    func moveListItem(index: Int, insertAt: Int) {
+        if let meal = mealAtIndex(index: index) {
+            list?.remove(at: index)
+            list?.insert(meal, at: insertAt)
+        }
     }
 }

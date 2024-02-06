@@ -18,8 +18,6 @@ class MealListTableViewController: UIViewController {
     func configure(viewModel: MealListViewModel, mealListDataSource: MealListDataSource, coordinator: NavigationCoordinator) {
         self.viewModel = viewModel
         self.mealListDataSource = mealListDataSource
-        let dependencyRegistry: DependencyRegistry = appDelegate.dependencyRegistry
-        self.mealListDataSource.configure(makeMealCell: dependencyRegistry.makeMealCell)
         self.coordinator = coordinator
     }
     
@@ -32,12 +30,38 @@ class MealListTableViewController: UIViewController {
     }
     
     @objc fileprivate func reloadCell(notification: Notification) {
-        if let index = viewModel?.getIndex(notification: notification) {
+        if let tupleValue = viewModel?.getIndex(notification: notification),
+           let index = tupleValue.0,
+           let isFavourite = tupleValue.1 {
             DispatchQueue.main.async { [weak self] in
-                self?.tableView.reloadRows(at: [IndexPath.SubSequence(row: index, section: 0)], with: .automatic)
+                if isFavourite {
+                    self?.moveCellToTop(at: index)
+                } else {
+                    self?.moveCellToBottom(at: index)
+                }
             }
         }
     }
+
+    private func moveCellToTop(at index: Int) {
+        let indexPath = IndexPath(row: index, section: 0)
+        tableView.beginUpdates()
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        viewModel?.moveListItem(index: index, insertAt: 0)
+        tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+        tableView.endUpdates()
+    }
+
+    private func moveCellToBottom(at index: Int) {
+        let indexPath = IndexPath(row: index, section: 0)
+        tableView.beginUpdates()
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        let lastPosition = (viewModel?.numberOfRowsInSection() ?? 0) - 1
+        viewModel?.moveListItem(index: index, insertAt: lastPosition)
+        tableView.insertRows(at: [IndexPath(row: lastPosition, section: 0)], with: .automatic)
+        tableView.endUpdates()
+    }
+
 
 }
 extension MealListTableViewController: UITableViewDelegate {

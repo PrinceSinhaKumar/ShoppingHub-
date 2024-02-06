@@ -35,6 +35,9 @@ protocol DependencyRegistry {
     
     typealias MakeMealIngredientCellMaker = (UICollectionView,IndexPath,IngredientModel) -> IngredientCell
     func makeMealIngredientCell(for collectionView: UICollectionView, at indexPath: IndexPath, model: IngredientModel) -> IngredientCell
+    
+    typealias MealSearchControllerMaker = ([MealList]) -> MealSearchViewController
+    func mealSearchControllerMaker(meal: [MealList]) -> MealSearchViewController
 
 }
 
@@ -76,7 +79,7 @@ class DependencyRegistryImpl: DependencyRegistry {
         container.register(String.self) { _ in String() }.inObjectScope(.container)
         
         container.register(MealDetailModel.self) { ( _ , meal: MealList) in MealDetailModel(meal: meal) }
-                        
+              
     }
     
     func registerViewModels() {
@@ -101,7 +104,7 @@ class DependencyRegistryImpl: DependencyRegistry {
         
         container.register(MealListDataSource.self) { (r, meal: [MealList]) in
             let viewModel = r.resolve(MealListViewModel.self, argument: meal)!
-            return MealListDataSource(viewModel: viewModel)
+            return MealListDataSource(viewModel: viewModel, makeMealCell: self.makeMealCell)
         }
         
         container.register(MealDetailViewModel.self) { (r, meal: MealList) in
@@ -115,6 +118,10 @@ class DependencyRegistryImpl: DependencyRegistry {
         container.register(IngredientDataSource.self) { r in
             let cellMaker = self.makeMealIngredientCell
             return IngredientDataSource(ingredientCellMaker: cellMaker)
+        }
+        
+        container.register(MealSeachViewModel.self) { (r, meal: [MealList]) in
+            MealSeachViewModel(list: meal)
         }
     }
     
@@ -153,6 +160,13 @@ class DependencyRegistryImpl: DependencyRegistry {
             return vc
         }
 
+        container.register(MealSearchViewController.self) { (r, meal: [MealList]) in
+            let vc = Storyboard.FoodStoryboard.value?.instantiateViewController(withIdentifier: "MealSearchViewController") as! MealSearchViewController
+            let viewModel = r.resolve(MealSeachViewModel.self, argument: meal)!
+            self.navigationCoordinator = self.makeRootNavigationCoordinator(rootViewController: vc)
+            vc.configure(viewModel: viewModel, coordinator: self.navigationCoordinator)
+            return vc
+        }
     }
 
     //MARK: - Maker Methods
@@ -194,6 +208,10 @@ class DependencyRegistryImpl: DependencyRegistry {
     
     func mealViewControllerMaker(meal: MealList) -> MealViewController {
         container.resolve(MealViewController.self, argument: meal)!
+    }
+    
+    func mealSearchControllerMaker(meal: [MealList]) -> MealSearchViewController {
+        container.resolve(MealSearchViewController.self, argument: meal)!
     }
 }
 
