@@ -30,6 +30,20 @@ class MealSearchViewController: UIViewController {
         tableView.dataSource = mealListDataSource
         searchTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
+    
+    @IBAction func tapFilterButton(_ sender: Any){
+        let vc = Storyboard.FoodStoryboard.value?.instantiateViewController(withIdentifier: "MealFilterViewController") as! MealFilterViewController
+        let nav = UINavigationController(rootViewController: vc)
+        // 1
+        nav.modalPresentationStyle = .pageSheet
+        // 2
+        if let sheet = nav.sheetPresentationController {
+            // 3
+            sheet.detents = [.medium(), .large()]
+        }
+        // 4
+        present(nav, animated: true, completion: nil)
+    }
 }
 extension MealSearchViewController: UITableViewDelegate {
     
