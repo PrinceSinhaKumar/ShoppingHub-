@@ -9,7 +9,14 @@ import UIKit
 
 class MealFilterTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var checkButton: UIButton!
+    @IBOutlet weak var selectCategory: UIImageView!
+    @IBOutlet weak var categoryLabel: UILabel!
+  
+    var viewModel: MealFilterCellViewModel? {
+        didSet{
+            configure(model: viewModel!)
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,11 +25,25 @@ class MealFilterTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 
-    @IBAction func tapCheckButton(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
+    func categorySelection(status: Bool) {
+       selectCategory.isHighlighted = status
+    }
+    
+    //MARK: Methods
+    func configure(model: MealFilterCellViewModel) {
+        categoryLabel.text = model.categoryName
+        categorySelection(status: model.selectedStatus)
+    }
+}
+class MealFilterCellViewModel {
+    
+    var categoryName: String
+    var selectedStatus: Bool = false
+    
+    init(categoryName: String) {
+        self.categoryName = categoryName
     }
 }

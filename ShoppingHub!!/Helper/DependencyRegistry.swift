@@ -39,6 +39,12 @@ protocol DependencyRegistry {
     typealias MealSearchControllerMaker = ([MealList]) -> MealSearchViewController
     func mealSearchControllerMaker(meal: [MealList]) -> MealSearchViewController
 
+    typealias MealFilterControllerMaker = ([MealList]) -> MealFilterViewController
+    func makeMealFilterControllerMaker(meal: [MealList]) -> MealFilterViewController
+    
+    typealias MealFilterCellMaker = (UITableView, IndexPath, String) -> MealFilterTableViewCell
+    func makeMealFilterCellMaker(for tableView: UITableView, at indexPath: IndexPath, category: String) -> MealFilterTableViewCell
+
 }
 
 class DependencyRegistryImpl: DependencyRegistry {
@@ -123,6 +129,15 @@ class DependencyRegistryImpl: DependencyRegistry {
         container.register(MealSeachViewModel.self) { (r, meal: [MealList]) in
             MealSeachViewModel(list: meal)
         }
+        
+        container.register(MealFilterViewModel.self) { (r, meal: [MealList]) in
+            MealFilterViewModel(list: meal)
+        }
+        
+        container.register(MealFilterCellViewModel.self) { (r, category: String )in
+            MealFilterCellViewModel(categoryName: category)
+        }
+      
     }
     
     func registerViewControllers() {
@@ -165,6 +180,13 @@ class DependencyRegistryImpl: DependencyRegistry {
             let viewModel = r.resolve(MealSeachViewModel.self, argument: meal)!
             self.navigationCoordinator = self.makeRootNavigationCoordinator(rootViewController: vc)
             vc.configure(viewModel: viewModel, coordinator: self.navigationCoordinator)
+            return vc
+        }
+        
+        container.register(MealFilterViewController.self) { (r, meal:[MealList]) in
+            let vc = Storyboard.FoodStoryboard.value?.instantiateViewController(withIdentifier:   "MealFilterViewController") as! MealFilterViewController
+            let viewModel = r.resolve(MealFilterViewModel.self,  argument: meal)!
+            vc.configure(viewModel: viewModel)
             return vc
         }
     }
@@ -212,6 +234,17 @@ class DependencyRegistryImpl: DependencyRegistry {
     
     func mealSearchControllerMaker(meal: [MealList]) -> MealSearchViewController {
         container.resolve(MealSearchViewController.self, argument: meal)!
+    }
+    
+    func makeMealFilterControllerMaker(meal: [MealList]) -> MealFilterViewController {
+        container.resolve(MealFilterViewController.self, argument: meal)!
+    }
+    
+    func makeMealFilterCellMaker(for tableView: UITableView, at indexPath: IndexPath, category: String) -> MealFilterTableViewCell {
+        let viewModel = container.resolve(MealFilterCellViewModel.self, argument: category)!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MealFilterTableViewCell", for: indexPath) as! MealFilterTableViewCell
+        cell.viewModel = viewModel
+        return cell
     }
 }
 

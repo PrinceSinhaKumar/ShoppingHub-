@@ -32,17 +32,14 @@ class MealSearchViewController: UIViewController {
     }
     
     @IBAction func tapFilterButton(_ sender: Any){
-        let vc = Storyboard.FoodStoryboard.value?.instantiateViewController(withIdentifier: "MealFilterViewController") as! MealFilterViewController
-        let nav = UINavigationController(rootViewController: vc)
-        // 1
-        nav.modalPresentationStyle = .pageSheet
-        // 2
-        if let sheet = nav.sheetPresentationController {
-            // 3
-            sheet.detents = [.medium(), .large()]
-        }
-        // 4
-        present(nav, animated: true, completion: nil)
+//        let vc = Storyboard.FoodStoryboard.value?.instantiateViewController(withIdentifier: "MealFilterViewController") as! MealFilterViewController
+//        if let sheet = vc.sheetPresentationController {
+//            sheet.detents = [.medium()]
+//            sheet.largestUndimmedDetentIdentifier = .medium
+//            present(vc, animated: true, completion: nil)
+//        }
+        
+        coordinator.next(navState: .mealFilter, arguments: nil)
     }
 }
 extension MealSearchViewController: UITableViewDelegate {
