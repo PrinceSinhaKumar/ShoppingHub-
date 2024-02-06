@@ -17,7 +17,8 @@ final class MealDataProvider {
     
     func fetchMeals() -> [Meal] {
         let fetchRequest: NSFetchRequest<Meal> = Meal.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "modifiedDate", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "modifiedDate", ascending: false)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "isFavourite", ascending: false)]
         do {
             let meals = try context.fetch(fetchRequest)
             return meals

@@ -11,15 +11,16 @@ import Kingfisher
 
 class MealListDataSource: NSObject, UITableViewDataSource {
     
-    let viewModel: MealListViewModel
+    let viewModel: ListViewModel
     fileprivate var makeMealCell: DependencyRegistry.MealCellMaker!
     
-    init(viewModel: MealListViewModel) {
+    init(viewModel: ListViewModel,
+         makeMealCell:@escaping DependencyRegistry.MealCellMaker)
+    {
         self.viewModel = viewModel
-    }
-    func configure(makeMealCell: @escaping DependencyRegistry.MealCellMaker) {
         self.makeMealCell = makeMealCell
     }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRowsInSection()
     }

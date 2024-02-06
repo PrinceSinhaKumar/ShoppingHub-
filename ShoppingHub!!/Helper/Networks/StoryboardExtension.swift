@@ -11,6 +11,7 @@ enum Storyboard: String {
     
     case Main
     case FoodStoryboard
+    case MealDetailStoryboard
     
     var value: UIStoryboard? {
         return UIStoryboard(name: self.rawValue, bundle: nil)

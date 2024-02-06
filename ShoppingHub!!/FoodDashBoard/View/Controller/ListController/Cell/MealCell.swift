@@ -15,12 +15,15 @@ class MealCell: UITableViewCell {
     @IBOutlet weak var mealImage: UIImageView!
     @IBOutlet weak var lblcookingTime: UILabel!
     @IBOutlet weak var mealIngredients: UILabel!
+    @IBOutlet weak var favouriteButton: UIButton!
     
     var viewModel: MealCellViewModel?{
         didSet{
             configureCell()
         }
     }
+    var coordinator: NavigationCoordinator!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         mealName.font = AppFont.font(with: 15, family: OpenSans.bold)
@@ -29,15 +32,37 @@ class MealCell: UITableViewCell {
         mealIngredients.font = AppFont.font(with: 12, family: OpenSans.light)
     }
     
-    @IBAction func tapAddReceipe(_ sender: Any) {
+    //MARK: Methods
+    func configure(viewModel: MealCellViewModel,
+                   coordinator: NavigationCoordinator) {
+        self.viewModel = viewModel
+        self.coordinator = coordinator
+    }
+    
+    @IBAction func tapAddReceipe(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        viewModel?.updateFavourite(sender.isSelected)
+        addFavourite()
     }
     @IBAction func tapShareMeal(_ sender: Any) {
+        if let url = viewModel?.getYoutubeURL() {
+            coordinator.openRecipe(url: url)
+        }
     }
     
     private func configureCell() {
         if let imageURL = viewModel?.mealImageURL { mealImage.kf.setImage(with: imageURL) }
-        mealName.text = viewModel?.strMeal
+        mealName.setHighlighted(viewModel!.strMeal, with: viewModel!.searchedText)
         mealType.text = viewModel?.strCategory
         mealIngredients.text = viewModel?.ingridients
+        if let isFavourite = viewModel?.isFavourite{
+            favouriteButton.isSelected = isFavourite
+        }
+    }
+    
+    func addFavourite(){
+        if let vm = viewModel {
+            MealDataManager.shared.addFavouriteMeal(mealId: vm.mealId, isFavourite: vm.isFavourite)
+        }
     }
 }

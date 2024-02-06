@@ -62,6 +62,7 @@ struct Meals: Decodable {
     var strMeasure18:String? = ""
     var strMeasure19:String? = ""
     var strMeasure20:String? = ""
+    var isFavourite: Bool = false
         
 }
 
@@ -77,6 +78,8 @@ struct MealList {
     var strTags: String? = ""
     var strYoutube: String? = ""
     var indredients: [IngredientModel]? = []
+    var isFavourite: Bool = false
+    var searchedText: String = ""
     
     init(meal: Meal) {
         self.idMeal = meal.idMeal
@@ -89,6 +92,7 @@ struct MealList {
         self.strTags = meal.strTags
         self.strYoutube = meal.strYoutube
         indredients?.append(contentsOf: (meal.ingredient?.allObjects.map({IngredientModel(value: ($0 as? Ingredients)!)}))!)
+        self.isFavourite = meal.isFavourite
     }
     
 }

@@ -12,6 +12,7 @@ protocol MealDataManagerDelegate {
     var persistentContainer: NSPersistentContainer { get }
     func saveContext ()
     func saveMeals(mealData: FoodListDecodableModel?)
+    func addFavouriteMeal(mealId: String, isFavourite: Bool)
 }
 
 final class MealDataManager: MealDataManagerDelegate {
@@ -70,7 +71,6 @@ final class MealDataManager: MealDataManagerDelegate {
         meal.strTags = mealInfo.strTags
         meal.strYoutube = mealInfo.strYoutube
         meal.modifiedDate = Date()
-        
         updateIngredients(for: meal, with: mealInfo, context: context)
     }
 
@@ -85,6 +85,7 @@ final class MealDataManager: MealDataManagerDelegate {
         meal.strMealThumb = mealInfo.strMealThumb
         meal.strTags = mealInfo.strTags
         meal.strYoutube = mealInfo.strYoutube
+        meal.isFavourite = meal.isFavourite
         meal.modifiedDate = Date()
         
         updateIngredients(for: meal, with: mealInfo, context: context)
@@ -106,4 +107,22 @@ final class MealDataManager: MealDataManagerDelegate {
         }
     }
 
+    func addFavouriteMeal(mealId: String, isFavourite: Bool) {
+        let fetchRequest: NSFetchRequest<Meal> = Meal.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "idMeal == %@", mealId)
+        let context = persistentContainer.viewContext
+        
+        if let existingMeal = try? context.fetch(fetchRequest).first {
+            updateFavouriteStatus(for: existingMeal, isFavourite: isFavourite)
+        }
+        saveContext()
+    }
+    
+    // Add this new method to update isFavourite property
+       private func updateFavouriteStatus(for meal: Meal, isFavourite: Bool) {
+           meal.isFavourite = isFavourite
+           meal.modifiedDate = Date()
+           let dict: [String: Any?] = [observerID: meal.idMeal, observerIsFavt: isFavourite]
+           NotificationCenter.default.post(name: Notification.Name(reloadMealCell), object: dict)
+       }
 }

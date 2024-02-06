@@ -34,6 +34,7 @@ class TopOptionBar: TMBar.ButtonBar {
             $0.layer.cornerRadius = 8
         }
         self.indicator.backgroundColor = .clear
+        self.backgroundView.style = .clear
         
     }
     
