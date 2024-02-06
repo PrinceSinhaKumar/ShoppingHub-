@@ -10,17 +10,22 @@ import Foundation
 class MealSeachViewModel: ListViewModel {
     
     var list: [MealList]?
+    var searchedData: [MealList]?
     
     init(list: [MealList]?) {
         self.list = list
     }
     
     func numberOfRowsInSection() -> Int{
-        return list?.count ?? 0
+        return searchedData?.count ?? 0
     }
     
     func mealAtIndex(index: Int) -> MealList?{
-        return list?[index]
+        return searchedData?[index]
     }
     
+    func searchedData(text: String) {
+        searchedData = list?.filter({$0.strMeal?.lowercased().contains(text.lowercased()) ?? false})
+        searchedData?.indices.forEach { searchedData?[$0].searchedText = text }
+    }
 }

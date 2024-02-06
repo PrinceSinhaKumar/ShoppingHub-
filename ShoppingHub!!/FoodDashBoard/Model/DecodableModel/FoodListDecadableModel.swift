@@ -79,6 +79,7 @@ struct MealList {
     var strYoutube: String? = ""
     var indredients: [IngredientModel]? = []
     var isFavourite: Bool = false
+    var searchedText: String = ""
     
     init(meal: Meal) {
         self.idMeal = meal.idMeal

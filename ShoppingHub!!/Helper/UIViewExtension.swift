@@ -94,3 +94,15 @@ extension Sequence where Iterator.Element: Hashable {
         return self.filter { alreadyAdded.insert($0).inserted }
     }
 }
+
+extension UILabel {
+    func setHighlighted(_ text: String, with search: String) {
+        let attributedText = NSMutableAttributedString(string: text) // 1
+        let range = NSString(string: text).range(of: search, options: .caseInsensitive) // 2
+        let highlightColor = traitCollection.userInterfaceStyle == .light ? UIColor.systemYellow : UIColor.systemOrange // 3
+        let highlightedAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.foregroundColor: highlightColor] // 4
+        
+        attributedText.addAttributes(highlightedAttributes, range: range) // 5
+        self.attributedText = attributedText // 6
+    }
+}

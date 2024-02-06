@@ -15,7 +15,8 @@ struct MealCellViewModel {
     let youtubeURL: String
     let mealId: String
     var isFavourite: Bool
-
+    var searchedText: String
+    
     init(meal: MealList) {
         self.strMeal = meal.strMeal ?? ""
         self.strCategory = meal.strCategory ?? ""
@@ -24,6 +25,7 @@ struct MealCellViewModel {
         self.youtubeURL = meal.strYoutube ?? ""
         self.mealId = meal.idMeal ?? ""
         self.isFavourite = meal.isFavourite
+        self.searchedText = meal.searchedText
     }
     
     func getYoutubeURL() -> URL{

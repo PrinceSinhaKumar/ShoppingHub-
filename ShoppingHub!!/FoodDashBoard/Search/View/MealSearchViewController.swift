@@ -28,6 +28,7 @@ class MealSearchViewController: UIViewController {
         super.viewDidLoad()
         coordinator.configureNavigationItems(for: self)
         tableView.dataSource = mealListDataSource
+        searchTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
 }
 extension MealSearchViewController: UITableViewDelegate {
@@ -36,4 +37,10 @@ extension MealSearchViewController: UITableViewDelegate {
         self.coordinator.next(navState: .mealDetail, arguments: [argumentsKey: viewModel?.mealAtIndex(index: indexPath.row) as Any])
     }
     
+}
+extension MealSearchViewController {
+   @objc func textFieldDidChange(textField: UITextField) {
+       viewModel.searchedData(text: textField.text ?? "")
+       tableView.reloadData()
+    }
 }

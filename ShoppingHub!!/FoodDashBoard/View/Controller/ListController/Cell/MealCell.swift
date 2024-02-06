@@ -52,7 +52,7 @@ class MealCell: UITableViewCell {
     
     private func configureCell() {
         if let imageURL = viewModel?.mealImageURL { mealImage.kf.setImage(with: imageURL) }
-        mealName.text = viewModel?.strMeal
+        mealName.setHighlighted(viewModel!.strMeal, with: viewModel!.searchedText)
         mealType.text = viewModel?.strCategory
         mealIngredients.text = viewModel?.ingridients
         if let isFavourite = viewModel?.isFavourite{
