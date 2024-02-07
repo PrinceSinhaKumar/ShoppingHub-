@@ -32,20 +32,14 @@ class MealSearchViewController: UIViewController {
     }
     
     @IBAction func tapFilterButton(_ sender: Any){
-//        let vc = Storyboard.FoodStoryboard.value?.instantiateViewController(withIdentifier: "MealFilterViewController") as! MealFilterViewController
-//        if let sheet = vc.sheetPresentationController {
-//            sheet.detents = [.medium()]
-//            sheet.largestUndimmedDetentIdentifier = .medium
-//            present(vc, animated: true, completion: nil)
-//        }
-        
-        coordinator.next(navState: .mealFilter, arguments: nil)
+        let dict = [argumentsKey : viewModel.getCategoryList()]
+        coordinator.next(navState: .mealFilter, arguments: dict)
     }
 }
 extension MealSearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.coordinator.next(navState: .mealDetail, arguments: [argumentsKey: viewModel?.mealAtIndex(index: indexPath.row) as Any])
+        self.coordinator.next(navState: .mealDetail, arguments: [argumentsKey: viewModel?.valueAtIndex(index: indexPath.row) as Any])
     }
     
 }

@@ -55,7 +55,7 @@ class RootNavigationCoordinatorImpl: NavigationCoordinator {
         case .mealDetail:
             showMealDetail(arguments: arguments)
         case .mealFilter:
-            filterButtonTapped()
+            gotoFilterController(arguments: arguments)
         default: //example - do nothing
             break
         }
@@ -90,14 +90,16 @@ class RootNavigationCoordinatorImpl: NavigationCoordinator {
         self.rootViewController.navigationController?.present(safariViewController, animated: false)
     }
     
-    func filterButtonTapped() {
-        let list = MealDataProvider.shared.fetchMeals()
-        let vc = registry.makeMealFilterControllerMaker(meal: list.map({MealList(meal: $0)}))
-        if let sheet = vc.sheetPresentationController {
-            sheet.detents = [.medium()]
-            sheet.largestUndimmedDetentIdentifier = .medium
-            rootViewController.navigationController?.present(vc, animated: true, completion: nil)
+    func gotoFilterController(arguments: Dictionary<String, Any>?) {
+        if let categoryList = arguments?[argumentsKey] as? [String] {
+            let vc = registry.makeMealFilterControllerMaker(categoryList: categoryList)
+            if let sheet = vc.sheetPresentationController {
+                sheet.detents = [.medium()]
+                sheet.largestUndimmedDetentIdentifier = .medium
+                rootViewController.navigationController?.present(vc, animated: true, completion: nil)
+            }
         }
+        
     }
 }
 //MARK: Navigation items handling
