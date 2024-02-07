@@ -9,12 +9,19 @@ import Foundation
 import UIKit
 import Kingfisher
 
-class MealListDataSource: NSObject, UITableViewDataSource {
+protocol ListDataSource: UITableViewDataSource {
+    associatedtype cellType
+    var viewModel: any ListViewModel { get }
+    var makeMealCell: cellType { get }//DependencyRegistry.MealCellMaker!
+}
+
+class MealListDataSource: NSObject, ListDataSource {
     
-    let viewModel: ListViewModel
-    fileprivate var makeMealCell: DependencyRegistry.MealCellMaker!
-    
-    init(viewModel: ListViewModel,
+    typealias cellType = DependencyRegistry.MealCellMaker
+    let viewModel: any ListViewModel
+    var makeMealCell: DependencyRegistry.MealCellMaker
+
+    init(viewModel: any ListViewModel,
          makeMealCell:@escaping DependencyRegistry.MealCellMaker)
     {
         self.viewModel = viewModel
@@ -26,7 +33,7 @@ class MealListDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = makeMealCell(tableView, indexPath, viewModel.mealAtIndex(index: indexPath.row)!)
+        let cell = makeMealCell(tableView, indexPath, viewModel.valueAtIndex(index: indexPath.row)! as! MealList)
         return cell
     }
     

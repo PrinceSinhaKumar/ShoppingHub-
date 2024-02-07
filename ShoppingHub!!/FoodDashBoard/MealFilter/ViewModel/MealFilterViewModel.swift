@@ -7,24 +7,22 @@
 
 import Foundation
 
-class MealFilterViewModel {
-    
-    var list: [MealList]?
+class MealFilterViewModel: ListViewModel {
+
+    typealias ValueType = String
+    var list: [String]?
     var selectedCategory: Set<String> = []
     
-    init(list: [MealList]?) {
+    init(list: [String]?) {
         self.list = list
     }
     
-    func getCategoryList() -> [String]?{
-        self.list?.map({$0.strCategory ?? ""}).unique()
+    func numberOfRowsInSection() -> Int {
+        list?.count ?? 0
     }
-    func getCategoryCount() -> Int {
-        return getCategoryList()?.count ?? 0
-    }
-   
-    func getCategoryAtIndex(index: Int) -> String? {
-        return getCategoryList()?[index]
+    
+    func valueAtIndex(index: Int) -> String? {
+        list?[index]
     }
     
     func saveSelectedCategory(_ category: String){

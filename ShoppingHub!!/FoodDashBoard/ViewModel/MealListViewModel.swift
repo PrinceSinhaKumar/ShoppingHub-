@@ -8,9 +8,10 @@
 import Foundation
 
 protocol ListViewModel {
-    var list: [MealList]? { get set }
+    associatedtype ValueType
+    var list: [ValueType]? { get set }
     func numberOfRowsInSection() -> Int
-    func mealAtIndex(index: Int) -> MealList?
+    func valueAtIndex(index: Int) -> ValueType?
     func getIndex(notification: Notification) -> (Int?, Bool?)
     func moveListItem(index: Int, insertAt: Int)
 }
@@ -22,6 +23,8 @@ extension ListViewModel {
 
 class MealListViewModel: ListViewModel {
     
+    typealias ValueType = MealList
+    
     var list: [MealList]?
     
     init(list: [MealList]?) {
@@ -32,7 +35,7 @@ class MealListViewModel: ListViewModel {
         return list?.count ?? 0
     }
     
-    func mealAtIndex(index: Int) -> MealList?{
+    func valueAtIndex(index: Int) -> MealList?{
         return list?[index]
     }
     
@@ -47,7 +50,7 @@ class MealListViewModel: ListViewModel {
     }
     
     func moveListItem(index: Int, insertAt: Int) {
-        if let meal = mealAtIndex(index: index) {
+        if let meal = valueAtIndex(index: index) {
             list?.remove(at: index)
             list?.insert(meal, at: insertAt)
         }

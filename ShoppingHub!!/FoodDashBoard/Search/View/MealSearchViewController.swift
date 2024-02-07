@@ -32,13 +32,14 @@ class MealSearchViewController: UIViewController {
     }
     
     @IBAction func tapFilterButton(_ sender: Any){
-        coordinator.next(navState: .mealFilter, arguments: nil)
+        let dict = [argumentsKey : viewModel.getCategoryList()]
+        coordinator.next(navState: .mealFilter, arguments: dict)
     }
 }
 extension MealSearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.coordinator.next(navState: .mealDetail, arguments: [argumentsKey: viewModel?.mealAtIndex(index: indexPath.row) as Any])
+        self.coordinator.next(navState: .mealDetail, arguments: [argumentsKey: viewModel?.valueAtIndex(index: indexPath.row) as Any])
     }
     
 }

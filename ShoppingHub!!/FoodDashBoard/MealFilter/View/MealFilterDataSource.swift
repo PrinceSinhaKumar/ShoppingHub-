@@ -8,23 +8,25 @@
 import Foundation
 import UIKit
 
-class MealFilterDataSource: NSObject, UITableViewDataSource {
+class MealFilterDataSource: NSObject, ListDataSource {
     
-    var viewModel: MealFilterViewModel
-    fileprivate var makeMealFilterCell: DependencyRegistry.MealFilterCellMaker
+    typealias cellType = DependencyRegistry.MealFilterCellMaker
+    var viewModel: any ListViewModel
+    var makeMealCell: cellType
+
 
     init(viewModel: MealFilterViewModel, 
-         makeMealFilterCell:@escaping DependencyRegistry.MealFilterCellMaker) {
+         makeMealFilterCell:@escaping cellType) {
         self.viewModel = viewModel
-        self.makeMealFilterCell = makeMealFilterCell
+        self.makeMealCell = makeMealFilterCell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.getCategoryCount()
+        return viewModel.numberOfRowsInSection()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = makeMealFilterCell(tableView, indexPath, self.viewModel.getCategoryAtIndex(index: indexPath.row)!)
+        let cell = makeMealCell(tableView, indexPath, self.viewModel.valueAtIndex(index: indexPath.row) as! String)
         return cell
     }
     

@@ -38,6 +38,7 @@ class MealFilterTableViewCell: UITableViewCell {
         categorySelection(status: model.selectedStatus)
     }
 }
+//CategoryModel
 class MealFilterCellViewModel {
     
     var categoryName: String
