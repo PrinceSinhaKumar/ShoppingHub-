@@ -12,7 +12,7 @@ class MealFilterTableViewCell: UITableViewCell {
     @IBOutlet weak var selectCategory: UIImageView!
     @IBOutlet weak var categoryLabel: UILabel!
   
-    var viewModel: MealFilterCellViewModel? {
+    var viewModel: CategoryModel? {
         didSet{
             configure(model: viewModel!)
         }
@@ -33,18 +33,9 @@ class MealFilterTableViewCell: UITableViewCell {
     }
     
     //MARK: Methods
-    func configure(model: MealFilterCellViewModel) {
+    func configure(model: CategoryModel) {
         categoryLabel.text = model.categoryName
         categorySelection(status: model.selectedStatus)
     }
 }
-//CategoryModel
-class MealFilterCellViewModel {
-    
-    var categoryName: String
-    var selectedStatus: Bool = false
-    
-    init(categoryName: String) {
-        self.categoryName = categoryName
-    }
-}
+

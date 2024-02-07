@@ -26,8 +26,11 @@ class MealFilterDataSource: NSObject, ListDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = makeMealCell(tableView, indexPath, self.viewModel.valueAtIndex(index: indexPath.row) as! String)
-        return cell
+        if let category = self.viewModel.valueAtIndex(index: indexPath.row) as? CategoryModel {
+            let cell = makeMealCell(tableView, indexPath, category)
+            return cell
+        }
+        return UITableViewCell()
     }
     
     

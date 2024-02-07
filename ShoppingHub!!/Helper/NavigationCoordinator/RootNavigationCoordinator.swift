@@ -91,7 +91,7 @@ class RootNavigationCoordinatorImpl: NavigationCoordinator {
     }
     
     func gotoFilterController(arguments: Dictionary<String, Any>?) {
-        if let categoryList = arguments?[argumentsKey] as? [String] {
+        if let categoryList = arguments?[argumentsKey] as? [CategoryModel] {
             let vc = registry.makeMealFilterControllerMaker(categoryList: categoryList)
             if let sheet = vc.sheetPresentationController {
                 sheet.detents = [.medium()]

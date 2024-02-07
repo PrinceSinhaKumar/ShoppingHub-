@@ -29,7 +29,17 @@ class MealSeachViewModel: ListViewModel {
         searchedData?.indices.forEach { searchedData?[$0].searchedText = text }
     }
     
-    func getCategoryList() -> [String]? {
-        return list?.map({$0.strCategory ?? ""}).unique()
+    func getCategoryList() -> [CategoryModel]? {
+        return list?.map({CategoryModel(categoryName: $0.strCategory ?? "" , selectedStatus: false)})
     }
+   
+    func filteredMealList(category: [String]) {
+        searchedData = list?.filter { meal in
+            guard let mealCategory = meal.strCategory else {
+                return false
+            }
+            return category.contains(mealCategory)
+        }
+    }
+
 }

@@ -9,11 +9,11 @@ import Foundation
 
 class MealFilterViewModel: ListViewModel {
 
-    typealias ValueType = String
-    var list: [String]?
+    typealias ValueType = CategoryModel
+    var list: [CategoryModel]?
     var selectedCategory: Set<String> = []
     
-    init(list: [String]?) {
+    init(list: [CategoryModel]) {
         self.list = list
     }
     
@@ -21,7 +21,7 @@ class MealFilterViewModel: ListViewModel {
         list?.count ?? 0
     }
     
-    func valueAtIndex(index: Int) -> String? {
+    func valueAtIndex(index: Int) -> ValueType? {
         list?[index]
     }
     
@@ -31,5 +31,21 @@ class MealFilterViewModel: ListViewModel {
     
     func removeSelectedCategory(_ category: String){
         selectedCategory.remove(category)
+    }
+    
+    func getSelectedCategory() -> [String]{
+       return Array(selectedCategory)
+    }
+}
+
+//CategoryModel
+class CategoryModel {
+    
+    var categoryName: String
+    var selectedStatus: Bool = false
+    
+    init(categoryName: String, selectedStatus: Bool) {
+        self.categoryName = categoryName
+        self.selectedStatus = selectedStatus
     }
 }
