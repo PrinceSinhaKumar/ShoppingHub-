@@ -32,13 +32,6 @@ class MealSearchViewController: UIViewController {
     }
     
     @IBAction func tapFilterButton(_ sender: Any){
-//        let vc = Storyboard.FoodStoryboard.value?.instantiateViewController(withIdentifier: "MealFilterViewController") as! MealFilterViewController
-//        if let sheet = vc.sheetPresentationController {
-//            sheet.detents = [.medium()]
-//            sheet.largestUndimmedDetentIdentifier = .medium
-//            present(vc, animated: true, completion: nil)
-//        }
-        
         coordinator.next(navState: .mealFilter, arguments: nil)
     }
 }
