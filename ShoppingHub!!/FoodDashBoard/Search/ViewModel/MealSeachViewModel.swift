@@ -10,7 +10,8 @@ import Foundation
 class MealSeachViewModel: ListViewModel {
     typealias ValueType = MealList
     var list: [ValueType]?
-    var searchedData: [ValueType]?
+    private(set) var searchedData: [ValueType]?
+    private(set) var selectedCategory: [CategoryModel] = []
     
     init(list: [ValueType]?) {
         self.list = list
@@ -26,11 +27,25 @@ class MealSeachViewModel: ListViewModel {
     
     func searchedData(text: String) {
         searchedData = list?.filter({$0.strMeal?.lowercased().contains(text.lowercased()) ?? false})
+        if selectedCategory.count > 0 {
+            searchedData = searchedData?.filter({ meal in
+                return selectedCategory.contains(where: {$0.categoryName == meal.strCategory })
+            })
+        }
         searchedData?.indices.forEach { searchedData?[$0].searchedText = text }
     }
     
     func getCategoryList() -> [CategoryModel]? {
-        return list?.map({CategoryModel(categoryName: $0.strCategory ?? "" , selectedStatus: false)})
+        if let categorys = list?.map({CategoryModel(categoryName: $0.strCategory ?? "" , selectedStatus: false)}).unique() {
+            return categorys.map { model in
+                let newData = model
+                if selectedCategory.contains(where: {$0.categoryName == model.categoryName }) {
+                    newData.selectedStatus = true
+                }
+                return newData
+            }
+        }
+        return nil
     }
    
     func filteredMealList(category: [String]) {
@@ -42,4 +57,17 @@ class MealSeachViewModel: ListViewModel {
         }
     }
 
+    func saveSelectedCategory(selected categorys: [CategoryModel]) {
+        guard selectedCategory.count > 0 else {
+            selectedCategory.append(contentsOf: categorys)
+            return
+        }
+        let newCategory = categorys.compactMap { category in
+            if selectedCategory.contains(where: { $0.categoryName != category.categoryName }) {
+                return category
+            }
+            return nil
+        }
+        selectedCategory.append(contentsOf: newCategory)
+    }
 }

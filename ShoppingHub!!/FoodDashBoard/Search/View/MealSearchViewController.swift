@@ -8,8 +8,6 @@
 import UIKit
 
 class MealSearchViewController: UIViewController {
-    
-    
 
     //MARK: Outlet
     @IBOutlet weak var tableView: UITableView!
@@ -34,18 +32,8 @@ class MealSearchViewController: UIViewController {
     }
     
     @IBAction func tapFilterButton(_ sender: Any){
-        /*let dict = [argumentsKey : viewModel.getCategoryList()]
+        let dict:Dictionary<String, Any> = [argumentsKey : viewModel.getCategoryList() as Any]
         coordinator.next(navState: .mealFilter, arguments: dict)
-        */
-        if let category = viewModel.getCategoryList() {
-            let filterController = appDelegate.dependencyRegistry.makeMealFilterControllerMaker(categoryList: category)
-            filterController.delegate = self
-            if let sheet = filterController.sheetPresentationController {
-                sheet.detents = [.medium()]
-                sheet.largestUndimmedDetentIdentifier = .medium
-                self.present(filterController, animated: true, completion: nil)
-            }
-        }
     }
 }
 extension MealSearchViewController: UITableViewDelegate {
@@ -56,13 +44,14 @@ extension MealSearchViewController: UITableViewDelegate {
     
 }
 extension MealSearchViewController: GetCategoryListDelegate {
+
    @objc func textFieldDidChange(textField: UITextField) {
        viewModel.searchedData(text: textField.text ?? "")
        tableView.reloadData()
     }
     
-    func getCategoryList(category: [String]) {
-        viewModel.filteredMealList(category: category)
+    func getCategoryList(category: [CategoryModel]) {
+        viewModel.saveSelectedCategory(selected: category)
         tableView.reloadData()
     }
 }

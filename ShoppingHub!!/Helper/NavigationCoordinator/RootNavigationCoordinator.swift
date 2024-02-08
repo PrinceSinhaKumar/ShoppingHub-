@@ -11,7 +11,7 @@ import Foundation
 
 protocol NavigationCoordinator: AnyObject {
     func next(navState: NavigationState,arguments: Dictionary<String, Any>?)
-    func movingBack(navState: NavigationState)
+    func movingBack(navState: NavigationState,arguments: Dictionary<String, Any>?)
     func openRecipe(url: URL)
     func configureNavigationItems(for controller: UIViewController)
 }
@@ -39,10 +39,10 @@ class RootNavigationCoordinatorImpl: NavigationCoordinator {
         configureNavigationItems(for: rootViewController)
     }
     
-    func movingBack(navState: NavigationState) {
+    func movingBack(navState: NavigationState, arguments: Dictionary<String, Any>?) {
         switch navState {
-        case .login: //not possible to move back - do nothing
-            break
+        case .mealFilter: //not possible to move back - do nothing
+            self.movingBackFromFilter(arguments: arguments)
         default: //example - do nothing
             break
         }
@@ -93,13 +93,22 @@ class RootNavigationCoordinatorImpl: NavigationCoordinator {
     func gotoFilterController(arguments: Dictionary<String, Any>?) {
         if let categoryList = arguments?[argumentsKey] as? [CategoryModel] {
             let vc = registry.makeMealFilterControllerMaker(categoryList: categoryList)
+            vc.delegate = rootViewController.navigationController?.visibleViewController as? MealSearchViewController
             if let sheet = vc.sheetPresentationController {
                 sheet.detents = [.medium()]
                 sheet.largestUndimmedDetentIdentifier = .medium
                 rootViewController.navigationController?.present(vc, animated: true, completion: nil)
             }
         }
-        
+    }
+    
+    func movingBackFromFilter(arguments: Dictionary<String, Any>?) {
+       let vc = rootViewController.navigationController?.visibleViewController as? MealFilterViewController
+        rootViewController.dismiss(animated: true) {
+            if let categoryList = arguments?[argumentsKey] as? [CategoryModel] {
+                vc?.delegate?.getCategoryList(category: categoryList)
+            }
+        }
     }
 }
 //MARK: Navigation items handling

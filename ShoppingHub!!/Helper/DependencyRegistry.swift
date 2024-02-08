@@ -182,7 +182,7 @@ class DependencyRegistryImpl: DependencyRegistry {
         container.register(MealFilterViewController.self) { (r, categoryList: [CategoryModel]) in
             let vc = Storyboard.FoodStoryboard.value?.instantiateViewController(withIdentifier:   "MealFilterViewController") as! MealFilterViewController
             let viewModel = r.resolve(MealFilterViewModel.self,  argument: categoryList)!
-            vc.configure(viewModel: viewModel)
+            vc.configure(viewModel: viewModel, coordinator: self.navigationCoordinator)
             return vc
         }
     }

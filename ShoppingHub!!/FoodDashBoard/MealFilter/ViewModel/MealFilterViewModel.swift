@@ -11,7 +11,7 @@ class MealFilterViewModel: ListViewModel {
 
     typealias ValueType = CategoryModel
     var list: [CategoryModel]?
-    var selectedCategory: Set<String> = []
+    var selectedCategory: [CategoryModel] = []
     
     init(list: [CategoryModel]) {
         self.list = list
@@ -25,21 +25,27 @@ class MealFilterViewModel: ListViewModel {
         list?[index]
     }
     
-    func saveSelectedCategory(_ category: String){
-        selectedCategory.insert(category)
+    func saveSelectedCategory(_ category: CategoryModel){
+        selectedCategory.append(category)
     }
     
-    func removeSelectedCategory(_ category: String){
-        selectedCategory.remove(category)
+    func removeSelectedCategory(_ category: CategoryModel){
+        if let index = selectedCategory.firstIndex(where: {$0.categoryName == category.categoryName}) {
+            selectedCategory.remove(at: index)
+        }
     }
-    
-    func getSelectedCategory() -> [String]{
-       return Array(selectedCategory)
-    }
+
 }
 
 //CategoryModel
-class CategoryModel {
+class CategoryModel: Hashable {
+    
+    static func == (lhs: CategoryModel, rhs: CategoryModel) -> Bool {
+        return lhs.categoryName == rhs.categoryName
+    }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(categoryName)
+    }
     
     var categoryName: String
     var selectedStatus: Bool = false
