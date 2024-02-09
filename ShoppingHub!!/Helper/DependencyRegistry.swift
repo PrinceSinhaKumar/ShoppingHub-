@@ -140,6 +140,10 @@ class DependencyRegistryImpl: DependencyRegistry {
        
         container.register(LoginViewController.self) { r in
             let vc = Storyboard.Main.value?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            let viewModel = self.container.resolve(LoginViewModel.self)!
+            let coordinator = self.makeRootNavigationCoordinator(rootViewController: vc)
+            vc.initialise(viewModel: viewModel,navigationCoordinator: coordinator)
+
             return vc
         }
         
@@ -167,7 +171,7 @@ class DependencyRegistryImpl: DependencyRegistry {
             let viewModel = r.resolve(MealDetailViewModel.self, argument: meal)!
             let vc = Storyboard.MealDetailStoryboard.value?.instantiateViewController(withIdentifier: "MealViewController") as! MealViewController
             self.navigationCoordinator = self.makeRootNavigationCoordinator(rootViewController: vc)
-            vc.configure(viewModel: viewModel, mealDetailViewControllerMaker: self.mealDetailViewControllerMaker, ingredientDataSource: r.resolve(IngredientDataSource.self)!)
+            vc.configure(viewModel: viewModel, mealDetailViewControllerMaker: self.mealDetailViewControllerMaker, ingredientDataSource: r.resolve(IngredientDataSource.self)!, coordinator: self.navigationCoordinator)
             return vc
         }
 

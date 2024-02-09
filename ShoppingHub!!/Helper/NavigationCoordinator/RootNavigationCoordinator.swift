@@ -36,7 +36,6 @@ class RootNavigationCoordinatorImpl: NavigationCoordinator {
         if rootViewController is FoodTabController || rootViewController is LoginViewController {
             makeRootController(controller: rootViewController)
         }
-        configureNavigationItems(for: rootViewController)
     }
     
     func movingBack(navState: NavigationState, arguments: Dictionary<String, Any>?) {
@@ -67,6 +66,10 @@ class RootNavigationCoordinatorImpl: NavigationCoordinator {
         }
     }
     
+    func showLoginTab() {
+        self.makeRootController(controller: self.registry.makeLoginViewController())
+    }
+    
     func notifyNilArguments() {
         print("notify user of error")
     }
@@ -80,7 +83,7 @@ class RootNavigationCoordinatorImpl: NavigationCoordinator {
     fileprivate func showMealDetail(arguments: Dictionary<String, Any>?){
         if let meals = arguments?[argumentsKey] as? MealList {
             let vc = registry.mealViewControllerMaker(meal: meals)
-            self.rootViewController.navigationController?.pushViewController(vc, animated: false)
+            self.rootViewController.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
@@ -119,23 +122,28 @@ extension RootNavigationCoordinatorImpl {
             // Add navigation items specific to FoodTabController
             let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonTapped))
             controller.navigationItem.rightBarButtonItem = searchButton
-        case is MealSearchViewController:
-            let closeButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeButtonTapped))
-            closeButton.title = "Search"
-            controller.navigationItem.leftBarButtonItem = closeButton
+            let logOutButton = UIBarButtonItem(image: .init(systemName: "lock.open.fill"), style: .plain, target: self, action: #selector(logOutButtonTapped))
+            controller.navigationItem.leftBarButtonItem = logOutButton
         default:
-            // Handle other controllers if needed
-            break
+            let closeButton = UIBarButtonItem(image: .init(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(closeButtonTapped))
+            controller.navigationItem.leftBarButtonItem = closeButton
         }
     }
     
     @objc func searchButtonTapped() {
         let list = MealDataProvider.shared.fetchMeals()
         let vc = registry.mealSearchControllerMaker(meal: list.map({MealList(meal: $0)}))
-        rootViewController.navigationController?.pushViewController(vc, animated: false)
+        rootViewController.navigationController?.pushViewController(vc, animated: true)
     }
 
     @objc func closeButtonTapped() {
-        rootViewController.navigationController?.popViewController(animated: false)
+        rootViewController.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func logOutButtonTapped() {
+        let mealDB = registry.container.resolve(MealDataManagerDelegate.self)
+        mealDB?.deleteAllMealFromDB()
+        UserDefaults.standard.removeObject(forKey: uToken)
+        showLoginTab()
     }
 }

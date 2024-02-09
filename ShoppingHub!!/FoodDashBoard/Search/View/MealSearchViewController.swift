@@ -52,6 +52,9 @@ extension MealSearchViewController: GetCategoryListDelegate {
     
     func getCategoryList(category: [CategoryModel]) {
         viewModel.saveSelectedCategory(selected: category)
+        if let text = searchTextField.text {
+            viewModel.searchedData(text: text)
+        }
         tableView.reloadData()
     }
 }

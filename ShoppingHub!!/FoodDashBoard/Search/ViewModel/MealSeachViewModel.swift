@@ -59,7 +59,7 @@ class MealSeachViewModel: ListViewModel {
 
     func saveSelectedCategory(selected categorys: [CategoryModel]) {
         guard selectedCategory.count > 0 else {
-            selectedCategory.append(contentsOf: categorys)
+            selectedCategory = categorys
             return
         }
         let newCategory = categorys.compactMap { category in
@@ -68,6 +68,6 @@ class MealSeachViewModel: ListViewModel {
             }
             return nil
         }
-        selectedCategory.append(contentsOf: newCategory)
+        selectedCategory = newCategory
     }
 }

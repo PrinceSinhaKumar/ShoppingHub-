@@ -15,6 +15,7 @@ class MealFilterViewModel: ListViewModel {
     
     init(list: [CategoryModel]) {
         self.list = list
+        self.selectedCategory = list.filter({$0.selectedStatus})
     }
     
     func numberOfRowsInSection() -> Int {

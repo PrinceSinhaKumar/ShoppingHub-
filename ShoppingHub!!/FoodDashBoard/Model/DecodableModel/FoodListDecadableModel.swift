@@ -62,7 +62,6 @@ struct Meals: Decodable {
     var strMeasure18:String? = ""
     var strMeasure19:String? = ""
     var strMeasure20:String? = ""
-    var isFavourite: Bool = false
         
 }
 

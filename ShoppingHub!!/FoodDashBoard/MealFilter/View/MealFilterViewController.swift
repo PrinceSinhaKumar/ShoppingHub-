@@ -34,15 +34,13 @@ class MealFilterViewController: UIViewController{
     }
     
     @IBAction func closeButtonTapped(_ sender: UIButton) {
-        self.dismiss(animated: true)
+        coordinator.movingBack(navState: .mealFilter, arguments: nil)
     }
     @IBAction func resetButtonTapped(_ sender: UIButton) {
-        self.dismiss(animated: true)
+        let dict:Dictionary<String, Any> = [argumentsKey: []]
+        coordinator.movingBack(navState: .mealFilter, arguments: dict)
     }
     @IBAction func applyButtonTapped(_ sender: UIButton) {
-//        self.dismiss(animated: true) {
-//            self.delegate?.getCategoryList(category: self.viewModel.selectedCategory)
-//        }
         let dict:Dictionary<String, Any> = [argumentsKey: self.viewModel.selectedCategory]
         coordinator.movingBack(navState: .mealFilter, arguments: dict)
     }
@@ -52,16 +50,16 @@ extension MealFilterViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? MealFilterTableViewCell {
-            cell.categorySelection(status: true)
-            viewModel.saveSelectedCategory(viewModel.valueAtIndex(index: indexPath.row)!)
+            if viewModel.valueAtIndex(index: indexPath.row)?.selectedStatus ?? false {
+                cell.categorySelection(status: false)
+                viewModel.removeSelectedCategory(viewModel.valueAtIndex(index: indexPath.row)!)
+            } else {
+                cell.categorySelection(status: true)
+                viewModel.saveSelectedCategory(viewModel.valueAtIndex(index: indexPath.row)!)
+            }
+            
         }
     }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? MealFilterTableViewCell {
-            cell.categorySelection(status: false)
-            viewModel.removeSelectedCategory(viewModel.valueAtIndex(index: indexPath.row)!)
-        }
-    }
 }
 
