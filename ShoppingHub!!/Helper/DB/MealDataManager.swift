@@ -13,6 +13,8 @@ protocol MealDataManagerDelegate {
     func saveContext ()
     func saveMeals(mealData: FoodListDecodableModel?)
     func addFavouriteMeal(mealId: String, isFavourite: Bool)
+    func deleteMealFromDB(mealId: String)
+    func deleteAllMealFromDB()
 }
 
 final class MealDataManager: MealDataManagerDelegate {
@@ -60,7 +62,7 @@ final class MealDataManager: MealDataManagerDelegate {
         
         saveContext()
     }
-
+    
     private func updateMeal(_ meal: Meal, with mealInfo: Meals, context: NSManagedObjectContext) {
         meal.strMeal = mealInfo.strMeal
         meal.strDrinkAlternate = mealInfo.strDrinkAlternate
@@ -73,7 +75,7 @@ final class MealDataManager: MealDataManagerDelegate {
         meal.modifiedDate = Date()
         updateIngredients(for: meal, with: mealInfo, context: context)
     }
-
+    
     private func createNewMeal(with mealInfo: Meals, context: NSManagedObjectContext) {
         let meal = Meal(context: context)
         meal.idMeal = mealInfo.idMeal
@@ -85,12 +87,12 @@ final class MealDataManager: MealDataManagerDelegate {
         meal.strMealThumb = mealInfo.strMealThumb
         meal.strTags = mealInfo.strTags
         meal.strYoutube = mealInfo.strYoutube
-        meal.isFavourite = meal.isFavourite
+        meal.isFavourite = false
         meal.modifiedDate = Date()
         
         updateIngredients(for: meal, with: mealInfo, context: context)
     }
-
+    
     private func updateIngredients(for meal: Meal, with mealInfo: Meals, context: NSManagedObjectContext) {
         let ingredients = Mirror(reflecting: mealInfo).children.filter { $0.label?.starts(with: "strIngredient") ?? false }
         let measures = Mirror(reflecting: mealInfo).children.filter { $0.label?.starts(with: "strMeasure") ?? false }
@@ -106,7 +108,7 @@ final class MealDataManager: MealDataManagerDelegate {
             }
         }
     }
-
+    
     func addFavouriteMeal(mealId: String, isFavourite: Bool) {
         let fetchRequest: NSFetchRequest<Meal> = Meal.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "idMeal == %@", mealId)
@@ -119,10 +121,32 @@ final class MealDataManager: MealDataManagerDelegate {
     }
     
     // Add this new method to update isFavourite property
-       private func updateFavouriteStatus(for meal: Meal, isFavourite: Bool) {
-           meal.isFavourite = isFavourite
-           meal.modifiedDate = Date()
-           let dict: [String: Any?] = [observerID: meal.idMeal, observerIsFavt: isFavourite]
-           NotificationCenter.default.post(name: Notification.Name(reloadMealCell), object: dict)
-       }
+    private func updateFavouriteStatus(for meal: Meal, isFavourite: Bool) {
+        meal.isFavourite = isFavourite
+        meal.modifiedDate = Date()
+        let dict: [String: Any?] = [observerID: meal.idMeal, observerIsFavt: isFavourite]
+        NotificationCenter.default.post(name: Notification.Name(reloadMealCell), object: dict)
+    }
+    
+    func deleteMealFromDB(mealId: String) {
+        let fetchRequest: NSFetchRequest<Meal> = Meal.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "idMeal == %@", mealId)
+        let context = persistentContainer.viewContext
+        
+        if let mealToDelete = try? context.fetch(fetchRequest).first {
+            context.delete(mealToDelete)
+            saveContext()
+        }
+    }
+    
+    func deleteAllMealFromDB() {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Meal")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try persistentContainer.persistentStoreCoordinator.execute(deleteRequest, with: persistentContainer.viewContext)
+        } catch {
+            print("Failed to delete all data: \(error)")
+        }
+    }
 }

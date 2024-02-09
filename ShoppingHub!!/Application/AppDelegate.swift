@@ -67,11 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let _ = UserDefaults.standard.value(forKey: uToken) {
             _ = dependencyRegistry.makeFoodTabController()
         } else {
-            let loginViewController = dependencyRegistry.makeLoginViewController()
-            let viewModel = dependencyRegistry.container.resolve(LoginViewModel.self)!
-            let coordinator = dependencyRegistry.makeRootNavigationCoordinator(rootViewController: loginViewController)
-            loginViewController.initialise(viewModel: viewModel,
-                                           navigationCoordinator: coordinator)
+            _ = dependencyRegistry.makeLoginViewController()
         }
     }
 

@@ -30,17 +30,31 @@ class MealSearchViewController: UIViewController {
         tableView.dataSource = mealListDataSource
         searchTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
+    
+    @IBAction func tapFilterButton(_ sender: Any){
+        let dict:Dictionary<String, Any> = [argumentsKey : viewModel.getCategoryList() as Any]
+        coordinator.next(navState: .mealFilter, arguments: dict)
+    }
 }
 extension MealSearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.coordinator.next(navState: .mealDetail, arguments: [argumentsKey: viewModel?.mealAtIndex(index: indexPath.row) as Any])
+        self.coordinator.next(navState: .mealDetail, arguments: [argumentsKey: viewModel?.valueAtIndex(index: indexPath.row) as Any])
     }
     
 }
-extension MealSearchViewController {
+extension MealSearchViewController: GetCategoryListDelegate {
+
    @objc func textFieldDidChange(textField: UITextField) {
        viewModel.searchedData(text: textField.text ?? "")
        tableView.reloadData()
+    }
+    
+    func getCategoryList(category: [CategoryModel]) {
+        viewModel.saveSelectedCategory(selected: category)
+        if let text = searchTextField.text {
+            viewModel.searchedData(text: text)
+        }
+        tableView.reloadData()
     }
 }

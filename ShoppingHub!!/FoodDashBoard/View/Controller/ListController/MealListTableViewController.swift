@@ -67,7 +67,7 @@ class MealListTableViewController: UIViewController {
 extension MealListTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.coordinator.next(navState: .mealDetail, arguments: [argumentsKey: viewModel?.mealAtIndex(index: indexPath.row) as Any])
+        self.coordinator.next(navState: .mealDetail, arguments: [argumentsKey: viewModel?.valueAtIndex(index: indexPath.row) as Any])
     }
     
 }

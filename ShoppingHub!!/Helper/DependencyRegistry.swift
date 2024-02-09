@@ -39,6 +39,12 @@ protocol DependencyRegistry {
     typealias MealSearchControllerMaker = ([MealList]) -> MealSearchViewController
     func mealSearchControllerMaker(meal: [MealList]) -> MealSearchViewController
 
+    typealias MealFilterControllerMaker = ([String]) -> MealFilterViewController
+    func makeMealFilterControllerMaker(categoryList: [CategoryModel]) -> MealFilterViewController
+    
+    typealias MealFilterCellMaker = (UITableView, IndexPath, CategoryModel) -> MealFilterTableViewCell
+    func makeMealFilterCellMaker(for tableView: UITableView, at indexPath: IndexPath, category: CategoryModel) -> MealFilterTableViewCell
+
 }
 
 class DependencyRegistryImpl: DependencyRegistry {
@@ -123,12 +129,21 @@ class DependencyRegistryImpl: DependencyRegistry {
         container.register(MealSeachViewModel.self) { (r, meal: [MealList]) in
             MealSeachViewModel(list: meal)
         }
+        
+        container.register(MealFilterViewModel.self) { (r, categoryList: [CategoryModel]) in
+            MealFilterViewModel(list: categoryList)
+        }
+      
     }
     
     func registerViewControllers() {
        
         container.register(LoginViewController.self) { r in
             let vc = Storyboard.Main.value?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            let viewModel = self.container.resolve(LoginViewModel.self)!
+            let coordinator = self.makeRootNavigationCoordinator(rootViewController: vc)
+            vc.initialise(viewModel: viewModel,navigationCoordinator: coordinator)
+
             return vc
         }
         
@@ -156,7 +171,7 @@ class DependencyRegistryImpl: DependencyRegistry {
             let viewModel = r.resolve(MealDetailViewModel.self, argument: meal)!
             let vc = Storyboard.MealDetailStoryboard.value?.instantiateViewController(withIdentifier: "MealViewController") as! MealViewController
             self.navigationCoordinator = self.makeRootNavigationCoordinator(rootViewController: vc)
-            vc.configure(viewModel: viewModel, mealDetailViewControllerMaker: self.mealDetailViewControllerMaker, ingredientDataSource: r.resolve(IngredientDataSource.self)!)
+            vc.configure(viewModel: viewModel, mealDetailViewControllerMaker: self.mealDetailViewControllerMaker, ingredientDataSource: r.resolve(IngredientDataSource.self)!, coordinator: self.navigationCoordinator)
             return vc
         }
 
@@ -164,6 +179,13 @@ class DependencyRegistryImpl: DependencyRegistry {
             let vc = Storyboard.FoodStoryboard.value?.instantiateViewController(withIdentifier: "MealSearchViewController") as! MealSearchViewController
             let viewModel = r.resolve(MealSeachViewModel.self, argument: meal)!
             self.navigationCoordinator = self.makeRootNavigationCoordinator(rootViewController: vc)
+            vc.configure(viewModel: viewModel, coordinator: self.navigationCoordinator)
+            return vc
+        }
+        
+        container.register(MealFilterViewController.self) { (r, categoryList: [CategoryModel]) in
+            let vc = Storyboard.FoodStoryboard.value?.instantiateViewController(withIdentifier:   "MealFilterViewController") as! MealFilterViewController
+            let viewModel = r.resolve(MealFilterViewModel.self,  argument: categoryList)!
             vc.configure(viewModel: viewModel, coordinator: self.navigationCoordinator)
             return vc
         }
@@ -212,6 +234,16 @@ class DependencyRegistryImpl: DependencyRegistry {
     
     func mealSearchControllerMaker(meal: [MealList]) -> MealSearchViewController {
         container.resolve(MealSearchViewController.self, argument: meal)!
+    }
+    
+    func makeMealFilterControllerMaker(categoryList: [CategoryModel]) -> MealFilterViewController {
+        container.resolve(MealFilterViewController.self, argument: categoryList)!
+    }
+    
+    func makeMealFilterCellMaker(for tableView: UITableView, at indexPath: IndexPath, category: CategoryModel) -> MealFilterTableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MealFilterTableViewCell", for: indexPath) as! MealFilterTableViewCell
+        cell.viewModel = category
+        return cell
     }
 }
 

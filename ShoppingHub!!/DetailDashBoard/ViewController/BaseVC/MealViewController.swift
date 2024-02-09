@@ -16,20 +16,22 @@ class MealViewController: UIViewController {
     fileprivate var viewModel: MealDetailViewModel?
     fileprivate var mealDetailViewControllerMaker: DependencyRegistry.MealDetailViewControllerMaker?
     fileprivate var ingredientDataSource: IngredientDataSource?
+    fileprivate var coordinator: NavigationCoordinator?
     
     func configure(viewModel: MealDetailViewModel,
                    mealDetailViewControllerMaker: @escaping DependencyRegistry.MealDetailViewControllerMaker,
-                   ingredientDataSource: IngredientDataSource) {
+                   ingredientDataSource: IngredientDataSource,
+                   coordinator: NavigationCoordinator) {
         self.viewModel = viewModel
         self.mealDetailViewControllerMaker = mealDetailViewControllerMaker
         self.ingredientDataSource = ingredientDataSource
+        self.coordinator = coordinator
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         mealImageView.kf.setImage(with: URL(string: viewModel?.getMeal().strMealThumb ?? ""))
+        coordinator?.configureNavigationItems(for: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

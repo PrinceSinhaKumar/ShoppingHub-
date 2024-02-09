@@ -41,6 +41,7 @@ class FoodTabController: UIViewController {
         view.insertSubview(myGradientView, at: 0)
         // dynamically updating the color set
         myGradientView.colorSet = [AppColor.AppOrange.color!, AppColor.AppWhiteSecond.color!]
+        navigationCoordinator?.configureNavigationItems(for: self)
     }
    
 }

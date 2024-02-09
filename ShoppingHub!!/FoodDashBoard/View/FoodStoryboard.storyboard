@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -161,14 +160,17 @@
                                         <real key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="tapFilterButton:" destination="qTc-b7-5IY" eventType="touchUpInside" id="cLO-Z7-VwK"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ke0-Gj-ZHa">
                                 <rect key="frame" x="0.0" y="129" width="393" height="723"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bYX-4N-a39"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="AppLightBlue"/>
                         <constraints>
                             <constraint firstItem="zcI-Ix-fBk" firstAttribute="centerY" secondItem="i4z-0S-ZCL" secondAttribute="centerY" id="8D6-OL-hZn"/>
                             <constraint firstAttribute="bottom" secondItem="ke0-Gj-ZHa" secondAttribute="bottom" id="9dV-Nz-Ye8"/>
@@ -188,29 +190,142 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oOl-rn-Oze" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2908" y="7"/>
+            <point key="canvasLocation" x="2882" y="6"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="LJY-hw-cRT">
+        <!--Meal Filter View Controller-->
+        <scene sceneID="wRQ-ko-CqG">
             <objects>
-                <viewController id="h1r-RD-27u" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="BKG-1h-a27">
+                <viewController storyboardIdentifier="MealFilterViewController" id="ues-ee-MkN" customClass="MealFilterViewController" customModule="ShoppingHub__" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HcI-mB-9FS">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="NgQ-PY-f8T"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tl1-Pu-5Ox">
+                                <rect key="frame" x="0.0" y="105" width="393" height="747"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MealFilterTableViewCell" rowHeight="60" id="PIF-hk-SOJ" customClass="MealFilterTableViewCell" customModule="ShoppingHub__" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PIF-hk-SOJ" id="iRH-gi-9JL">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FYm-cg-he2">
+                                                    <rect key="frame" x="20" y="14.999999999999996" width="25" height="20.333333333333332"/>
+                                                    <color key="tintColor" name="AppOrange"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="BbU-JM-HUJ"/>
+                                                        <constraint firstAttribute="height" constant="25" id="Fsg-3A-P5G"/>
+                                                    </constraints>
+                                                    <imageReference key="image" image="circle" catalog="system" symbolScale="small" variableValue="0.0"/>
+                                                    <imageReference key="highlightedImage" image="circle.fill" catalog="system" symbolScale="small"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium" weight="regular"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IV4-TO-NLC">
+                                                    <rect key="frame" x="55" y="15" width="328" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="IV4-TO-NLC" secondAttribute="trailing" constant="10" id="J5D-6F-xWH"/>
+                                                <constraint firstAttribute="bottom" secondItem="IV4-TO-NLC" secondAttribute="bottom" constant="15" id="S0x-ZT-sXl"/>
+                                                <constraint firstItem="IV4-TO-NLC" firstAttribute="top" secondItem="iRH-gi-9JL" secondAttribute="top" constant="15" id="X6N-nX-eEs"/>
+                                                <constraint firstItem="FYm-cg-he2" firstAttribute="firstBaseline" secondItem="IV4-TO-NLC" secondAttribute="firstBaseline" id="Z1k-Lc-xeu"/>
+                                                <constraint firstItem="FYm-cg-he2" firstAttribute="leading" secondItem="iRH-gi-9JL" secondAttribute="leading" constant="20" id="eXf-55-8BC"/>
+                                                <constraint firstItem="IV4-TO-NLC" firstAttribute="leading" secondItem="FYm-cg-he2" secondAttribute="trailing" constant="10" id="frr-94-B7R"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="categoryLabel" destination="IV4-TO-NLC" id="0IA-qz-3hX"/>
+                                            <outlet property="selectCategory" destination="FYm-cg-he2" id="yOB-Si-QXY"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aCH-4A-hpA">
+                                <rect key="frame" x="282" y="75" width="91" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Rg-fh-elM">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <color key="tintColor" name="AppRed"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Reset">
+                                            <color key="titleColor" name="AppRed"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="resetButtonTapped:" destination="ues-ee-MkN" eventType="touchUpInside" id="7xv-zQ-Vro"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mHa-Hu-Bui">
+                                        <rect key="frame" x="50" y="0.0" width="41" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <color key="tintColor" name="AppOrange"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Apply">
+                                            <color key="titleColor" name="AppOrange"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="applyButtonTapped:" destination="ues-ee-MkN" eventType="touchUpInside" id="ZuU-Af-DbJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIb-nx-CxZ">
+                                <rect key="frame" x="19.999999999999996" y="74" width="63.666666666666657" height="32"/>
+                                <color key="tintColor" name="AppBlackTitle"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Close">
+                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="closeButtonTapped:" destination="ues-ee-MkN" eventType="touchUpInside" id="tH6-qV-4zz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Kbn-Lf-yVj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aIb-nx-CxZ" firstAttribute="top" secondItem="Kbn-Lf-yVj" secondAttribute="top" constant="15" id="6ZO-YO-QJH"/>
+                            <constraint firstItem="Kbn-Lf-yVj" firstAttribute="trailing" secondItem="Tl1-Pu-5Ox" secondAttribute="trailing" id="8sY-0s-xSc"/>
+                            <constraint firstItem="aCH-4A-hpA" firstAttribute="centerY" secondItem="aIb-nx-CxZ" secondAttribute="centerY" id="Czb-h6-JQT"/>
+                            <constraint firstItem="Tl1-Pu-5Ox" firstAttribute="leading" secondItem="Kbn-Lf-yVj" secondAttribute="leading" id="HYI-Yc-Hog"/>
+                            <constraint firstAttribute="bottom" secondItem="Tl1-Pu-5Ox" secondAttribute="bottom" id="PT1-mA-6FH"/>
+                            <constraint firstItem="Tl1-Pu-5Ox" firstAttribute="top" secondItem="aCH-4A-hpA" secondAttribute="bottom" id="dX3-nV-hCO"/>
+                            <constraint firstAttribute="trailing" secondItem="aCH-4A-hpA" secondAttribute="trailing" constant="20" id="hGb-d2-2Tt"/>
+                            <constraint firstItem="aIb-nx-CxZ" firstAttribute="leading" secondItem="Kbn-Lf-yVj" secondAttribute="leading" constant="20" id="ijO-Tf-Gtt"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="Tl1-Pu-5Ox" id="59f-Xg-5fr"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aFI-N9-0MT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kWn-v9-sqI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3546" y="10"/>
+            <point key="canvasLocation" x="3574.8091603053435" y="7.746478873239437"/>
         </scene>
     </scenes>
     <resources>
+        <image name="circle" catalog="system" width="128" height="123"/>
+        <image name="circle.fill" catalog="system" width="128" height="123"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="slider.horizontal.3" catalog="system" width="128" height="99"/>
+        <namedColor name="AppBlackTitle">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="AppLightBlue">
+            <color red="0.92941176470588238" green="0.95294117647058818" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="AppOrange">
             <color red="0.94117647058823528" green="0.61568627450980395" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="AppRed">
+            <color red="1" green="0.14901960784313725" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="AppWhiteSecond">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
