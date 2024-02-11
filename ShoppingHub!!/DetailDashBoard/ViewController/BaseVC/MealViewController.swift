@@ -46,7 +46,7 @@ class MealViewController: UIViewController {
     
     
     fileprivate func applyGradient() {
-        let myGradientView = GradientBackgroundView(frame: view.bounds)
+        let myGradientView = GradientBackgroundUIView(frame: view.bounds)
         view.insertSubview(myGradientView, at: 0)
         // dynamically updating the color set
         myGradientView.colorSet = [AppColor.AppOrange.color!, AppColor.AppWhiteSecond.color!]

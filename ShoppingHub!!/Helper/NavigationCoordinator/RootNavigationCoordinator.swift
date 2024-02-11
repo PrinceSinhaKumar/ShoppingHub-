@@ -9,6 +9,8 @@ import UIKit
 import SafariServices
 import Foundation
 
+let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
+
 protocol NavigationCoordinator: AnyObject {
     func next(navState: NavigationState,arguments: Dictionary<String, Any>?)
     func movingBack(navState: NavigationState,arguments: Dictionary<String, Any>?)
@@ -122,7 +124,7 @@ extension RootNavigationCoordinatorImpl {
             // Add navigation items specific to FoodTabController
             let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonTapped))
             controller.navigationItem.rightBarButtonItem = searchButton
-            let logOutButton = UIBarButtonItem(image: .init(systemName: "lock.open.fill"), style: .plain, target: self, action: #selector(logOutButtonTapped))
+            let logOutButton = UIBarButtonItem(image: .init(systemName: "key.horizontal.fill"), style: .plain, target: self, action: #selector(logOutButtonTapped))
             controller.navigationItem.leftBarButtonItem = logOutButton
         default:
             let closeButton = UIBarButtonItem(image: .init(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(closeButtonTapped))

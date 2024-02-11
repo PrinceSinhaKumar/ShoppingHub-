@@ -29,6 +29,7 @@ class MealSearchViewController: UIViewController {
         coordinator.configureNavigationItems(for: self)
         tableView.dataSource = mealListDataSource
         searchTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        searchTextField.becomeFirstResponder()
     }
     
     @IBAction func tapFilterButton(_ sender: Any){

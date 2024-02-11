@@ -8,24 +8,7 @@
 import Foundation
 import UIKit
 
-
-extension UIView{
-    
-    func applyGradient(_ colorSet: [UIColor]? = [
-        UIColor(red: 48/255, green: 62/255, blue: 103/255, alpha: 1),
-        UIColor(red: 244/255, green: 88/255, blue: 53/255, alpha: 1)]){
-            
-        let gradient = CAGradientLayer()
-        gradient.frame = self.bounds
-        gradient.colors = colorSet?.map{ $0.cgColor }
-        gradient.startPoint = CGPoint(x:0, y:0)
-        gradient.endPoint = CGPoint(x:1, y:1)
-        self.layer.insertSublayer(gradient, at: 0)
-    }
-    
-}
-
-class GradientBackgroundView: UIView {
+class GradientBackgroundUIView: UIView {
     
     var colorSet: [UIColor] = [] {
         didSet {
