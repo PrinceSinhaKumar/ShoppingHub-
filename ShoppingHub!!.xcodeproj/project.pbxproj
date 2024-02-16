@@ -23,7 +23,7 @@
 		7300E70F2B5BC05D00221593 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E70E2B5BC05D00221593 /* LoginViewModel.swift */; };
 		7300E7112B5D007F00221593 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E7102B5D007F00221593 /* ActivityIndicator.swift */; };
 		7300E7132B5D011500221593 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E7122B5D011500221593 /* AppColor.swift */; };
-		7300E7152B5F2ED700221593 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E7142B5F2ED700221593 /* ApiManager.swift */; };
+		7300E7152B5F2ED700221593 /* RequestFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E7142B5F2ED700221593 /* RequestFetcher.swift */; };
 		7300E7172B5F304E00221593 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E7162B5F304E00221593 /* AlertController.swift */; };
 		730277142B722C86005979A6 /* MealFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730277132B722C86005979A6 /* MealFilterViewController.swift */; };
 		730277162B722D8E005979A6 /* MealFilterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730277152B722D8E005979A6 /* MealFilterDataSource.swift */; };
@@ -99,7 +99,7 @@
 		7300E70E2B5BC05D00221593 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		7300E7102B5D007F00221593 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		7300E7122B5D011500221593 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
-		7300E7142B5F2ED700221593 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		7300E7142B5F2ED700221593 /* RequestFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestFetcher.swift; sourceTree = "<group>"; };
 		7300E7162B5F304E00221593 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		730277132B722C86005979A6 /* MealFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealFilterViewController.swift; sourceTree = "<group>"; };
 		730277152B722D8E005979A6 /* MealFilterDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealFilterDataSource.swift; sourceTree = "<group>"; };
@@ -255,7 +255,7 @@
 				7300E6FF2B5BB87F00221593 /* ApiEndpoint.swift */,
 				7300E6FC2B5BB87E00221593 /* ApiError.swift */,
 				7300E6FD2B5BB87E00221593 /* ApiHelper.swift */,
-				7300E7142B5F2ED700221593 /* ApiManager.swift */,
+				7300E7142B5F2ED700221593 /* RequestFetcher.swift */,
 				F41377EE2B6BC5FA002CE893 /* Constant.swift */,
 				F47648C42B6C0F14001BABEC /* StoryboardExtension.swift */,
 			);
@@ -668,7 +668,7 @@
 				7334C8CC2B6FB63800DA0ED4 /* MealDetailViewController.swift in Sources */,
 				F4C20CFA2B6780C800D0C85C /* MealDataProvider.swift in Sources */,
 				7300E7002B5BB87F00221593 /* ApiError.swift in Sources */,
-				7300E7152B5F2ED700221593 /* ApiManager.swift in Sources */,
+				7300E7152B5F2ED700221593 /* RequestFetcher.swift in Sources */,
 				7300E6F42B5BAE1E00221593 /* AppFontHelper.swift in Sources */,
 				7300E70D2B5BBC0100221593 /* LoginModelDecodable.swift in Sources */,
 				F45F3DC72B6A34110095ECB1 /* MealListViewModel.swift in Sources */,

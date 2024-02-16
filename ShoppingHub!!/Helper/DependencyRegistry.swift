@@ -68,7 +68,7 @@ class DependencyRegistryImpl: DependencyRegistry {
             return RootNavigationCoordinatorImpl(with: rootViewController, registry: self)
         }.inObjectScope(.container)
         
-        container.register(ApiManagerDelegate.self ) { _ in ApiManager.shared }.inObjectScope(.container)
+        //container.register(RequestFetcherDelegate.self ) { _ in RequestFetcher.shared }.inObjectScope(.container)
         
         container.register(MealDataManagerDelegate.self ) { _ in MealDataManager.shared }.inObjectScope(.container)
         

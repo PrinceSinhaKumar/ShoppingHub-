@@ -64,7 +64,7 @@ class APICallOperation: Operation, APICalllOperationDelegate{
             return self
         }
         
-        ApiManager.shared.getData(from: .getFoodList(keyword)) { meals, error in
+        APIManager.shared.getRequest(from: .getFoodList(keyword)) { meals, error in
             MealDataManager.shared.saveMeals(mealData: meals)
             guard error == nil else {
                 completion(nil, error)
