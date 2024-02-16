@@ -12,16 +12,20 @@ protocol ListViewModel {
     var list: [ValueType]? { get set }
     func numberOfRowsInSection() -> Int
     func valueAtIndex(index: Int) -> ValueType?
+//    func getIndex(notification: Notification) -> (Int?, Bool?)
+//    func moveListItem(index: Int, insertAt: Int)
+}
+//extension ListViewModel {
+//    func getIndex(notification: Notification) -> (Int?, Bool?) { return (nil, nil)}
+//    func moveListItem(index: Int, insertAt: Int) {}
+//}
+
+protocol ViewModelForMealList: ListViewModel {
     func getIndex(notification: Notification) -> (Int?, Bool?)
     func moveListItem(index: Int, insertAt: Int)
 }
-extension ListViewModel {
-    func getIndex(notification: Notification) -> (Int?, Bool?) { return (nil, nil)}
-    func moveListItem(index: Int, insertAt: Int) {}
 
-}
-
-class MealListViewModel: ListViewModel {
+class MealListViewModel: ViewModelForMealList {
     
     typealias ValueType = MealList
     

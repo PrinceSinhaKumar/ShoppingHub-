@@ -26,13 +26,15 @@ class LoginModel: LoginModelDelegate {
     var userData: LoginModelDecodable?
     
     func fetchLoginService(loginData: Encodable, completion: @escaping Handler){
-        ApiManager.shared.sendData(from: .getLoginContent, with: loginData) { [weak self] result, error in
+        
+        APIManager.shared.getRequest(from: .getLoginContent, body: loginData) { [weak self] result, error in
             self?.userData = result
             if let token = result?.token {
                 UserDefaults.standard.set(token, forKey: uToken)
             }
             completion(result, error)
         }
+
     }
     
 }
