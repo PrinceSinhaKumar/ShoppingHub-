@@ -16,12 +16,13 @@ struct LoginView: View {
     
     var body: some View {
         ZStack {
-            GredientView(gredientColor: [AppColor.AppOrange.color!, AppColor.AppOrange.color!]).edgesIgnoringSafeArea(.all)
+            GradientView(gredientColor: [AppColor.AppOrange.color!, AppColor.AppOrange.color!]).edgesIgnoringSafeArea(.all)
             VStack() {
                 Image("runningMain")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 160, height: 200)
+                    .frame(width: 250, height: 300)
+                    .shadow(radius: 4, x: 2, y: 5)
                     .padding()
             }
             
@@ -37,9 +38,9 @@ struct LoginView: View {
                         .padding()
                         .foregroundColor(.white)
                 }
-                .frame(height: 60)
+                .frame(height: 50)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 30)
+                    RoundedRectangle(cornerRadius: 25)
                         .stroke(Color.white, lineWidth: 1)
                 )
                 .padding(.horizontal)
@@ -54,9 +55,9 @@ struct LoginView: View {
                         .padding()
                         .foregroundColor(.white)
                 }
-                .frame(height: 60)
+                .frame(height: 50)
                 .overlay {
-                    RoundedRectangle(cornerRadius: 30)
+                    RoundedRectangle(cornerRadius: 25)
                         .stroke(Color.white, lineWidth: 1)
                 }
                 .padding(.horizontal)
