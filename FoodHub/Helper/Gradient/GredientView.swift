@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct GradientView: View {
-    var gredientColor: [UIColor]?
+    var gradientColor: [UIColor]?
     var body: some View {
         ZStack {
-            if let colors = gredientColor {
+            if let colors = gradientColor {
                 GradientBackgroundView(colorSet: colors)
                     .edgesIgnoringSafeArea(.all)
             }

@@ -16,7 +16,7 @@ struct LoginView: View {
     
     var body: some View {
         ZStack {
-            GradientView(gredientColor: [AppColor.AppOrange.color!, AppColor.AppOrange.color!]).edgesIgnoringSafeArea(.all)
+            GradientView(gradientColor: [AppColor.AppOrange.color!, AppColor.AppOrange.color!]).edgesIgnoringSafeArea(.all)
             VStack() {
                 Image("runningMain")
                     .resizable()
