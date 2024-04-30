@@ -14,7 +14,7 @@ final class ActivityIndicator {
     
     public static let shared = ActivityIndicator()
     
-    var activityIndicator:UIActivityIndicatorView!
+    var activityIndicator: UIActivityIndicatorView!
     
     func startAnimating(){
         

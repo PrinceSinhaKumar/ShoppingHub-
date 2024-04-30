@@ -23,7 +23,7 @@ final class MealDataManager: MealDataManagerDelegate {
     private init() {}
     
     var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "ShoppingHub__") // Replace "Model" with your Core Data model file name
+        let container = NSPersistentContainer(name: "ShoppingHub__")
         container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")

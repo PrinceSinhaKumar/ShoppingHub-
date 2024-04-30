@@ -15,33 +15,32 @@ protocol ReloadFoodModelDelegate {
 class ReloadFoodModel: ReloadFoodModelDelegate {
     
     let operationQueue = OperationQueue()
-    
-    func fetchFoodList(handler: @escaping Handler){
+    let dispatchGroup = DispatchGroup()
+    var error: ErrorHandler? = nil
+    func fetchFoodList(handler: @escaping (Handler)){
        
         // Set the maximum number of concurrent operations
-        operationQueue.maxConcurrentOperationCount = 1
-        
-        // Call the API with each alphabetical keyword
-        var operations: [APICallOperation] = []
+        operationQueue.maxConcurrentOperationCount = 26
         
         for char in UnicodeScalar("a").value...UnicodeScalar("z").value {
             let keyword = String(Character(UnicodeScalar(char)!))
+            dispatchGroup.enter()
             let operation = APICallOperation(keyword: keyword).callApi {  meals, error in
                 // Handle completion of individual operation
                 guard error == nil else {
                     self.operationQueue.cancelAllOperations()
-                    handler(nil, error)
+                    self.error = error
+                    self.dispatchGroup.leave()
                     return
                 }
-                if keyword.uppercased() == "Z" {
-                    handler(meals, error)
-                }
+                self.dispatchGroup.leave()
             }
-            operations.append(operation)
+            operationQueue.addOperation(operation)
         }
         
-        // Add operations to the queue
-        operationQueue.addOperations(operations, waitUntilFinished: false)
+        dispatchGroup.notify(queue: .main) {
+            handler(nil, self.error)
+        }
     }
     
 }

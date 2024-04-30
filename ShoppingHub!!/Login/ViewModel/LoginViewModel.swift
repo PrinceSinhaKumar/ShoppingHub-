@@ -19,27 +19,32 @@ class LoginViewModel {
         self.reloadFoodModel = reloadFoodModel
     }
     
-    func fetchLogin(loginData: Encodable){
+    func fetchLogin(loginData: Encodable) {
+        let dispatchGroup = DispatchGroup()
         eventHandler?(.loading)
-         model.fetchLoginService(loginData: loginData) { [weak self] _, error in
-            self?.eventHandler?(.stopLoading)
+        dispatchGroup.enter()
+        model.fetchLoginService(loginData: loginData) { [weak self] _, error in
             guard  error == nil else {
                 self?.eventHandler!(.error(error?.errorMessage ?? ""))
+                dispatchGroup.leave()
                 return
             }
-            self?.eventHandler?(.dataLoaded)
+            dispatchGroup.leave()
         }
-    }
-    
-    func fetchMealsData(complition: @escaping () -> ()){
-        eventHandler?(.loading)
+        dispatchGroup.enter()
         reloadFoodModel.fetchFoodList {[weak self] _, error in
             self?.eventHandler?(.stopLoading)
             guard error == nil else {
                 self?.eventHandler?(.error(error?.errorMessage ?? ""))
+                dispatchGroup.leave()
                 return
             }
-            complition()
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            self.eventHandler?(.dataLoaded)
         }
     }
+
 }

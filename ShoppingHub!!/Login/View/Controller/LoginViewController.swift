@@ -14,13 +14,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     
     fileprivate var viewModel: LoginViewModel?
-    //fileprivate var foodTabControllerMaker: DependencyRegistry.FoodTabControllerMaker!
     fileprivate var navigationCoordinator: NavigationCoordinator?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
+    
     //MARK: - Method
     func initialise(viewModel: LoginViewModel,
                     navigationCoordinator: NavigationCoordinator?){
@@ -35,7 +30,6 @@ class LoginViewController: UIViewController {
         guard let viewModel = viewModel else { return }
         let myGradientView = GradientBackgroundUIView(frame: view.bounds)
         view.insertSubview(myGradientView, at: 0)
-        // dynamically updating the color set
         myGradientView.colorSet = viewModel.gradientColors
     }
     
@@ -54,7 +48,7 @@ class LoginViewController: UIViewController {
                 case .loading: ActivityIndicator.shared.startAnimating()
                 case .stopLoading: ActivityIndicator.shared.stopAnimating()
                 case .dataLoaded:
-                    self.reloadMealsList()
+                    self.navigationCoordinator?.next(navState: .login, arguments: nil)
                 case .error(let error):
                     ShoppingAlert.shared.showAlert(error)
                 }
@@ -66,15 +60,6 @@ class LoginViewController: UIViewController {
     @IBAction func loginButtonTap() {
        viewModel?.fetchLogin(loginData: LoginModelEncodable(username: "admin", password: "password123"))
     }
-    
-    fileprivate func reloadMealsList(){
-        viewModel?.fetchMealsData(complition: { [weak self] in
-            self?.moveToFoodTab()
-        })
-    }
-    
-    fileprivate func moveToFoodTab(){
-        navigationCoordinator?.next(navState: .login, arguments: nil)
-    }
+   
 }
 

@@ -68,7 +68,7 @@
 		F48A50A22B7944BF0011C3FE /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E7062B5BBAB900221593 /* LoginModel.swift */; };
 		F48A50A32B7944C30011C3FE /* LoginModelDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E70C2B5BBC0100221593 /* LoginModelDecodable.swift */; };
 		F48A50A42B7944C70011C3FE /* LoginModelEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E7092B5BBB3600221593 /* LoginModelEncodable.swift */; };
-		F48A50A52B7944E30011C3FE /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E7142B5F2ED700221593 /* ApiManager.swift */; };
+		F48A50A52B7944E30011C3FE /* RequestFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E7142B5F2ED700221593 /* RequestFetcher.swift */; };
 		F48A50A62B7944EA0011C3FE /* ApiEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E6FF2B5BB87F00221593 /* ApiEndpoint.swift */; };
 		F48A50A72B7944ED0011C3FE /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E6FC2B5BB87E00221593 /* ApiError.swift */; };
 		F48A50A82B7944F10011C3FE /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7300E6FD2B5BB87E00221593 /* ApiHelper.swift */; };
@@ -803,7 +803,7 @@
 				F48A509D2B7933D70011C3FE /* AppGradientLayer.swift in Sources */,
 				F48A50AC2B7945460011C3FE /* FoodListDecadableModel.swift in Sources */,
 				F48A50A82B7944F10011C3FE /* ApiHelper.swift in Sources */,
-				F48A50A52B7944E30011C3FE /* ApiManager.swift in Sources */,
+				F48A50A52B7944E30011C3FE /* RequestFetcher.swift in Sources */,
 				F40864522B79226200A31FCD /* FoodHubApp.swift in Sources */,
 				F48A50A22B7944BF0011C3FE /* LoginModel.swift in Sources */,
 				F40864602B79265D00A31FCD /* GredientView.swift in Sources */,
@@ -959,6 +959,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JQLQ3HJM6D;
@@ -975,8 +976,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.-KeyChainDemo.demo.ShoppingHub-Prince";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Shopping1.hub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -988,6 +990,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JQLQ3HJM6D;
@@ -1004,8 +1007,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.-KeyChainDemo.demo.ShoppingHub-Prince";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Shopping1.hub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1017,10 +1021,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development: Priyanka M (D8L994A2GT)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FoodHub/Preview Content\"";
-				DEVELOPMENT_TEAM = JQLQ3HJM6D;
+				DEVELOPMENT_TEAM = 84J4F37N69;
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1049,10 +1054,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development: Priyanka M (D8L994A2GT)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FoodHub/Preview Content\"";
-				DEVELOPMENT_TEAM = JQLQ3HJM6D;
+				DEVELOPMENT_TEAM = 84J4F37N69;
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GENERATE_INFOPLIST_FILE = YES;
