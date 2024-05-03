@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct FoodHubApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @Environment(\.scenePhase) private var scenePhase
+    
     var body: some Scene {
         WindowGroup {
-            LoginView(viewModel: LoginViewModel(model: LoginModel(), reloadFoodModel: ReloadFoodModel()))
+        }
+        .onChange(of: scenePhase) { phase in
+            // Handle scene phase changes if needed
         }
     }
 }

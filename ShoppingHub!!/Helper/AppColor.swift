@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SwiftUI
 enum AppColor: String {
     case AppWhite255
     case AppWhiteSecond
@@ -16,5 +16,9 @@ enum AppColor: String {
 
     var color: UIColor? {
         return UIColor(named: self.rawValue)
+    }
+    
+    var swiftUIColor: Color {
+        return Color(self.rawValue)
     }
 }

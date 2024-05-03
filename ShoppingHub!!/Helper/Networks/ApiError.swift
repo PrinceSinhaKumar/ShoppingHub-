@@ -1,16 +1,17 @@
 import Foundation
 
-/// Define your custom errors
 enum ApiError: Error {
-    case invalidPath
+    case parseError
+    case customError(String)
 }
 
 extension ApiError {
-    
     var description: String {
         switch self {
-        case .invalidPath:
-            return "Invalid Path"
+        case .parseError:
+            return self.localizedDescription
+        case .customError(let errorMessage):
+            return errorMessage
         }
     }
 }
