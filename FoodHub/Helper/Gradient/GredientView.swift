@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct GredientView: View {
-    var gredientColor: [UIColor]?
+struct GradientView: View {
+    var gradientColor: [UIColor]?
     var body: some View {
         ZStack {
-            if let colors = gredientColor {
+            if let colors = gradientColor {
                 GradientBackgroundView(colorSet: colors)
                     .edgesIgnoringSafeArea(.all)
             }
@@ -19,8 +19,8 @@ struct GredientView: View {
     }
 }
 
-struct GredientView_Previews: PreviewProvider {
+struct GradientView_Previews: PreviewProvider {
     static var previews: some View {
-        GredientView()
+        GradientView()
     }
 }
