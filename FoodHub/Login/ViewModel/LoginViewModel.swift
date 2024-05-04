@@ -8,17 +8,27 @@
 import SwiftUI
 import Combine
 
-class LoginViewModel: ObservableObject {
+protocol ViewModel: ObservableObject {
+    associatedtype M
+    var model: M { get set }
+    var cancellable: Set<AnyCancellable> { get set }
+    var errorMessage: String { get set }
+    var successPublisher: PassthroughSubject<Void, Never> { get set }
+    var isLoading: Bool {get set}
+    var showToastView: Bool {get set}
+}
+
+class LoginViewModel: ViewModel {
     
-    let model: LoginModel
-    
+    var model: LoginModel
+    internal var cancellable = Set<AnyCancellable>()
+
     @Published var username: String = ""
     @Published var userNameFieldBorderColor:Color = .white
     @Published var password: String = ""
     @Published var passwordFieldBorderColor:Color = .white
     @Published var errorMessage: String = ""
     
-    private var cancellable = Set<AnyCancellable>()
     
     private var userNamePublisher: AnyPublisher<Bool, Never> {
         return $username
@@ -33,7 +43,7 @@ class LoginViewModel: ObservableObject {
     }
     @Published var isLoading: Bool = false
     @Published var showToastView: Bool = false
-    private let loginSuccessPublisher = PassthroughSubject<Void, Never>()
+    internal var successPublisher = PassthroughSubject<Void, Never>()
     
     init(model: LoginModel) {
         self.model = model
@@ -68,7 +78,7 @@ class LoginViewModel: ObservableObject {
                     self.errorMessage = data.reason ?? ""
                     self.showToastView.toggle()
                 } else {
-                    self.loginSuccessPublisher.send()
+                    self.successPublisher.send()
                 }
                 self.isLoading.toggle()
             }
@@ -77,6 +87,6 @@ class LoginViewModel: ObservableObject {
     
     // Publisher to observe successful login
     func observeLoginSuccess() -> AnyPublisher<Void, Never> {
-        loginSuccessPublisher.eraseToAnyPublisher()
+        successPublisher.eraseToAnyPublisher()
     }
 }

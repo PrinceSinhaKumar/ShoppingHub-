@@ -43,36 +43,3 @@ final class NetworkManager {
     
 }
 
-class MealListViewModel: ObservableObject {
-    
-    @Published var data: FoodListDecodableModel?
-    private var cancellable = Set<AnyCancellable>()
-
-    func fetchData() {
-        if let publisher = NetworkManager.shared.fetchNetworkRequest(from: .getFoodList("F"), body: nil) as AnyPublisher<FoodListDecodableModel, ApiError>? {
-            detailPublisher = publisher
-        }
-    }
-    
-    private var detailPublisher: AnyPublisher<FoodListDecodableModel, ApiError>? {
-            didSet {
-                // Whenever detailPublisher is set, start fetching data
-                detailPublisher?.sink(receiveCompletion: { completion in
-                    // Handle completion (optional)
-                    switch completion {
-                    case .failure(let error):
-                        print("Network request failed: \(error.description)")
-                    case .finished:
-                        print("Network request completed successfully")
-                    }
-                }, receiveValue: { [weak self] receivedData in
-                    // Handle received data
-                    self?.data = receivedData
-                })
-                .store(in: &cancellable) // Store the subscription in cancellable
-            }
-        }
-    
-    
-}
-

@@ -40,6 +40,15 @@
 		7320A86C2BE5347D00A5AB8D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7320A86B2BE5347D00A5AB8D /* LoginViewModel.swift */; };
 		7320A86F2BE5493B00A5AB8D /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7320A86E2BE5493B00A5AB8D /* LoginModel.swift */; };
 		7320A8712BE5646300A5AB8D /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7320A8702BE5646300A5AB8D /* LoaderView.swift */; };
+		7320A8742BE6611C00A5AB8D /* MealListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7320A8732BE6611C00A5AB8D /* MealListModel.swift */; };
+		7320A8772BE6617C00A5AB8D /* MealListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7320A8762BE6617C00A5AB8D /* MealListViewModel.swift */; };
+		7320A8792BE6745F00A5AB8D /* MealsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7320A8782BE6745F00A5AB8D /* MealsData.swift */; };
+		7320A87B2BE6871500A5AB8D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7320A87A2BE6871500A5AB8D /* Kingfisher */; };
+		7320A87D2BE688A100A5AB8D /* ImageDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7320A87C2BE688A100A5AB8D /* ImageDownloadManager.swift */; };
+		7320A87E2BE688E500A5AB8D /* ImageDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7320A87C2BE688A100A5AB8D /* ImageDownloadManager.swift */; };
+		7320A8812BE6B6B700A5AB8D /* MealListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7320A8802BE6B6B700A5AB8D /* MealListView.swift */; };
+		7320A8832BE6B6ED00A5AB8D /* MealImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7320A8822BE6B6ED00A5AB8D /* MealImageView.swift */; };
+		7320A8852BE6B71F00A5AB8D /* MealDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7320A8842BE6B71F00A5AB8D /* MealDescriptionView.swift */; };
 		7324CFBD2B6AD13B00DA6D35 /* MealListTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7324CFBC2B6AD13B00DA6D35 /* MealListTableCellViewModel.swift */; };
 		7334C8C72B6FB51600DA0ED4 /* MealDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7334C8C62B6FB51600DA0ED4 /* MealDetailModel.swift */; };
 		7334C8CA2B6FB5CD00DA0ED4 /* MealDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7334C8C92B6FB5CD00DA0ED4 /* MealDetailViewModel.swift */; };
@@ -144,6 +153,13 @@
 		7320A86B2BE5347D00A5AB8D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		7320A86E2BE5493B00A5AB8D /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		7320A8702BE5646300A5AB8D /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		7320A8732BE6611C00A5AB8D /* MealListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListModel.swift; sourceTree = "<group>"; };
+		7320A8762BE6617C00A5AB8D /* MealListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListViewModel.swift; sourceTree = "<group>"; };
+		7320A8782BE6745F00A5AB8D /* MealsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsData.swift; sourceTree = "<group>"; };
+		7320A87C2BE688A100A5AB8D /* ImageDownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadManager.swift; sourceTree = "<group>"; };
+		7320A8802BE6B6B700A5AB8D /* MealListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListView.swift; sourceTree = "<group>"; };
+		7320A8822BE6B6ED00A5AB8D /* MealImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealImageView.swift; sourceTree = "<group>"; };
+		7320A8842BE6B71F00A5AB8D /* MealDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDescriptionView.swift; sourceTree = "<group>"; };
 		7324CFBC2B6AD13B00DA6D35 /* MealListTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListTableCellViewModel.swift; sourceTree = "<group>"; };
 		732E54252B70D73A00540CAD /* ShoppingHub__ v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ShoppingHub__ v2.xcdatamodel"; sourceTree = "<group>"; };
 		7334C8C62B6FB51600DA0ED4 /* MealDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailModel.swift; sourceTree = "<group>"; };
@@ -200,6 +216,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7320A87B2BE6871500A5AB8D /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +328,7 @@
 				7300E7142B5F2ED700221593 /* RequestFetcher.swift */,
 				F41377EE2B6BC5FA002CE893 /* Constant.swift */,
 				F47648C42B6C0F14001BABEC /* StoryboardExtension.swift */,
+				7320A87C2BE688A100A5AB8D /* ImageDownloadManager.swift */,
 			);
 			path = Networks;
 			sourceTree = "<group>";
@@ -417,6 +435,34 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		7320A8722BE6610500A5AB8D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7320A8782BE6745F00A5AB8D /* MealsData.swift */,
+				7320A8732BE6611C00A5AB8D /* MealListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7320A8752BE6616500A5AB8D /* MealListViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7320A8762BE6617C00A5AB8D /* MealListViewModel.swift */,
+			);
+			path = MealListViewModel;
+			sourceTree = "<group>";
+		};
+		7320A87F2BE6B64A00A5AB8D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				73EFE2DA2BE1773E0036CB98 /* MealView.swift */,
+				7320A8802BE6B6B700A5AB8D /* MealListView.swift */,
+				7320A8822BE6B6ED00A5AB8D /* MealImageView.swift */,
+				7320A8842BE6B71F00A5AB8D /* MealDescriptionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		7334C8C42B6FB4C300DA0ED4 /* DetailDashBoard */ = {
 			isa = PBXGroup;
 			children = (
@@ -482,7 +528,9 @@
 		73EFE2D92BE1770B0036CB98 /* ListView */ = {
 			isa = PBXGroup;
 			children = (
-				73EFE2DA2BE1773E0036CB98 /* MealView.swift */,
+				7320A8752BE6616500A5AB8D /* MealListViewModel */,
+				7320A8722BE6610500A5AB8D /* Model */,
+				7320A87F2BE6B64A00A5AB8D /* View */,
 			);
 			path = ListView;
 			sourceTree = "<group>";
@@ -731,6 +779,9 @@
 			dependencies = (
 			);
 			name = FoodHub;
+			packageProductDependencies = (
+				7320A87A2BE6871500A5AB8D /* Kingfisher */,
+			);
 			productName = FoodHub;
 			productReference = F408644F2B79226200A31FCD /* FoodHub.app */;
 			productType = "com.apple.product-type.application";
@@ -851,6 +902,7 @@
 				7300E7032B5BB87F00221593 /* ApiEndpoint.swift in Sources */,
 				73F8C9FC2B6A410200F467DF /* MealListDataSource.swift in Sources */,
 				7334C8CC2B6FB63800DA0ED4 /* MealDetailViewController.swift in Sources */,
+				7320A87D2BE688A100A5AB8D /* ImageDownloadManager.swift in Sources */,
 				F4C20CFA2B6780C800D0C85C /* MealDataProvider.swift in Sources */,
 				7300E7002B5BB87F00221593 /* ApiError.swift in Sources */,
 				7300E7152B5F2ED700221593 /* RequestFetcher.swift in Sources */,
@@ -867,22 +919,29 @@
 				7320A8712BE5646300A5AB8D /* LoaderView.swift in Sources */,
 				7320A8662BE5323B00A5AB8D /* NetworkRequestFetcher.swift in Sources */,
 				7320A8582BE40DCC00A5AB8D /* NavigationCoordinatorManager.swift in Sources */,
+				7320A87E2BE688E500A5AB8D /* ImageDownloadManager.swift in Sources */,
 				F48A509F2B7934460011C3FE /* GradientBackgroundView.swift in Sources */,
 				7320A8622BE4257700A5AB8D /* FoodHubApp.swift in Sources */,
 				F48A50AD2B7945780011C3FE /* ShoppingHub__.xcdatamodeld in Sources */,
 				F48A50AB2B79452C0011C3FE /* MealDataManager.swift in Sources */,
 				F48A50A32B7944C30011C3FE /* LoginModelDecodable.swift in Sources */,
 				F48A50A92B7944F50011C3FE /* Constant.swift in Sources */,
+				7320A8772BE6617C00A5AB8D /* MealListViewModel.swift in Sources */,
+				7320A8832BE6B6ED00A5AB8D /* MealImageView.swift in Sources */,
 				F40864542B79226200A31FCD /* LoginView.swift in Sources */,
+				7320A8742BE6611C00A5AB8D /* MealListModel.swift in Sources */,
 				73EFE2DC2BE17B2E0036CB98 /* AppFontHelper.swift in Sources */,
 				7320A86F2BE5493B00A5AB8D /* LoginModel.swift in Sources */,
 				F40864632B7929A500A31FCD /* AppColor.swift in Sources */,
 				F48A509D2B7933D70011C3FE /* AppGradientLayer.swift in Sources */,
 				7320A86C2BE5347D00A5AB8D /* LoginViewModel.swift in Sources */,
 				F48A50AC2B7945460011C3FE /* FoodListDecadableModel.swift in Sources */,
+				7320A8852BE6B71F00A5AB8D /* MealDescriptionView.swift in Sources */,
 				F48A50A82B7944F10011C3FE /* ApiHelper.swift in Sources */,
 				F48A50A52B7944E30011C3FE /* RequestFetcher.swift in Sources */,
+				7320A8812BE6B6B700A5AB8D /* MealListView.swift in Sources */,
 				F40864602B79265D00A31FCD /* GredientView.swift in Sources */,
+				7320A8792BE6745F00A5AB8D /* MealsData.swift in Sources */,
 				F48A50A72B7944ED0011C3FE /* ApiError.swift in Sources */,
 				F48A50A62B7944EA0011C3FE /* ApiEndpoint.swift in Sources */,
 				7320A86A2BE5344A00A5AB8D /* LoginModelEncodable.swift in Sources */,
@@ -1224,6 +1283,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7320A87A2BE6871500A5AB8D /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 73F8CA032B6A81B300F467DF /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		73F8CA042B6A81B300F467DF /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 73F8CA032B6A81B300F467DF /* XCRemoteSwiftPackageReference "Kingfisher" */;
