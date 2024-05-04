@@ -8,18 +8,16 @@
 import Foundation
 import Combine
 
-protocol ModelDelegate {
+protocol Model {
     associatedtype D
     associatedtype E
     var data: D? { get set }
     var apiContainer:E? {get set}
-    var cancellable: Set<AnyCancellable> { get set }
     func fetchData() -> AnyPublisher<D, ApiError>
 }
 
-class LoginModel: ModelDelegate {
+class LoginModel: Model {
     var data: LoginModelDecodable?
-    var cancellable: Set<AnyCancellable> = Set<AnyCancellable>()
     var apiContainer: LoginModelEncodable?
 
     func fetchData() -> AnyPublisher<LoginModelDecodable, ApiError> {
@@ -33,3 +31,4 @@ class LoginModel: ModelDelegate {
         return Fail(error: .parseError).eraseToAnyPublisher()
     }
 }
+

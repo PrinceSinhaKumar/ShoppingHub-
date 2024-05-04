@@ -88,7 +88,7 @@ public enum Router: NavigationRouter {
             case .login:
                 LoginView(viewModel: LoginViewModel(model: LoginModel()))
             case .mealListView:
-                MealListView()
+                MealListView(viewModel: MealListViewModel(model: MealListModel()))
             }
         }
         

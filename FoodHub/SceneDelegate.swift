@@ -9,7 +9,7 @@ import SwiftUI
 
 final class SceneDelegate: NSObject, UIWindowSceneDelegate {
         
-    private let coordinator: NavigationCoordinatorManager<Router> = .init(startingRoute: .login)
+    private let coordinator: NavigationCoordinatorManager<Router> = .init(startingRoute: .mealListView)
     
     var window: UIWindow?
 
