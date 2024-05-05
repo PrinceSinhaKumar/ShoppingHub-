@@ -8,17 +8,13 @@
 import SwiftUI
 import Combine
 
-protocol ListViewModel: ViewModel {
-   
-}
-
-class MealListViewModel: ListViewModel {
+class MealListViewModel: ViewModel {
     var model: MealListModel
     var cancellable: Set<AnyCancellable>
-    var errorMessage: String = ""
-    var successPublisher = PassthroughSubject<Void, Never>()
-    var isLoading: Bool = false
-    var showToastView: Bool = false
+    @Published var errorMessage: String = ""
+    @Published var successPublisher = PassthroughSubject<Void, Never>()
+    @Published var isLoading: Bool = false
+    @Published var showToastView: Bool = false
     
     @Published var meals: [MealDataList] = []
 
@@ -34,12 +30,11 @@ class MealListViewModel: ListViewModel {
                 if case .failure(let error) = completion {
                     self.showToastView.toggle()
                     self.errorMessage = error.description
-                    self.isLoading.toggle()
                 }
+                self.isLoading.toggle()
             } receiveValue: { data in
                 self.meals.append(contentsOf: self.model.listData.map({.init(meal: $0)}))
                 self.successPublisher.send()
-                self.isLoading.toggle()
             }
             .store(in: &cancellable)
 
