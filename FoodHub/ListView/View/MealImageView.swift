@@ -11,24 +11,41 @@ struct MealImageView: View {
     @State var image: UIImage?
     var imageURL:String
     var body: some View {
-        if let image = self.image {
-            Image(uiImage: image)
+        
+        AsyncImage(url: URL(string: imageURL)!) { image in
+            image
                 .resizable()
                 .scaledToFit()
                 .frame(width: 120)
                 .clipShape(Circle())
-        } else {
+        } placeholder: {
             VStack {
                 Spacer()
                 ProgressView()
                     .frame(width: 100)
                     .progressViewStyle(.circular).tint(AppColor.AppOrange.swiftUIColor)
-                    .onAppear {
-                        loadImage(from: imageURL)
-                    }
                 Spacer()
             }
         }
+
+//        if let image = self.image {
+//            Image(uiImage: image)
+//                .resizable()
+//                .scaledToFit()
+//                .frame(width: 120)
+//                .clipShape(Circle())
+//        } else {
+//            VStack {
+//                Spacer()
+//                ProgressView()
+//                    .frame(width: 100)
+//                    .progressViewStyle(.circular).tint(AppColor.AppOrange.swiftUIColor)
+//                    .onAppear {
+//                        loadImage(from: imageURL)
+//                    }
+//                Spacer()
+//            }
+//        }
         
     }
     
